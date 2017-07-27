@@ -2,5 +2,12 @@
     font-size:50px;
 }
 .img-responsive.list-img{
-    width:100px;
+    width:50px;
+    height: 50px;
+}
+.edit-img{
+    height: 150px;
+}
+textarea.address{
+    height: 150px;
 }

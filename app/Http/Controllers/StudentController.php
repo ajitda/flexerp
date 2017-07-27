@@ -85,7 +85,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::findOrFail($id);
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -97,7 +98,12 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }
+        Student::findOrFail($id)->update($input);
+        return redirect('students');
     }
 
     /**
@@ -108,6 +114,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
