@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return view('courses.courses', compact('courses'));
     }
 
     /**
@@ -23,7 +34,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('courses.create');
     }
 
     /**
@@ -34,7 +45,25 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }else{
+            $input['image'] = 'img/default.jpg';
+        }
+        $input['user_id'] = Auth::user()->id;
+        Course::create($input);
+        return redirect('courses');
+    }
+
+    public function upload($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $sha = sha1($file->getClientOriginalName());
+        $filename = date('Y-m-d-h-i-s')."-".$sha.".".$extension;
+        $path = public_path('img/courses/');
+        $file->move($path, $filename);
+        return 'img/courses/'.$filename;
     }
 
     /**
@@ -56,7 +85,8 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::findOrFail($id);
+        return view('courses.edit', compact('course'));
     }
 
     /**
@@ -68,7 +98,12 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }
+        Course::findOrFail($id)->update($input);
+        return redirect('courses');
     }
 
     /**
@@ -79,6 +114,7 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Course::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

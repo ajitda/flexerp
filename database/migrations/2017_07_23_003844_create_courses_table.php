@@ -21,7 +21,8 @@ class CreateCoursesTable extends Migration
             $table->string('code');
             $table->integer('sessions');
             $table->string('topics');
-            $table->integer('fee');
+            $table->integer('fees');
+            $table->string('image');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
