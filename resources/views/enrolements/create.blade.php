@@ -7,9 +7,12 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    {!! Form::open(['route'=>'courses.store', 'files'=>true]) !!}
+                    {!! Form::open(['route'=>'enrolements.store', 'files'=>true]) !!}
                         <div class="form-group col-md-4">
-                            {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Name')) !!}
+                            {!! Form::select('student_id', $students, array('required', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {!! Form::select('course_id', $courses, array('required', 'class'=>'form-control', 'placeholder'=>'Select Course Name')) !!}
                         </div>
                         <div class="form-group col-md-4">
                             {!! Form::number('duration', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Duration')) !!}
@@ -35,7 +38,7 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            {!! Form::submit('Add Course', array('class'=>'btn btn-primary')) !!}
+                            {!! Form::submit('Make Enrolement', array('class'=>'btn btn-primary')) !!}
                         </div>
                     {!! Form::close() !!}
                 </div>

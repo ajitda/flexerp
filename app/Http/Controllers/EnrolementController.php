@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Enrolement;
+use App\Student;
 use Illuminate\Http\Request;
 
 class EnrolementController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +37,9 @@ class EnrolementController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::pluck('name', 'id');
+        $courses = Course::pluck('name', 'id');
+        return view('enrolements.create', compact('students', 'courses'));
     }
 
     /**
