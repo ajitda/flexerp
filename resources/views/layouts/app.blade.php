@@ -40,6 +40,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;<li><a href="students">Students</a></li>
                         <li><a href="courses">Courses</a></li>
+                        <li><a href="enrolements">Course Enrolements</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
