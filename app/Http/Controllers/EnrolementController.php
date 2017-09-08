@@ -6,6 +6,10 @@ use App\Course;
 use App\Enrolement;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+//use Illuminate\Auth\Access\Response;
+//use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class EnrolementController extends Controller
 {
@@ -38,9 +42,20 @@ class EnrolementController extends Controller
     public function create()
     {
         $students = Student::pluck('name', 'id');
-        $courses = Course::pluck('name', 'id');
+        $courses = Course::pluck('name', 'id', 'price');
         return view('enrolements.create', compact('students', 'courses'));
     }
+
+    /*
+     * get ajax request for geting automatic course fee
+     */
+    public function getCourseFee()
+    {
+        $course_id = Input::get('course_id');
+        $course = Course::where('course_id', '=', $course_id)->get();
+        return Response::json($course);
+    }
+
 
     /**
      * Store a newly created resource in storage.

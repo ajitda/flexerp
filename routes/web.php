@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/students', 'StudentController');
 Route::resource('/courses', 'CourseController');
 Route::resource('/enrolements', 'EnrolementController');
+
+Route::get('/ajax-course-id', 'EnrolementController@getCourseFee');

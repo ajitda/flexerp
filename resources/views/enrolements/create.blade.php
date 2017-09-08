@@ -9,34 +9,35 @@
                 <div class="row">
                     {!! Form::open(['route'=>'enrolements.store', 'files'=>true]) !!}
                         <div class="form-group col-md-4">
-                            {!! Form::select('student_id', $students, array('required', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
+                            <label for="student">Select Student Name</label>
+                            {!! Form::select('student_id', $students, array('required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
                         </div>
                         <div class="form-group col-md-4">
-                            {!! Form::select('course_id', $courses, array('required', 'class'=>'form-control', 'placeholder'=>'Select Course Name')) !!}
+                            <label for="course">Select Course Name</label>
+                            {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'class'=>'form-control', 'placeholder'=>'Select Course Name']) !!}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group col-md-4">
+                            <label for="qty">Enter Quantity</label>
+                            {!! Form::number('qty', null, array('required', 'id'=>'qty', 'class'=>'form-control', 'placeholder'=>'')) !!}
                         </div>
                         <div class="form-group col-md-4">
-                            {!! Form::number('duration', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Duration')) !!}
+                            <label for="price">Course Fee</label>
+                            {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'')) !!}
+                        </div>
+                        <div class="form-group col-md-4" >
+                            <label for="discount">Discount</label>
+                            {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'')) !!}
                         </div>
                         <div class="form-group col-md-4">
-                            {!! Form::text('code', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Code')) !!}
-                        </div>
-                        <div class="form-group col-md-12" >
-                            {!! Form::text('topics', null, array('required', 'class'=>'form-control', 'placeholder'=>'Topics Covered')) !!}
+                            <label for="total">Total</label>
+                            {!! Form::number('total', null, array('required', 'id'=>'total', 'class'=>'form-control', 'placeholder'=>'Total')) !!}
                         </div>
                         <div class="form-group col-md-4">
-                            {!! Form::number('sessions', null, array('required', 'class'=>'form-control', 'placeholder'=>'Total Sessions')) !!}
+                            <label for="comment">Make a comment</label>
+                            {!! Form::text('comment', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}
                         </div>
-                        <div class="form-group col-md-4">
-                            {!! Form::number('fees', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Fee')) !!}
-                        </div>
-                        <div class="form-group col-md-4">
-                            {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            {!! Form::textarea('description', null, array('required', 'class'=>'form-control address', 'placeholder'=>'Course Description')) !!}
-                        </div>
-
+                        <div class="clearfix"></div>
                         <div class="form-group col-md-3">
                             {!! Form::submit('Make Enrolement', array('class'=>'btn btn-primary')) !!}
                         </div>
@@ -48,3 +49,15 @@
     </div>
 
     @endsection
+
+@section('scripts')
+    <script>
+        $("#course").on('change', function (e) {
+            console.log(e);
+            var course_id = e.target.value;
+            $.get('/ajax-course-id?course_id=' + course_id, function (data) {
+                $("#price").empty();
+            });
+        });
+    </script>
+@endsection
