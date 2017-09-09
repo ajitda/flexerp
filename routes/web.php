@@ -22,4 +22,4 @@ Route::resource('/students', 'StudentController');
 Route::resource('/courses', 'CourseController');
 Route::resource('/enrolements', 'EnrolementController');
 
-Route::get('/ajax-course-id', 'EnrolementController@getCourseFee');
+Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');

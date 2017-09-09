@@ -7,9 +7,10 @@ use App\Enrolement;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 //use Illuminate\Auth\Access\Response;
 //use Illuminate\Http\Response;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 
 class EnrolementController extends Controller
 {
@@ -49,11 +50,12 @@ class EnrolementController extends Controller
     /*
      * get ajax request for geting automatic course fee
      */
-    public function getCourseFee()
+    public function getCourseFee(Request $request, $id)
     {
-        $course_id = Input::get('course_id');
-        $course = Course::where('course_id', '=', $course_id)->get();
-        return Response::json($course);
+        if($request->ajax()){
+            $course = Course::findOrFail($id)->get();
+            return response()->json($course);
+        }
     }
 
 
@@ -65,7 +67,8 @@ class EnrolementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
     }
 
     /**

@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="course">Select Course Name</label>
-                            {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'class'=>'form-control', 'placeholder'=>'Select Course Name']) !!}
+                            {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'placeholder'=>'Select Course Name']) !!}
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-4">
@@ -52,11 +52,11 @@
 
 @section('scripts')
     <script>
-        $("#course").on('change', function (e) {
-            console.log(e);
-            var course_id = e.target.value;
-            $.get('/ajax-course-id?course_id=' + course_id, function (data) {
-                $("#price").empty();
+        $("#course").change( function(event) {
+
+
+            $.get("/enrolements/create/getcourse/"+event.target.value+"", function (response, course) {
+                console.log(response);
             });
         });
     </script>
