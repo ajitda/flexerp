@@ -280,6 +280,7 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
+        'App\\Employee' => __DIR__ . '/../..' . '/app/Employee.php',
         'App\\Enrolement' => __DIR__ . '/../..' . '/app/Enrolement.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -315,6 +316,7 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CreateCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_23_003844_create_courses_table.php',
+        'CreateEmployeesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_11_034157_create_employees_table.php',
         'CreateEnrolementsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_02_185120_create_enrolements_table.php',
         'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_10_164636_create_orders_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

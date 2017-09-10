@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Course' => $baseDir . '/app/Course.php',
+    'App\\Employee' => $baseDir . '/app/Employee.php',
     'App\\Enrolement' => $baseDir . '/app/Enrolement.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -43,6 +44,7 @@ return array(
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
     'CreateCoursesTable' => $baseDir . '/database/migrations/2017_07_23_003844_create_courses_table.php',
+    'CreateEmployeesTable' => $baseDir . '/database/migrations/2017_09_11_034157_create_employees_table.php',
     'CreateEnrolementsTable' => $baseDir . '/database/migrations/2017_09_02_185120_create_enrolements_table.php',
     'CreateOrdersTable' => $baseDir . '/database/migrations/2017_09_10_164636_create_orders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
