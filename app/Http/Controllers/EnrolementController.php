@@ -32,6 +32,7 @@ class EnrolementController extends Controller
     public function index()
     {
         $enrolements = Enrolement::all();
+
         return view("enrolements.enrolements", compact('enrolements'));
     }
 
@@ -67,7 +68,18 @@ class EnrolementController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $enrolement = new Enrolement();
+        $qty= $enrolement->qty = $request->qty;
+        $price= $enrolement->price = $request->price;
+        $discount= $enrolement->discount = $request->discount;
+        $total = $qty * $price - $discount;
+        $enrolement->total = $total;
+        $enrolement->comment = $request->comment;
+        $enrolement->price = $request->price;
+        $enrolement->course_id = $request->course_id;
+        $enrolement->student_id = $request->student_id;
+        $enrolement->save();
+        return redirect('enrolements');
 
     }
 
@@ -90,7 +102,10 @@ class EnrolementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $enrolement = Enrolement::findOrFail($id);
+        $students = Student::pluck('name', 'id');
+        $courses = Course::pluck('name', 'id');
+        return view('enrolements.edit', compact('enrolement', 'students', 'courses'));
     }
 
     /**
@@ -102,7 +117,18 @@ class EnrolementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $enrolement = Enrolement::findOrFail($id);
+        $qty= $enrolement->qty = $request->qty;
+        $price= $enrolement->price = $request->price;
+        $discount= $enrolement->discount = $request->discount;
+        $total = $qty * $price - $discount;
+        $enrolement->total = $total;
+        $enrolement->comment = $request->comment;
+        $enrolement->price = $request->price;
+        $enrolement->course_id = $request->course_id;
+        $enrolement->student_id = $request->student_id;
+        $enrolement->update();
+        return redirect('enrolements');
     }
 
     /**
@@ -113,6 +139,7 @@ class EnrolementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Enrolement::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

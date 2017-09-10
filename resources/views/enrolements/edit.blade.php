@@ -1,44 +1,49 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    {!! Html::script('js/angular.min.js', array('type' => 'text/javascript')) !!}
+    {!! Html::script('js/main.js', array('type' => 'text/javascript')) !!}
+    <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Course Registration Form</h1>
+                <h1>Edit Course Enrolement Form</h1>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" ng-controller="automateController">
                 <div class="row">
-                    {!! Form::model($course,['method'=>'PATCH','action'=>['CourseController@update', $course], 'files'=>true]) !!}
+                    {!! Form::model($enrolement, ['method'=>'PATCH', 'action'=>['EnrolementController@update', $enrolement], 'files'=>true]) !!}
                     <div class="form-group col-md-4">
-                        {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Name')) !!}
-                    </div>
-                    <div class="form-group col-md-4">
-                        {!! Form::number('duration', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Duration')) !!}
+                        <label for="student">Select Student Name</label>
+                        {!! Form::select('student_id', $students, array('required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::text('code', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Code')) !!}
+                        <label for="course">Select Course Name</label>
+                        {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'placeholder'=>'Select Course Name']) !!}
                     </div>
-                    <div class="form-group col-md-12" >
-                        {!! Form::text('topics', null, array('required', 'class'=>'form-control', 'placeholder'=>'Topics Covered')) !!}
+                    <div class="clearfix"></div>
+                    <div class="form-group col-md-4">
+                        <label for="qty">Enter Quantity</label>
+                        {!! Form::number('qty', null, array('required', 'id'=>'qty', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'qty', 'ng-init'=>"qty='$enrolement->qty'")) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::number('sessions', null, array('required', 'class'=>'form-control', 'placeholder'=>'Total Sessions')) !!}
+                        <label for="price">Course Fee</label>
+                        {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'course_fee', 'ng-init'=>"course_fee='$enrolement->price'")) !!}
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <label for="discount">Discount</label>
+                        {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount', 'ng-init'=>"discount='$enrolement->discount'")) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::number('fees', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Fee')) !!}
+                        <label for="total">Total : </label>
+                        <div class="total">
+                            <span data-ng-bind=" qty * course_fee - discount | currency"></span>
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
-                    </div>
-
-                    <div class="form-group col-md-8">
-                        {!! Form::textarea('description', null, array('required', 'class'=>'form-control address', 'placeholder'=>'Course Description')) !!}
-                    </div>
-                    <div class="col-md-4">
-                        <img src="../../{{$course->image}}" class="img-responsive img-rounded edit-img" alt="">
+                        <label for="comment">Make a comment</label>
+                        {!! Form::text('comment', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-3">
-                        {!! Form::submit('Update Course', array('class'=>'btn btn-primary')) !!}
+                        {!! Form::submit('Update Enrolement', array('class'=>'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -47,4 +52,16 @@
 
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $("#course").change( function(event) {
+
+
+            $.get("/enrolements/create/getcourse/"+event.target.value+"", function (response, course) {
+                console.log(response);
+            });
+        });
+    </script>
 @endsection
