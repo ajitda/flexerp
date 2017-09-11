@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/students', 'StudentController');
 Route::resource('/courses', 'CourseController');
 Route::resource('/enrolements', 'EnrolementController');
+Route::resource('/employees', 'EmployeeController');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
