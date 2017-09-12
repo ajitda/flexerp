@@ -35,8 +35,11 @@
                         <div class="form-group col-md-3">
                             {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
                         </div>
-                        <div class="form-group col-md-4">
-                            {!! Form::number('nid', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your National ID No')) !!}
+                        <div class="form-group col-md-3">
+                            {!! Form::number('nid', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter National ID No')) !!}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {!! Form::text('designation', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Designation')) !!}
                         </div>
 
                         <div class="form-group col-md-3">

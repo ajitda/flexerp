@@ -278,6 +278,8 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
     );
 
     public static $classMap = array (
+        'AddDesignationToEmployees' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_134355_add_designation_to_employees.php',
+        'AddUserIdToEmployees' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_133007_add_user_id_to_employees.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
         'App\\Employee' => __DIR__ . '/../..' . '/app/Employee.php',
@@ -289,6 +291,7 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseController.php',
+        'App\\Http\\Controllers\\EmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeeController.php',
         'App\\Http\\Controllers\\EnrolementController' => __DIR__ . '/../..' . '/app/Http/Controllers/EnrolementController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',

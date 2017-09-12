@@ -11,7 +11,7 @@
                         <th>ID</th>
                         <th>Created At</th>
                         <th>Employee Name</th>
-                        <th>Fathers Name</th>
+                        <th>Designation</th>
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Image</th>
@@ -24,7 +24,7 @@
                             <td>{{$employee->id}}</td>
                             <td>{{$employee->created_at->format('d-m-Y')}}</td>
                             <td><a href="employees/{{$employee->id}}/show">{{$employee->name}}</a></td>
-                            <td>{{$employee->fathers_name}}</td>
+                            <td>{{$employee->designation}}</td>
                             <td>{{$employee->email}}</td>
                             <td>{{$employee->mobile}}</td>
                             <td><img class="img-responsive list-img" src="{{$employee->image}}" alt="" /></td>

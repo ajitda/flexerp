@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -52,7 +53,7 @@ class EmployeeController extends Controller
             $input['image'] = 'img/default.jpg';
         }
         $input['user_id'] = Auth::user()->id;
-        Student::create($input);
+        Employee::create($input);
         return redirect('employees');
     }
 
@@ -85,7 +86,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -97,7 +99,13 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image']))
+        {
+            $input['image'] = $this->upload($input['image']);
+        }
+        Employee::findOrFail($id)->update($input);
+        return redirect('employees');
     }
 
     /**
@@ -108,6 +116,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Employee::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
