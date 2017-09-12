@@ -3,13 +3,13 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Student Registration Form</h1>
+                <h1>Employee Registration Form</h1>
             </div>
             <div class="panel-body">
                 <div class="row">
-                    {!! Form::open(['route'=>'students.store', 'files'=>true]) !!}
+                    {!! Form::open(['route'=>'employees.store', 'files'=>true]) !!}
                         <div class="form-group col-md-4">
-                            {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Student Name')) !!}
+                            {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Employee Name')) !!}
                         </div>
                         <div class="form-group col-md-4">
                             {!! Form::text('fathers_name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Father\'s Name')) !!}
@@ -35,8 +35,15 @@
                         <div class="form-group col-md-3">
                             {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
                         </div>
+                    <div class="form-group col-md-4">
+                        {!! Form::number('nid', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your National ID No')) !!}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {!! Form::text('degree', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your Highest Degree')) !!}
+                    </div>
+
                         <div class="form-group col-md-3">
-                            {!! Form::submit('Add Student', array('class'=>'btn btn-primary')) !!}
+                            {!! Form::submit('Add Employee', array('class'=>'btn btn-primary')) !!}
                         </div>
                     {!! Form::close() !!}
                 </div>
