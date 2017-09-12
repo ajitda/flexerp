@@ -24,7 +24,7 @@
                             {!! Form::date('date_of_birth', null, array('required', 'class'=>'form-control', 'placeholder'=>'yyyy-mm-dd')) !!}
                         </div>
                         <div class="form-group col-md-4">
-                            {!! Form::text('occupation', null, array('required', 'class'=>'form-control', 'placeholder'=>'Occupation')) !!}
+                            {!! Form::text('degree', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your Highest Degree')) !!}
                         </div>
                         <div class="form-group col-md-12">
                             {!! Form::textarea('address', null, array('required', 'class'=>'form-control address', 'placeholder'=>'Address')) !!}
@@ -35,12 +35,9 @@
                         <div class="form-group col-md-3">
                             {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
                         </div>
-                    <div class="form-group col-md-4">
-                        {!! Form::number('nid', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your National ID No')) !!}
-                    </div>
-                    <div class="form-group col-md-4">
-                        {!! Form::text('degree', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your Highest Degree')) !!}
-                    </div>
+                        <div class="form-group col-md-4">
+                            {!! Form::number('nid', null, array('required', 'class'=>'form-control', 'placeholder'=>'Enter Your National ID No')) !!}
+                        </div>
 
                         <div class="form-group col-md-3">
                             {!! Form::submit('Add Employee', array('class'=>'btn btn-primary')) !!}

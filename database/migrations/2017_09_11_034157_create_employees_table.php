@@ -25,6 +25,8 @@ class CreateEmployeesTable extends Migration
             $table->date('date_of_birth');
             $table->string('nid');
             $table->string('degree');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

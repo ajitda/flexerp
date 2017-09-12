@@ -45,7 +45,25 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }else{
+            $input['image'] = 'img/default.jpg';
+        }
+        $input['user_id'] = Auth::user()->id;
+        Student::create($input);
+        return redirect('employees');
+    }
+
+    public function upload($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $sha = sha1($file->getClientOriginalName());
+        $filename = date('Y-m-d-h-i-s')."-".$sha.".".$extension;
+        $path = public_path('img/employees/');
+        $file->move($path, $filename);
+        return 'img/employees/'.$filename;
     }
 
     /**
