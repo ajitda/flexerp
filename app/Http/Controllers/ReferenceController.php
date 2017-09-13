@@ -91,7 +91,12 @@ class ReferenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }
+        Reference::findOrFail($id)->update($input);
+        return redirect('references');
     }
 
     /**
@@ -102,6 +107,7 @@ class ReferenceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Reference::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
