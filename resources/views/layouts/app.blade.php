@@ -43,6 +43,7 @@
                         <li><a href="enrolements">Course Enrolements</a></li>
                         <li><a href="employees">Employees</a></li>
                         <li><a href="references">References</a></li>
+                        <li><a href="customers">Customers</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

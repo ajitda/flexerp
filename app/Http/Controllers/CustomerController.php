@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Reference;
+use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ReferenceController extends Controller
+class CustomerController extends Controller
 {
 
     /**
@@ -17,6 +17,7 @@ class ReferenceController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +25,8 @@ class ReferenceController extends Controller
      */
     public function index()
     {
-        $references = Reference::all();
-        return view('references.references', compact('references'));
+        $customers = Customer::all();
+        return view('customers.customers', compact('customers'));
     }
 
     /**
@@ -35,7 +36,7 @@ class ReferenceController extends Controller
      */
     public function create()
     {
-        return view('references.create');
+        return view('customers.create');
     }
 
     /**
@@ -53,8 +54,8 @@ class ReferenceController extends Controller
             $input['image'] = 'img/default.jpg';
         }
         $input['user_id'] = Auth::user()->id;
-        Reference::create($input);
-        return redirect('references');
+        Customer::create($input);
+        return redirect('customers');
 
     }
 
@@ -63,9 +64,9 @@ class ReferenceController extends Controller
         $extension = $file->getClientOriginalExtension();
         $name = sha1($file->getClientOriginalName());
         $filename = date('Y-m-d-h-m-s').'-'.$name.'.'.$extension;
-        $path = public_path('img/references/');
+        $path = public_path('img/customers/');
         $file->move($path, $filename);
-        return 'img/references/'.$filename;
+        return 'img/customers/'.$filename;
     }
 
     /**
@@ -87,8 +88,8 @@ class ReferenceController extends Controller
      */
     public function edit($id)
     {
-        $reference = Reference::findOrFail($id);
-        return view('references.edit', compact('reference'));
+        $customer = Customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -104,8 +105,8 @@ class ReferenceController extends Controller
         if(isset($input['image'])){
             $input['image'] = $this->upload($input['image']);
         }
-        Reference::findOrFail($id)->update($input);
-        return redirect('references');
+        Customer::findOrFail($id)->update($input);
+        return redirect('customers');
     }
 
     /**
@@ -116,7 +117,7 @@ class ReferenceController extends Controller
      */
     public function destroy($id)
     {
-        Reference::findOrFail($id)->delete();
+        Customer::findOrFail($id)->delete();
         return redirect()->back();
     }
 }
