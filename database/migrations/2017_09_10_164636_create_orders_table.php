@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('qty');
             $table->string('description');
             $table->integer('unit_price');
+            $table->integer('total');
+            $table->integer('discount');
             $table->string('type');
             $table->integer('payment');
             $table->integer('dues');
@@ -28,11 +30,15 @@ class CreateOrdersTable extends Migration
             $table->integer('order_cat_id')->unsigned();
             $table->foreign('order_cat_id')->references('id')->on('order_cats');
 
-            $table->integer('reference_id')->unsigned();
+            $table->integer('reference_id')->unsigned()->nullable();
             $table->foreign('reference_id')->references('id')->on('references');
 
             $table->integer('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('employees');
+
+
+            $table->integer('customer_id')->unsigned()->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->timestamps();
         });

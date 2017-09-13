@@ -44,6 +44,15 @@
                         <li><a href="employees">Employees</a></li>
                         <li><a href="references">References</a></li>
                         <li><a href="customers">Customers</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Orders/Payment <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="orders">Orders/Payments</a></li>
+                                <li><a href="ordercat">Order Category</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

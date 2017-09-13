@@ -9,5 +9,7 @@ automateApp.controller('automateController', ['$scope', '$http', function($scope
         $scope.qty = 1;
         $scope.course_fee = 0;
         $scope.discount = 0;
+        $scope.unit_price = 0;
+        $scope.payment = 0;
 
 }])
