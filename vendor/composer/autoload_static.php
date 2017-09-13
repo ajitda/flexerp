@@ -278,10 +278,12 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
     );
 
     public static $classMap = array (
+        'AddCustomerIdToOrders' => __DIR__ . '/../..' . '/database/migrations/2017_09_13_094943_add_customer_id_to_orders.php',
         'AddDesignationToEmployees' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_134355_add_designation_to_employees.php',
         'AddUserIdToEmployees' => __DIR__ . '/../..' . '/database/migrations/2017_09_12_133007_add_user_id_to_employees.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
+        'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\Employee' => __DIR__ . '/../..' . '/app/Employee.php',
         'App\\Enrolement' => __DIR__ . '/../..' . '/app/Enrolement.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -321,6 +323,7 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CreateCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_23_003844_create_courses_table.php',
+        'CreateCustomersTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_13_094640_create_customers_table.php',
         'CreateEmployeesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_11_034157_create_employees_table.php',
         'CreateEnrolementsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_02_185120_create_enrolements_table.php',
         'CreateOrderCatsTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_11_072007_create_order_cats_table.php',

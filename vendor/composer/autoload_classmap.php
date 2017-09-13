@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCustomerIdToOrders' => $baseDir . '/database/migrations/2017_09_13_094943_add_customer_id_to_orders.php',
     'AddDesignationToEmployees' => $baseDir . '/database/migrations/2017_09_12_134355_add_designation_to_employees.php',
     'AddUserIdToEmployees' => $baseDir . '/database/migrations/2017_09_12_133007_add_user_id_to_employees.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Course' => $baseDir . '/app/Course.php',
+    'App\\Customer' => $baseDir . '/app/Customer.php',
     'App\\Employee' => $baseDir . '/app/Employee.php',
     'App\\Enrolement' => $baseDir . '/app/Enrolement.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -49,6 +51,7 @@ return array(
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
     'CreateCoursesTable' => $baseDir . '/database/migrations/2017_07_23_003844_create_courses_table.php',
+    'CreateCustomersTable' => $baseDir . '/database/migrations/2017_09_13_094640_create_customers_table.php',
     'CreateEmployeesTable' => $baseDir . '/database/migrations/2017_09_11_034157_create_employees_table.php',
     'CreateEnrolementsTable' => $baseDir . '/database/migrations/2017_09_02_185120_create_enrolements_table.php',
     'CreateOrderCatsTable' => $baseDir . '/database/migrations/2017_09_11_072007_create_order_cats_table.php',
