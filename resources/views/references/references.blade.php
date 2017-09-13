@@ -11,7 +11,7 @@
                         <th>ID</th>
                         <th>Created At</th>
                         <th>Reference Name</th>
-                        <th>Designation</th>
+                        <th>Father's Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Image</th>
@@ -24,7 +24,7 @@
                             <td>{{$reference->id}}</td>
                             <td>{{$reference->created_at->format('d-m-Y')}}</td>
                             <td><a href="references/{{$reference->id}}/show">{{$reference->name}}</a></td>
-                            <td>{{$reference->designation}}</td>
+                            <td>{{$reference->fathers_name}}</td>
                             <td>{{$reference->email}}</td>
                             <td>{{$reference->mobile}}</td>
                             <td><img class="img-responsive list-img" src="{{$reference->image}}" alt="" /></td>

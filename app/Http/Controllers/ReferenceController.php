@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reference;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReferenceController extends Controller
 {
@@ -15,7 +16,7 @@ class ReferenceController extends Controller
     public function index()
     {
         $references = Reference::all();
-        return view('references.references', compact('$references'));
+        return view('references.references', compact('references'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ReferenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('references.create');
     }
 
     /**
@@ -36,7 +37,26 @@ class ReferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if(isset($input['image'])){
+            $input['image'] = $this->upload($input['image']);
+        }else{
+            $input['image'] = 'img/default.jpg';
+        }
+        $input['user_id'] = Auth::user()->id;
+        Reference::create($input);
+        return redirect('references');
+
+    }
+
+    public function upload($file)
+    {
+        $extension = $file->getClientOriginalExtension();
+        $name = sha1($file->getClientOriginalName());
+        $filename = date('Y-m-d-h-m-s').'-'.$name.'.'.$extension;
+        $path = public_path('img/references/');
+        $file->move($path, $filename);
+        return 'img/references/'.$filename;
     }
 
     /**
@@ -58,7 +78,8 @@ class ReferenceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reference = Reference::findOrFail($id);
+        return view('references.edit', compact('reference'));
     }
 
     /**
