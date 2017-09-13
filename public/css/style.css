@@ -11,3 +11,8 @@
 textarea.address{
     height: 150px;
 }
+
+
+ul.order-cat.list-inline {
+     margin-left: 0px;
+ }
