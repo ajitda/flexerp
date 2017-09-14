@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Orders List<a href="orders/create" class="pull-right create-button"><span class="glyphicon-plus"></span></a></h1>
+                <h1>Orders/Payments List<a href="orders/create" class="pull-right create-button"><span class="glyphicon-plus"></span></a></h1>
             </div>
             <div class="panel-body">
                 <table class="table table-bordered table-striped table-hover">
