@@ -20,6 +20,8 @@ class CreateEnrolementsTable extends Migration
             $table->integer('discount');
             $table->string('comment');
             $table->integer('total');
+            $table->integer('payment');
+            $table->integer('dues');
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');
             $table->integer('course_id')->unsigned();

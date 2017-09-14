@@ -26,5 +26,7 @@ Route::resource('/references', 'ReferenceController');
 Route::resource('/customers', 'CustomerController');
 Route::resource('/ordercat', 'OrderCatController');
 Route::resource('/orders', 'OrderController');
+Route::resource('/expensecategories', 'ExpenseCategoryController');
+Route::resource('/expenses', 'ExpenseController');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');

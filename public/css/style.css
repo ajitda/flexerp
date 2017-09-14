@@ -11,8 +11,9 @@
 textarea.address{
     height: 150px;
 }
-
-
+ul.expense-cat.list-inline {
+    margin-left: 5px !important;
+}
 ul.order-cat.list-inline {
-     margin-left: 0px;
- }
+    margin-left: 0px;
+}
