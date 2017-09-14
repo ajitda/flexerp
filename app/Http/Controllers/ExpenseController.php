@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Expense;
+use App\ExpenseCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $expenses = Expense::all();
+        return view('expenses.expenses', compact('expenses'));
     }
 
     /**
@@ -23,7 +36,9 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::pluck('name', 'id');
+        $expense_categories = ExpenseCategory::pluck('name', 'id');
+        return view('expenses.create', compact('employees', 'expense_categories'));
     }
 
     /**
@@ -34,7 +49,20 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Expense();
+        $qty= $order->qty = $request->qty;
+        $unit_price = $order->unit_price = $request->unit_price;
+        $total = $qty * $unit_price;
+        $order->total = $total;
+        $payment= $order->payment = $request->payment;
+        $dues = $total - $payment;
+        $order->dues = $dues;
+        $order->description = $request->description;
+        $order->expense_category_id = $request->expense_category_id;
+        $order->employee_id = $request->employee_id;
+        $order->user_id = Auth::user()->id;
+        $order->save();
+        return redirect('expenses');
     }
 
     /**
@@ -56,7 +84,10 @@ class ExpenseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        $employees = Employee::pluck('name', 'id');
+        $expense_categories = ExpenseCategory::pluck('name', 'id');
+        return view('expenses.edit', compact('employees', 'expense_categories', 'expense'));
     }
 
     /**
@@ -68,7 +99,20 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Expense::findOrFail($id);
+        $qty= $order->qty = $request->qty;
+        $unit_price = $order->unit_price = $request->unit_price;
+        $total = $qty * $unit_price;
+        $order->total = $total;
+        $payment= $order->payment = $request->payment;
+        $dues = $total - $payment;
+        $order->dues = $dues;
+        $order->description = $request->description;
+        $order->expense_category_id = $request->expense_category_id;
+        $order->employee_id = $request->employee_id;
+        $order->user_id = Auth::user()->id;
+        $order->update();
+        return redirect('expenses');
     }
 
     /**
@@ -79,6 +123,7 @@ class ExpenseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Expense::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
