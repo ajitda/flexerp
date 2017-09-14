@@ -33,8 +33,16 @@
                             <td>{{$order->dues}}</td>
                             <td>{{$order->type}}</td>
                             <td><a href="orders/{{$order->id}}/show">{{$order->employee->name}}</a></td>
-                            <td><a href="orders/{{$order->id}}/show">{{$order->customer->name}}</a></td>
-                            <td><a href="orders/{{$order->id}}/show">{{$order->reference->name}}</a></td>
+                            <td><a href="orders/{{$order->id}}/show">
+                                    @if(isset($order->customer_id))
+                                    {{$order->customer->name}}
+                                    @endif
+                                </a></td>
+                            <td><a href="orders/{{$order->id}}/show">
+                                    @if(isset($order->reference_id))
+                                    {{$order->reference->name}}</a>
+                                @endif
+                            </td>
                             <td><a href="orders/{{$order->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id]]) !!}

@@ -5,45 +5,68 @@
     <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Edit Course Enrolement Form</h1>
+                <h1>Make Order/Payment</h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
                 <div class="row">
-                    {!! Form::model($enrolement, ['method'=>'PATCH', 'action'=>['EnrolementController@update', $enrolement], 'files'=>true]) !!}
-                    <div class="form-group col-md-4">
-                        <label for="student">Select Student Name</label>
-                        {!! Form::select('student_id', $students, array('required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
+                    {!! Form::model($order, ['method'=>'patch', 'action'=>['OrderController@update', $order], 'files'=>true]) !!}
+                    <div class="form-group col-md-3">
+                        <label for="oder_category">Select a Category</label>
+                        {!! Form::select('order_cat_id', $order_cats, null, ['required', 'id'=>'oder_category', 'class'=>'form-control', 'placeholder'=>'Select a Category']) !!}
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="course">Select Course Name</label>
-                        {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'placeholder'=>'Select Course Name']) !!}
+                    <div class="form-group col-md-3">
+                        <label for="employee">Select Employee</label>
+                        {!! Form::select('employee_id', $employees, null, ['required', 'id'=>'employee',  'class'=>'form-control', 'placeholder'=>'Select Employee']) !!}
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-md-4">
-                        <label for="qty">Enter Quantity</label>
-                        {!! Form::number('qty', null, array('required', 'id'=>'qty', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'qty', 'ng-init'=>"qty='$enrolement->qty'")) !!}
+                    <div class="form-group col-md-3">
+                        <label for="customer">Select Customer</label>
+                        {!! Form::select('customer_id', $customers, null, [ 'id'=>'customer',  'class'=>'form-control', 'placeholder'=>'Select Customer']) !!}
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="price">Course Fee</label>
-                        {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'course_fee', 'ng-init'=>"course_fee='$enrolement->price'")) !!}
-                    </div>
-                    <div class="form-group col-md-4" >
-                        <label for="discount">Discount</label>
-                        {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount', 'ng-init'=>"discount='$enrolement->discount'")) !!}
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="total">Total : </label>
-                        <div class="total">
-                            <span data-ng-bind=" qty * course_fee - discount | currency"></span>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="comment">Make a comment</label>
-                        {!! Form::text('comment', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}
+                    <div class="form-group col-md-3">
+                        <label for="reference">Select Reference(if any)</label>
+                        {!! Form::select('reference_id', $references, null, [ 'id'=>'reference',  'class'=>'form-control', 'placeholder'=>'Select Reference']) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-3">
-                        {!! Form::submit('Update Enrolement', array('class'=>'btn btn-primary')) !!}
+                        <label for="qty">Enter Quantity</label>
+                        {!! Form::number('qty', null, array('required', 'id'=>'qty', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'qty', 'ng-init'=>"qty='$order->qty'")) !!}
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="price">Unit Price/Amount</label>
+                        {!! Form::number('unit_price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'unit_price',  'ng-init'=>"unit_price='$order->unit_price'")) !!}
+                    </div>
+                    <div class="form-group col-md-3" >
+                        <label for="discount">Discount</label>
+                        {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount',  'ng-init'=>"discount='$order->discount'")) !!}
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="total">Total : </label>
+                        <div class="total">
+                            <span data-ng-bind=" qty * unit_price - discount | currency"></span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-md-3" >
+                        <label for="payment">Payment</label>
+                        {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'payment',  'ng-init'=>"payment='$order->payment'")) !!}
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="total">Dues : </label>
+                        <div class="total">
+                            <span data-ng-bind=" qty * unit_price - discount - payment | currency"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="type">Payment Type : </label>
+                        {!! Form::select('type', array('cheque'=>'Cheque', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'type', 'placeholder'=>'Payment Type')) !!}
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="comment">Make a comment</label>
+                        {!! Form::text('description', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-md-3">
+                        {!! Form::submit('Update Order/Payment', array('class'=>'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -59,7 +82,7 @@
         $("#course").change( function(event) {
 
 
-            $.get("/enrolements/create/getcourse/"+event.target.value+"", function (response, course) {
+            $.get("/orders/create/getcourse/"+event.target.value+"", function (response, course) {
                 console.log(response);
             });
         });

@@ -85,7 +85,12 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order_cats = OrderCat::pluck('name', 'id');
+        $employees = Employee::pluck('name', 'id');
+        $references = Reference::pluck('name', 'id');
+        $customers = Customer::pluck('name', 'id');
+        return view('orders.edit', compact('order_cats', 'employees', 'references', 'customers', 'order'));
     }
 
     /**
@@ -97,9 +102,25 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $qty = $order->qty = $request->qty;
+        $unit_price = $order->unit_price = $request->unit_price;
+        $discount = $order->discount = $request->discount;
+        $total = $qty * $unit_price - $discount;
+        $order->total = $total;
+        $payment = $order->payment = $request->payment;
+        $dues = $total - $payment;
+        $order->dues = $dues;
+        $order->type = $request->type;
+        $order->description = $request->description;
+        $order->order_cat_id = $request->order_cat_id;
+        $order->customer_id = $request->customer_id;
+        $order->employee_id = $request->employee_id;
+        $order->reference_id = $request->reference_id;
+        $order->user_id = Auth::user()->id;
+        $order->update();
+        return redirect('orders');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -108,6 +129,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Order::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
