@@ -57,6 +57,7 @@ class ExpenseController extends Controller
         $payment= $order->payment = $request->payment;
         $dues = $total - $payment;
         $order->dues = $dues;
+        $order->payment_type = $request->payment_type;
         $order->description = $request->description;
         $order->expense_category_id = $request->expense_category_id;
         $order->employee_id = $request->employee_id;
@@ -107,6 +108,7 @@ class ExpenseController extends Controller
         $payment= $order->payment = $request->payment;
         $dues = $total - $payment;
         $order->dues = $dues;
+        $order->payment_type = $request->payment_type;
         $order->description = $request->description;
         $order->expense_category_id = $request->expense_category_id;
         $order->employee_id = $request->employee_id;

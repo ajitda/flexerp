@@ -20,6 +20,7 @@ class CreateExpensesTable extends Migration
             $table->integer('unit_value');
             $table->integer('total');
             $table->integer('payment');
+            $table->string('payment_type');
             $table->integer('dues');
             $table->integer('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('employees');

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-    protected $fillable=['qty', 'unit_price', 'total', 'payment', 'dues', 'description', 'user_id', 'expense_category_id', 'employee_id'];
+    protected $fillable=['qty', 'unit_price', 'total', 'payment', 'payment_type', 'dues', 'description', 'user_id', 'expense_category_id', 'employee_id'];
 
     public function employee()
     {
