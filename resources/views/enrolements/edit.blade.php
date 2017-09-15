@@ -12,11 +12,11 @@
                     {!! Form::model($enrolement, ['method'=>'PATCH', 'action'=>['EnrolementController@update', $enrolement], 'files'=>true]) !!}
                     <div class="form-group col-md-4">
                         <label for="student">Select Student Name</label>
-                        {!! Form::select('student_id', $students, array('required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name')) !!}
+                        {!! Form::select('student_id', $students, null, ['required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name']) !!}
                     </div>
                     <div class="form-group col-md-4">
                         <label for="course">Select Course Name</label>
-                        {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'placeholder'=>'Select Course Name']) !!}
+                        {!! Form::select('course_id', $courses, null, ['required', 'id'=>'course', 'class'=>'form-control', 'placeholder'=>'Select Course Name']) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-4">
@@ -35,6 +35,20 @@
                         <label for="total">Total : </label>
                         <div class="total">
                             <span data-ng-bind=" qty * course_fee - discount | currency"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4" >
+                        <label for="payment">Payment</label>
+                        {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'payment', 'ng-init'=>"payment='$enrolement->payment'")) !!}
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="payment_type">Payment Type : </label>
+                        {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="dues">Dues : </label>
+                        <div class="dues">
+                            <span data-ng-bind=" qty * course_fee - discount - payment| currency"></span>
                         </div>
                     </div>
                     <div class="form-group col-md-4">

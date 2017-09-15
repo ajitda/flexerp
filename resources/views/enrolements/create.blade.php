@@ -31,12 +31,27 @@
                             <label for="discount">Discount</label>
                             {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount')) !!}
                         </div>
-                    <div class="form-group col-md-4">
-                        <label for="total">Total : </label>
-                        <div class="total">
-                            <span data-ng-bind=" qty * course_fee - discount | currency"></span>
+                        <div class="form-group col-md-4">
+                            <label for="total">Total : </label>
+                            <div class="total">
+                                <span data-ng-bind=" qty * course_fee - discount | currency"></span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group col-md-4" >
+                            <label for="payment">Payment</label>
+                            {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'payment')) !!}
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="payment_type">Payment Type : </label>
+                            {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="dues">Dues : </label>
+                            <div class="dues">
+                                <span data-ng-bind=" qty * course_fee - discount - payment| currency"></span>
+                            </div>
+                        </div>
+
                         <div class="form-group col-md-4">
                             <label for="comment">Make a comment</label>
                             {!! Form::text('comment', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}

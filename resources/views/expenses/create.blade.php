@@ -38,10 +38,10 @@
                             <label for="payment">Payment</label>
                             {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'payment')) !!}
                         </div>
-                    <div class="form-group col-md-2">
-                        <label for="payment_type">Payment Type : </label>
-                        {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
-                    </div>
+                        <div class="form-group col-md-2">
+                            <label for="payment_type">Payment Type : </label>
+                            {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                        </div>
                         <div class="form-group col-md-2">
                             <label for="total">Dues : </label>
                             <div class="total">

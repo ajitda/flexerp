@@ -22,6 +22,7 @@ class CreateEnrolementsTable extends Migration
             $table->integer('total');
             $table->integer('payment');
             $table->integer('dues');
+            $table->string('payment_type');
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');
             $table->integer('course_id')->unsigned();

@@ -74,6 +74,10 @@ class EnrolementController extends Controller
         $discount= $enrolement->discount = $request->discount;
         $total = $qty * $price - $discount;
         $enrolement->total = $total;
+        $payment = $enrolement->payment = $request->payment;
+        $dues = $total- $payment;
+        $enrolement->dues = $dues;
+        $enrolement->payment_type = $request->payment_type;
         $enrolement->comment = $request->comment;
         $enrolement->price = $request->price;
         $enrolement->course_id = $request->course_id;
