@@ -38,12 +38,12 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;<li><a href="students">Students</a></li>
-                        <li><a href="courses">Courses</a></li>
-                        <li><a href="enrolements">Course Enrolements</a></li>
-                        <li><a href="employees">Employees</a></li>
-                        <li><a href="references">References</a></li>
-                        <li><a href="customers">Customers</a></li>
+                        &nbsp;<li><a href="{{url('students')}}">Students</a></li>
+                        <li><a href="{{url('courses')}}">Courses</a></li>
+                        <li><a href="{{url('enrolements')}}">Course Enrolements</a></li>
+                        <li><a href="{{url('employees')}}">Employees</a></li>
+                        <li><a href="{{url('references')}}">References</a></li>
+                        <li><a href="{{url('customers')}}">Customers</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Expenses <span class="caret"></span>
