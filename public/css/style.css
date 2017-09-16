@@ -17,3 +17,13 @@ ul.expense-cat.list-inline {
 ul.order-cat.list-inline {
     margin-left: 0px;
 }
+.dashboard-body{
+
+    background:#ecedf0;
+}
+.panel-default > .panel-heading {
+    background-color:transparent;
+    border-color:transparent;
+    color:#000000;
+    font-size:39px;
+}

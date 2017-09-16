@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Expense;
+use App\Order;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $orders = Order::count();
+        $total_expense = Expense::sum('payment');
+        $others= Order::where("order_cat_id", 3)->sum('payment');
+        $total_income = Order::sum('payment') - $others;
+        return view('home', compact('orders', 'total_expense', 'total_income'));
     }
 }
