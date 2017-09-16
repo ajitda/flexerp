@@ -14,6 +14,8 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -49,8 +51,8 @@
                                 Expenses <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="expenses">Expenses</a></li>
-                                <li><a href="expensecategories">Expense Category</a></li>
+                                <li><a href="{{url('expenses')}}">Expenses</a></li>
+                                <li><a href="{{url('expensecategories')}}">Expense Category</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -58,8 +60,8 @@
                                 Orders/Payment <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="orders">Orders/Payments</a></li>
-                                <li><a href="ordercat">Order Category</a></li>
+                                <li><a href="{{url('orders')}}">Orders/Payments</a></li>
+                                <li><a href="{{url('ordercat')}}">Order Category</a></li>
                             </ul>
                         </li>
                     </ul>

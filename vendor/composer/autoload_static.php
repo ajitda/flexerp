@@ -297,6 +297,8 @@ class ComposerStaticInit359ed8ef2787e7049291ecabd4b1688a
         'App\\Http\\Controllers\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerController.php',
         'App\\Http\\Controllers\\EmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeeController.php',
         'App\\Http\\Controllers\\EnrolementController' => __DIR__ . '/../..' . '/app/Http/Controllers/EnrolementController.php',
+        'App\\Http\\Controllers\\ExpenseCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExpenseCategoryController.php',
+        'App\\Http\\Controllers\\ExpenseController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExpenseController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\OrderCatController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderCatController.php',
         'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',

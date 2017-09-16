@@ -19,8 +19,8 @@ class CreateCustomersTable extends Migration
             $table->string('designation');
             $table->string('company');
             $table->text('address');
-            $table->string('mobile');
-            $table->string('email');
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
             $table->string('image');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

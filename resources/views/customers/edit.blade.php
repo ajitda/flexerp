@@ -15,19 +15,19 @@
                         {!! Form::text('designation', null, array('required', 'class'=>'form-control', 'placeholder'=>'Designation')) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::text('company', null, array('required', 'class'=>'form-control', 'placeholder'=>'Company Name')) !!}
+                        {!! Form::text('company', null, array('class'=>'form-control', 'placeholder'=>'Company Name')) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        {!! Form::email('email', null, array('required', 'class'=>'form-control', 'placeholder'=>'Write Email')) !!}
+                        {!! Form::email('email', null, array( 'class'=>'form-control', 'placeholder'=>'Write Email')) !!}
                     </div>
                     <div class="form-group col-md-3">
-                        {!! Form::number('mobile', null, array('required', 'class'=>'form-control', 'placeholder'=>'Mobile No')) !!}
+                        {!! Form::number('mobile', null, array( 'class'=>'form-control', 'placeholder'=>'Mobile No')) !!}
                     </div>
                     <div class="form-group col-md-3">
-                        {!! Form::file('image', null, array('required', 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
+                        {!! Form::file('image', null, array( 'class'=>'form-control', 'placeholder'=>'Select an Image')) !!}
                     </div>
                     <div class="form-group col-md-8">
-                        {!! Form::textarea('address', null, array('required', 'class'=>'form-control address', 'placeholder'=>'Address')) !!}
+                        {!! Form::textarea('address', null, array( 'class'=>'form-control address', 'placeholder'=>'Address')) !!}
                     </div>
                     <div class="form-group col-md-4">
                         <img class="img-responsive edit-img" src="../../{{$customer->image}}" alt="" />
