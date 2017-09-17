@@ -17,7 +17,9 @@ class CreateLoansTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('amount');
-            
+            $table->integer('interest')->nullable;
+            $table->integer('installment_qty');
+            $table->integeter('installment');
             $table->timestamps();
         });
     }
