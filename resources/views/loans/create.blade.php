@@ -5,7 +5,7 @@
     <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Make Expense</h1>
+                <h1>Create Loan</h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
                 <div class="row">

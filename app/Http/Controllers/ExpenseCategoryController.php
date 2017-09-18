@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ExpenseCategory;
+use App\Loan;
 use Illuminate\Http\Request;
 
 class ExpenseCategoryController extends Controller
@@ -17,6 +18,8 @@ class ExpenseCategoryController extends Controller
         $expense_cats = ExpenseCategory::all();
         return view('expenses.expensecategories', compact('expense_cats'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

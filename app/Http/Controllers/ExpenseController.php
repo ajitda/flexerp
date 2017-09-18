@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Expense;
 use App\ExpenseCategory;
+use App\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,11 +35,12 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $employees = Employee::pluck('name', 'id');
         $expense_categories = ExpenseCategory::pluck('name', 'id');
-        return view('expenses.create', compact('employees', 'expense_categories'));
+        $loans = Loan::pluck('name', 'id');
+        return view('expenses.create', compact('employees', 'expense_categories', 'loans', 'request'));
     }
 
     /**
@@ -66,6 +68,16 @@ class ExpenseController extends Controller
         return redirect('expenses');
     }
 
+    public function getExpenseCategory(Request $request)
+    {
+
+        $data = Loan::select('name', 'id')->where('expense_category_id', $request->id)->take(100)->get();
+
+        return response()->json($data);
+
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -83,12 +95,13 @@ class ExpenseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $expense = Expense::findOrFail($id);
         $employees = Employee::pluck('name', 'id');
+        $loans = Loan::pluck('name', 'id');
         $expense_categories = ExpenseCategory::pluck('name', 'id');
-        return view('expenses.edit', compact('employees', 'expense_categories', 'expense'));
+        return view('expenses.edit', compact('employees', 'expense_categories', 'expense', 'loans', 'request'));
     }
 
     /**
@@ -111,6 +124,7 @@ class ExpenseController extends Controller
         $order->payment_type = $request->payment_type;
         $order->description = $request->description;
         $order->expense_category_id = $request->expense_category_id;
+        $order->loan_id     = $request->loan_id;
         $order->employee_id = $request->employee_id;
         $order->user_id = Auth::user()->id;
         $order->update();

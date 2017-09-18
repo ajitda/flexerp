@@ -33,6 +33,7 @@
                             <td>{{$loan->total_amount}}</td>
                             <td>{{$loan->payment_date}}</td>
                             <td><a href="loans/{{$loan->id}}/show">{{$loan->user->name}}</a></td>
+                            <td><a href="loans/{{$loan->id}}/show">{{$loan->expense_category->name}}</a></td>
                             <td><a href="loans/{{$loan->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['loans.destroy', $loan->id]]) !!}

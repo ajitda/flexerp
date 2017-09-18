@@ -16,16 +16,16 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="amount">Lend Amount</label>
-                        {!! Form::number('amount', null, array('required', 'id'=>'amount', 'class'=>'form-control', 'ng-model'=>'amount')) !!}
+                        {!! Form::number('amount', null, array('required', 'id'=>'amount', 'class'=>'form-control', 'ng-model'=>'amount', 'ng-init'=>"amount='$loan->amount'")) !!}
                     </div>
                     <div class="form-group col-md-3" >
                         <label for="interest">Interest Rate</label>
-                        {!! Form::number('interest', null, array('required', 'id'=>'interest', 'class'=>'form-control', 'placeholder'=>'Interest Rate', 'ng-model'=>'interest')) !!}
+                        {!! Form::number('interest', null, array('required', 'id'=>'interest', 'class'=>'form-control', 'placeholder'=>'Interest Rate', 'ng-model'=>'interest', 'ng-init'=>"interest='$loan->interest'")) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-2" >
                         <label for="installment_qty">Installment Qty</label>
-                        {!! Form::number('installment_qty', null, array('required', 'id'=>'installment_qty', 'class'=>'form-control', 'placeholder'=>'Installment Qty', 'ng-model'=>'installment_qty')) !!}
+                        {!! Form::number('installment_qty', null, array('required', 'id'=>'installment_qty', 'class'=>'form-control', 'placeholder'=>'Installment Qty', 'ng-model'=>'installment_qty', 'ng-init'=>"installment_qty='$loan->installment_qty'")) !!}
                     </div>
                     <div class="form-group col-md-2">
                         <label for="installment">Installment : </label>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-3">
-                        {!! Form::submit('Make Expense', array('class'=>'btn btn-primary')) !!}
+                        {!! Form::submit('Update Loan', array('class'=>'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>

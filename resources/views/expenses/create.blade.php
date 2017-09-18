@@ -18,6 +18,15 @@
                             <label for="employee">Select Employee</label>
                             {!! Form::select('employee_id', $employees, null, ['required', 'id'=>'employee',  'class'=>'form-control', 'placeholder'=>'Select Employee']) !!}
                         </div>
+                        {{--@if($request->expense_category_id == '6')--}}
+                            <div class="form-group col-md-3">
+                                <select name="loan_id" id="loan_id">
+                                    <option value="0" disabled selected>Select A Lender Name</option>
+                                </select>
+                                {{--<label for="loan_id">Select Lender</label>
+                                {!! Form::select('loan_id', $loans, null, ['required', 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
+                            --}}</div>
+                        {{--@endif--}}
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">
                             <label for="qty">Enter Quantity</label>
@@ -67,11 +76,36 @@
 
 @section('scripts')
     <script>
-        $("#course").change( function(event) {
+        $(document).ready(function(){
+            $(document).on('change', '#expense_category', function(){
+//                console.log('hmm it change');
 
+                var cat_id = $(this).val();
+//                console.log(cat_id);
+               /* var div=$(this).parent();
+                var op=" ";*/
+                $.ajax({
+                   type: 'get',
+                    url: '{!! URL::to('/expenses/getExpenseCategory') !!}',
+                    data: {'id':cat_id},
+                    success:function (data) {
+                        console.log('success');
+                        
+                        console.log(data);
 
-            $.get("/expenses/create/getcourse/"+event.target.value+"", function (response, course) {
-                console.log(response);
+                     /*   op+='<option value="0" selected disabled>Choose Product</option>';
+                        for(var i=0; i<data.length; i++){
+                            op+='<option value="'+data[i].id+'">'+data[i].description+'</option>';
+                        }
+
+                        div.find('#loan_id').html(" ");
+                        div.find('#loan_id').append(op);*/
+
+                    },
+                    error:function () {
+                        
+                    }
+                });
             });
         });
     </script>

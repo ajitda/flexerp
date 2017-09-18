@@ -76,7 +76,7 @@
                                                 </div>
                                             </div>
                                             <div class="summary-footer">
-                                                <a class="text-muted text-uppercase">(statement)</a>
+                                                <a class="text-muted text-uppercase" href="{{url('orders')}}">(statement)</a>
                                             </div>
                                         </div>
                                     </div>

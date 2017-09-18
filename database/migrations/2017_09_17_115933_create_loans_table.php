@@ -24,6 +24,8 @@ class CreateLoansTable extends Migration
             $table->integer('total_amount');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('expense_category_id')->unsigned();
+            $table->foreign('expense_category_id')->references('id')->on('expense_categories');
             $table->timestamps();
         });
     }

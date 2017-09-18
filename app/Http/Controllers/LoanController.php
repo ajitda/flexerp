@@ -46,6 +46,7 @@ class LoanController extends Controller
         $loan->installment = $installment;
         $loan->payment_date = $request->payment_date;
         $loan->total_amount = $installment * $installment_qty;
+        $loan->expense_category_id = 6;
         $loan->user_id = Auth::user()->id;
         $loan->save();
         return redirect('loans');
@@ -93,6 +94,7 @@ class LoanController extends Controller
         $loan->payment_date = $request->payment_date;
         $loan->total_amount = $installment * $installment_qty;
         $loan->user_id = Auth::user()->id;
+        $loan->expense_category_id = 6;
         $loan->update();
         return redirect('loans');
     }
