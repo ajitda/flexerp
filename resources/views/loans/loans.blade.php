@@ -15,7 +15,9 @@
                         <th>Interest Rate</th>
                         <th>installment Qty</th>
                         <th>installment</th>
+                        <th>Total Amount</th>
                         <th>Payment Date</th>
+                        <th>User</th>
                         <th colspan="2">Actions</th>
                     </thead>
                     <tbody>
@@ -28,8 +30,9 @@
                             <td>{{$loan->interest}}</td>
                             <td>{{$loan->installment_qty}}</td>
                             <td>{{$loan->installment}}</td>
+                            <td>{{$loan->total_amount}}</td>
                             <td>{{$loan->payment_date}}</td>
-                            <td><a href="loans/{{$loan->id}}/show">{{$loan->employee->name}}</a></td>
+                            <td><a href="loans/{{$loan->id}}/show">{{$loan->user->name}}</a></td>
                             <td><a href="loans/{{$loan->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['loans.destroy', $loan->id]]) !!}

@@ -5,56 +5,47 @@
     <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Make Expense</h1>
+                <h1>Edit Loan</h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
                 <div class="row">
-                    {!! Form::model($expense,['method'=>'PATCH', 'action'=>['ExpenseController@update', $expense], 'files'=>true]) !!}
+                    {!! Form::model($loan, ['method'=>'PATCH','action'=>['LoanController@update', $loan],]) !!}
                     <div class="form-group col-md-3">
-                        <label for="expense_category">Select a Category</label>
-                        {!! Form::select('expense_category_id', $expense_categories, null, ['required', 'id'=>'expense_category', 'class'=>'form-control', 'placeholder'=>'Select a Category']) !!}
+                        <label for="name">Enter Lender Name</label>
+                        {!! Form::text('name', null, array('required', 'id'=>'amount', 'class'=>'form-control', 'placeholder'=>'Enter Lender Name')) !!}
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="employee">Select Employee</label>
-                        {!! Form::select('employee_id', $employees, null, ['required', 'id'=>'employee',  'class'=>'form-control', 'placeholder'=>'Select Employee']) !!}
+                        <label for="amount">Lend Amount</label>
+                        {!! Form::number('amount', null, array('required', 'id'=>'amount', 'class'=>'form-control', 'ng-model'=>'amount')) !!}
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-md-3">
-                        <label for="qty">Enter Quantity</label>
-                        {!! Form::number('qty', null, array('required', 'id'=>'qty', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'qty', 'ng-init'=>"qty='$expense->qty'")) !!}
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="price">Unit Price/Amount</label>
-                        {!! Form::number('unit_price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'unit_price', 'ng-init'=>"unit_price='$expense->unit_price'")) !!}
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="total">Total : </label>
-                        <div class="total">
-                            <span data-ng-bind=" qty * unit_price | currency"></span>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
                     <div class="form-group col-md-3" >
-                        <label for="payment">Payment</label>
-                        {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'payment', 'ng-init'=>"payment='$expense->payment'")) !!}
+                        <label for="interest">Interest Rate</label>
+                        {!! Form::number('interest', null, array('required', 'id'=>'interest', 'class'=>'form-control', 'placeholder'=>'Interest Rate', 'ng-model'=>'interest')) !!}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-md-2" >
+                        <label for="installment_qty">Installment Qty</label>
+                        {!! Form::number('installment_qty', null, array('required', 'id'=>'installment_qty', 'class'=>'form-control', 'placeholder'=>'Installment Qty', 'ng-model'=>'installment_qty')) !!}
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="payment_type">Payment Type : </label>
-                        {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                        <label for="installment">Installment : </label>
+                        <div class="installment">
+                            <span data-ng-bind=" (amount + (amount * interest)/100) / installment_qty | currency"></span>
+                        </div>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="total">Dues : </label>
-                        <div class="total">
-                            <span data-ng-bind=" qty * unit_price - payment | currency"></span>
+                        <label for="total_amount">Total Amount : </label>
+                        <div class="total_amount">
+                            <span data-ng-bind=" (amount + (amount * interest)/100) | currency"></span>
                         </div>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="comment">Make a comment</label>
-                        {!! Form::text('description', null, array('required', 'id'=>'comment', 'class'=>'form-control', 'placeholder'=>'Write a comment')) !!}
+                        <label for="payment_date">Select a Payment Date</label>
+                        {!! Form::date('payment_date', null, array('required', 'id'=>'payment_date', 'class'=>'form-control', 'placeholder'=>'mm/dd/yyyy')) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-3">
-                        {!! Form::submit('Update Expense', array('class'=>'btn btn-primary')) !!}
+                        {!! Form::submit('Make Expense', array('class'=>'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -65,6 +56,7 @@
 
 @endsection
 
+{{--
 @section('scripts')
     <script>
         $("#course").change( function(event) {
@@ -75,4 +67,4 @@
             });
         });
     </script>
-@endsection
+@endsection--}}

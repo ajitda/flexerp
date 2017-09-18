@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Loan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoanController extends Controller
 {
@@ -36,7 +37,18 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loan = new Loan();
+        $loan->name = $request->name;
+        $amount = $loan->amount = $request->amount;
+        $interest = $loan->interest = $request->interest;
+        $installment_qty = $loan->installment_qty = $request->installment_qty;
+        $installment = ($amount + ($amount * $interest)/100) / $installment_qty;
+        $loan->installment = $installment;
+        $loan->payment_date = $request->payment_date;
+        $loan->total_amount = $installment * $installment_qty;
+        $loan->user_id = Auth::user()->id;
+        $loan->save();
+        return redirect('loans');
     }
 
     /**
@@ -58,7 +70,8 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $loan = Loan::findOrFail($id);
+        return view('loans.edit', compact('loan'));
     }
 
     /**
@@ -70,7 +83,18 @@ class LoanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $loan = Loan::findOrFail($id);
+        $loan->name = $request->name;
+        $amount = $loan->amount = $request->amount;
+        $interest = $loan->interest = $request->interest;
+        $installment_qty = $loan->installment_qty = $request->installment_qty;
+        $installment = ($amount + ($amount * $interest)/100) / $installment_qty;
+        $loan->installment = $installment;
+        $loan->payment_date = $request->payment_date;
+        $loan->total_amount = $installment * $installment_qty;
+        $loan->user_id = Auth::user()->id;
+        $loan->update();
+        return redirect('loans');
     }
 
     /**
@@ -81,6 +105,7 @@ class LoanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Loan::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

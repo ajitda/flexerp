@@ -46,11 +46,61 @@
                                             <div class="summary">
                                                 <h4 class="title">Total Profit</h4>
                                                 <div class="info">
-                                                    <strong class="amount">$ 14,890.30</strong>
+                                                    <strong class="amount">Tk. {{ $total_income - $total_loan -$total_expense }}</strong>
                                                 </div>
                                             </div>
                                             <div class="summary-footer">
                                                 <a class="text-muted text-uppercase">(withdraw)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 col-xl-6">
+                            <section class="panel panel-featured-left panel-featured-tertiary">
+                                <div class="panel-body">
+                                    <div class="widget-summary">
+                                        <div class="widget-summary-col widget-summary-col-icon">
+                                            <div class="summary-icon bg-tertiary">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="widget-summary-col">
+                                            <div class="summary">
+                                                <h4 class="title">Total Orders/Payments</h4>
+                                                <div class="info">
+                                                    <strong class="amount">{{ $orders }}</strong>
+                                                </div>
+                                            </div>
+                                            <div class="summary-footer">
+                                                <a class="text-muted text-uppercase">(statement)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-md-12 col-lg-6 col-xl-6">
+                            <section class="panel panel-featured-left panel-featured-quaternary">
+                                <div class="panel-body">
+                                    <div class="widget-summary">
+                                        <div class="widget-summary-col widget-summary-col-icon">
+                                            <div class="summary-icon bg-quaternary">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="widget-summary-col">
+                                            <div class="summary">
+                                                <h4 class="title">Total Loan</h4>
+                                                <div class="info">
+                                                    <strong class="amount">Tk. {{ $total_loan }}</strong>
+                                                </div>
+                                            </div>
+                                            <div class="summary-footer">
+                                                <a class="text-muted text-uppercase" href="{{url('loans')}}">(report)</a>
                                             </div>
                                         </div>
                                     </div>

@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body" ng-controller="automateController">
                 <div class="row">
-                    {!! Form::open(['route'=>'expenses.store', 'files'=>true]) !!}
+                    {!! Form::open(['route'=>'loans.store', 'files'=>true]) !!}
                         <div class="form-group col-md-3">
                             <label for="name">Enter Lender Name</label>
                             {!! Form::text('name', null, array('required', 'id'=>'amount', 'class'=>'form-control', 'placeholder'=>'Enter Lender Name')) !!}
@@ -23,21 +23,25 @@
                             {!! Form::number('interest', null, array('required', 'id'=>'interest', 'class'=>'form-control', 'placeholder'=>'Interest Rate', 'ng-model'=>'interest')) !!}
                         </div>
                         <div class="clearfix"></div>
-
-                        <div class="form-group col-md-3" >
+                        <div class="form-group col-md-2" >
                             <label for="installment_qty">Installment Qty</label>
                             {!! Form::number('installment_qty', null, array('required', 'id'=>'installment_qty', 'class'=>'form-control', 'placeholder'=>'Installment Qty', 'ng-model'=>'installment_qty')) !!}
                         </div>
-
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <label for="installment">Installment : </label>
-                            <div class="total">
+                            <div class="installment">
                                 <span data-ng-bind=" (amount + (amount * interest)/100) / installment_qty | currency"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="total_amount">Total Amount : </label>
+                            <div class="total_amount">
+                                <span data-ng-bind=" (amount + (amount * interest)/100) | currency"></span>
                             </div>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="payment_date">Select a Payment Date</label>
-                            {!! Form::text('payment_date', null, array('required', 'id'=>'payment_date', 'class'=>'form-control', 'placeholder'=>'mm/dd/yyyy')) !!}
+                            {!! Form::date('payment_date', null, array('required', 'id'=>'payment_date', 'class'=>'form-control', 'placeholder'=>'mm/dd/yyyy')) !!}
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">

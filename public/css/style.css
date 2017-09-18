@@ -21,7 +21,7 @@ ul.order-cat.list-inline {
 
     background:#ecedf0;
 }
-.panel-default > .panel-heading {
+.panel-default > .dashboard-heading.panel-heading {
     background-color:transparent;
     border-color:transparent;
     color:#000000;
