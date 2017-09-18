@@ -11,5 +11,12 @@ automateApp.controller('automateController', ['$scope', '$http', function($scope
         $scope.discount = 0;
         $scope.unit_price = 0;
         $scope.payment = 0;
+        $scope.amount = 0;
+        $scope.interest = 0;
+        $scope.installment_qty = 0;
+
+        $scope.insterests = function(){
+                return  $scope.amount * $scope.interest;
+        };
 
 }])

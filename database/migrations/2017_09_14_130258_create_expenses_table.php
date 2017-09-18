@@ -28,6 +28,8 @@ class CreateExpensesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('expense_category_id')->unsigned();
             $table->foreign('expense_category_id')->references('id')->on('expense_categories');
+            $table->integer('loan_id')->unsigned()->nullable();
+            $table->foreign('loan_id')->references('id')->on('loans');
             $table->timestamps();
         });
     }
