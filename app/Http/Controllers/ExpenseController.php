@@ -26,7 +26,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expenses = Expense::all();
+        $expenses = Expense::orderBy('id', 'desc')->paginate(10);
         return view('expenses.expenses', compact('expenses'));
     }
 

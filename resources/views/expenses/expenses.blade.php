@@ -38,6 +38,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="paginations col-md-12 hidden-print">
+                    {!! $expenses->render() !!}
+                </div>
             </div>
         </div>
     </div>
