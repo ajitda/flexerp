@@ -72,7 +72,6 @@ class ExpenseController extends Controller
     {
 
         $data = Loan::select('name', 'id')->where('expense_category_id', $request->id)->take(100)->get();
-
         return response()->json($data);
 
 

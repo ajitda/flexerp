@@ -80,30 +80,30 @@
             $(document).on('change', '#expense_category', function(){
 //                console.log('hmm it change');
 
-                var cat_id = $(this).val();
-//                console.log(cat_id);
-               /* var div=$(this).parent();
-                var op=" ";*/
+               var cat_id = $(this).val();
+                //console.log(expense_category_id);
+//                var div=$(this).parent();
+//                var op=" ";
                 $.ajax({
                    type: 'get',
-                    url: '{!! URL::to('/expenses/getExpenseCategory') !!}',
+                    url: '{!! URL::to('getexpense') !!}',
                     data: {'id':cat_id},
                     success:function (data) {
                         console.log('success');
-                        
+
                         console.log(data);
 
-                     /*   op+='<option value="0" selected disabled>Choose Product</option>';
-                        for(var i=0; i<data.length; i++){
-                            op+='<option value="'+data[i].id+'">'+data[i].description+'</option>';
-                        }
+//                        op+='<option value="0" selected disabled>Choose Product</option>';
+//                        for(var i=0; i<data.length; i++){
+//                            op+='<option value="'+data[i].id+'">'+data[i].description+'</option>';
 
-                        div.find('#loan_id').html(" ");
-                        div.find('#loan_id').append(op);*/
+
+//                        div.find('#loan_id').html(" ");
+//                        div.find('#loan_id').append(op);
 
                     },
                     error:function () {
-                        
+
                     }
                 });
             });
