@@ -22,6 +22,7 @@
                             <div class="form-group col-md-3">
                                 <select name="loan_id" id="loan_id">
                                     <option value="0" disabled selected>Select A Lender Name</option>
+
                                 </select>
                                 {{--<label for="loan_id">Select Lender</label>
                                 {!! Form::select('loan_id', $loans, null, ['required', 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
@@ -82,24 +83,25 @@
 
                var cat_id = $(this).val();
                 //console.log(expense_category_id);
-//                var div=$(this).parent();
-//                var op=" ";
+                var div=$(this).parent().parent();
+                var op=" ";
                 $.ajax({
                    type: 'get',
                     url: '{!! URL::to('getexpense') !!}',
                     data: {'id':cat_id},
                     success:function (data) {
-                        console.log('success');
+                        //console.log('success');
 
-                        console.log(data);
+                        //console.log(data);
 
-//                        op+='<option value="0" selected disabled>Choose Product</option>';
-//                        for(var i=0; i<data.length; i++){
-//                            op+='<option value="'+data[i].id+'">'+data[i].description+'</option>';
+                         op+='<option value="0" selected disabled>Choose Lender</option>';
+                        for(var i=0; i<data.length; i++) {
+                            op += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
 
 
-//                        div.find('#loan_id').html(" ");
-//                        div.find('#loan_id').append(op);
+                            div.find('#loan_id').html(" ");
+                            div.find('#loan_id').append(op);
+                        }
 
                     },
                     error:function () {
