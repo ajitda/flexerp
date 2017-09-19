@@ -30,13 +30,13 @@
                     <div class="form-group col-md-2">
                         <label for="installment">Installment : </label>
                         <div class="installment">
-                            <span data-ng-bind=" (amount + (amount * interest)/100) / installment_qty | currency"></span>
+                            <span data-ng-bind=" (amount + interests()) / installment_qty | currency"></span>
                         </div>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="total_amount">Total Amount : </label>
                         <div class="total_amount">
-                            <span data-ng-bind=" (amount + (amount * interest)/100) | currency"></span>
+                            <span data-ng-bind=" (amount + interests()) | currency"></span>
                         </div>
                     </div>
                     <div class="form-group col-md-3">

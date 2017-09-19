@@ -16,4 +16,8 @@ class Expense extends Model
     {
         return $this->belongsTo('App\OrderCat');
     }
+    public function loan()
+    {
+        return $this->belongsTo('App\Loan');
+    }
 }

@@ -22,6 +22,7 @@
                     </thead>
                     <tbody>
                         @foreach($loans as $loan)
+                            @if($loan->total_amount >0)
                         <tr>
                             <td>{{$loan->id}}</td>
                             <td>{{$loan->created_at->format('d-m-Y')}}</td>
@@ -33,13 +34,13 @@
                             <td>{{$loan->total_amount}}</td>
                             <td>{{$loan->payment_date}}</td>
                             <td><a href="loans/{{$loan->id}}/show">{{$loan->user->name}}</a></td>
-                            <td><a href="loans/{{$loan->id}}/show">{{$loan->expense_category->name}}</a></td>
                             <td><a href="loans/{{$loan->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['loans.destroy', $loan->id]]) !!}
                                 {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
                                 {!! Form::close() !!}</a>
                     </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

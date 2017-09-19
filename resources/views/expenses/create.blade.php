@@ -18,16 +18,10 @@
                             <label for="employee">Select Employee</label>
                             {!! Form::select('employee_id', $employees, null, ['required', 'id'=>'employee',  'class'=>'form-control', 'placeholder'=>'Select Employee']) !!}
                         </div>
-                        {{--@if($request->expense_category_id == '6')--}}
-                            <div class="form-group col-md-3">
-                                <select name="loan_id" id="loan_id">
-                                    <option value="0" disabled selected>Select A Lender Name</option>
-
-                                </select>
-                                {{--<label for="loan_id">Select Lender</label>
-                                {!! Form::select('loan_id', $loans, null, ['required', 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
-                            --}}</div>
-                        {{--@endif--}}
+                        <div class="form-group col-md-3">
+                            <label for="loan_id">Select Lender</label>
+                            {!! Form::select('loan_id', ['0'=>'Select a lender'], null, ['required', 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
+                        </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">
                             <label for="qty">Enter Quantity</label>
@@ -102,7 +96,6 @@
                             div.find('#loan_id').html(" ");
                             div.find('#loan_id').append(op);
                         }
-
                     },
                     error:function () {
 

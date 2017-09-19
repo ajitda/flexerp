@@ -18,6 +18,12 @@
                         <label for="employee">Select Employee</label>
                         {!! Form::select('employee_id', $employees, null, ['required', 'id'=>'employee',  'class'=>'form-control', 'placeholder'=>'Select Employee']) !!}
                     </div>
+                    @if($expense->expense_category_id == "6")
+                    <div class="form-group col-md-3">
+                        <label for="loan_ids">Select Lender</label>
+                        {!! Form::select('loan_id', $loans, null, ['required', 'id'=>'loan_ids',  'class'=>'form-control', 'placeholder'=>'Select Lender']) !!}
+                    </div>
+                    @endif
                     <div class="clearfix"></div>
                     <div class="form-group col-md-3">
                         <label for="qty">Enter Quantity</label>
@@ -65,14 +71,3 @@
 
 @endsection
 
-@section('scripts')
-    <script>
-        $("#course").change( function(event) {
-
-
-            $.get("/expenses/create/getcourse/"+event.target.value+"", function (response, course) {
-                console.log(response);
-            });
-        });
-    </script>
-@endsection

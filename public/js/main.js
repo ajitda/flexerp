@@ -16,7 +16,7 @@ automateApp.controller('automateController', ['$scope', '$http', function($scope
         $scope.installment_qty = 0;
 
         $scope.insterests = function(){
-                return  $scope.amount * $scope.interest;
+                return  ($scope.amount * $scope.interest)/100;
         };
 
 }])

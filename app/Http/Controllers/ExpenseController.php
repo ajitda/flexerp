@@ -61,6 +61,14 @@ class ExpenseController extends Controller
         $order->dues = $dues;
         $order->payment_type = $request->payment_type;
         $order->description = $request->description;
+        $loan_id = $order->loan_id = $request->loan_id;
+
+        //processing loan
+        $loan = Loan::findOrFail($loan_id);
+        $loan->installment_qty = $loan->installment_qty - $qty;
+            $loan->total_amount = $loan->total_amount - $payment;
+        $loan->update();
+
         $order->expense_category_id = $request->expense_category_id;
         $order->employee_id = $request->employee_id;
         $order->user_id = Auth::user()->id;
@@ -94,13 +102,13 @@ class ExpenseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $expense = Expense::findOrFail($id);
         $employees = Employee::pluck('name', 'id');
         $loans = Loan::pluck('name', 'id');
         $expense_categories = ExpenseCategory::pluck('name', 'id');
-        return view('expenses.edit', compact('employees', 'expense_categories', 'expense', 'loans', 'request'));
+        return view('expenses.edit', compact('employees', 'expense_categories', 'expense', 'loans'));
     }
 
     /**
@@ -124,6 +132,7 @@ class ExpenseController extends Controller
         $order->description = $request->description;
         $order->expense_category_id = $request->expense_category_id;
         $order->loan_id     = $request->loan_id;
+
         $order->employee_id = $request->employee_id;
         $order->user_id = Auth::user()->id;
         $order->update();
