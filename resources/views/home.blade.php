@@ -159,6 +159,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="created">
+                    <p>Started Since 14th September 2017</p>
+                </div>
             </div>
         </div>
     </div>

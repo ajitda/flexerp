@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="price">Course Fee</label>
-                            {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'course_fee')) !!}
+                            {!! Form::number('course_fee', null, array('required', 'id'=>'price', 'class'=>'form-control', 'ng-value'=>'', 'ng-model'=>'course_fee')) !!}
                         </div>
                         <div class="form-group col-md-4" >
                             <label for="discount">Discount</label>
@@ -71,11 +71,30 @@
 
 @section('scripts')
     <script>
-        $("#course").change( function(event) {
+        $(document).ready(function(){
+            $(document).on('change', '#course', function(){
+//                console.log('hmm it change');
 
+                var cat_id = $(this).val();
+                console.log(cat_id);
+               // var div=$(this).parent().parent();
 
-            $.get("/enrolements/create/getcourse/"+event.target.value+"", function (response, course) {
-                console.log(response);
+                $.ajax({
+                    type: 'get',
+                    url: '{!! URL::to('getcourse') !!}',
+                    data: {'id':cat_id},
+                    success:function (data) {
+                        //console.log('success');
+
+                        //console.log(data);
+
+                        $('input[name=course_fee]').val(data[0].fees);
+
+                    },
+                    error:function () {
+
+                    }
+                });
             });
         });
     </script>

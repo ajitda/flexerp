@@ -61,13 +61,16 @@ class ExpenseController extends Controller
         $order->dues = $dues;
         $order->payment_type = $request->payment_type;
         $order->description = $request->description;
-        $loan_id = $order->loan_id = $request->loan_id;
+        if(!empty($request->loan_id)){
+            $loan_id = $order->loan_id = $request->loan_id;
 
-        //processing loan
-        $loan = Loan::findOrFail($loan_id);
-        $loan->installment_qty = $loan->installment_qty - $qty;
+            //processing loan
+            $loan = Loan::findOrFail($loan_id);
+            $loan->installment_qty = $loan->installment_qty - $qty;
             $loan->total_amount = $loan->total_amount - $payment;
-        $loan->update();
+            $loan->update();
+        }
+
 
         $order->expense_category_id = $request->expense_category_id;
         $order->employee_id = $request->employee_id;
@@ -76,13 +79,13 @@ class ExpenseController extends Controller
         return redirect('expenses');
     }
 
+    /*
+     * For getting automatic lender name while selecting expense_category loan
+     */
     public function getExpenseCategory(Request $request)
     {
-
-        $data = Loan::select('name', 'id')->where('expense_category_id', $request->id)->take(100)->get();
+        $data = Loan::select('name', 'id')->where('expense_category_id', $request->id)->where('total_amount', '!=', 0)->take(100)->get();
         return response()->json($data);
-
-
     }
 
     /**

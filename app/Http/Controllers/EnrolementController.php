@@ -51,12 +51,10 @@ class EnrolementController extends Controller
     /*
      * get ajax request for geting automatic course fee
      */
-    public function getCourseFee(Request $request, $id)
+    public function getCourse(Request $request)
     {
-        if($request->ajax()){
-            $course = Course::findOrFail($id)->get();
-            return response()->json($course);
-        }
+        $data = Course::select('fees', 'id')->where('id', $request->id)->take(100)->get();
+        return response()->json($data);
     }
 
 

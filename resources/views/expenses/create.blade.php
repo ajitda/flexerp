@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="loan_id">Select Lender</label>
-                            {!! Form::select('loan_id', ['0'=>'Select a lender'], null, ['required', 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
+                            {!! Form::select('loan_id', ['0'=>'Select a lender'], null, [ 'id'=>'loan_id',  'class'=>'form-control', 'placeholder'=>'Select a Lender']) !!}
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">
