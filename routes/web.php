@@ -30,8 +30,11 @@ Route::resource('/references', 'ReferenceController');
 Route::resource('/customers', 'CustomerController');
 Route::resource('/ordercat', 'OrderCatController');
 Route::resource('/orders', 'OrderController');
+Route::get('/getorderlist', 'OrderController@getOrderList');
+
 Route::resource('/expensecategories', 'ExpenseCategoryController');
 Route::resource('/expenses', 'ExpenseController');
+Route::get('/getexpenselist', 'ExpenseController@getExpenseList');
 Route::resource('/loans', 'LoanController');
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 

@@ -87,7 +87,7 @@
         {
             $.ajax({
                 type : 'get',
-                url : "{!! url('/birds/sales/getsaleslist') !!}",
+                url : "{!! url('/getexpenselist') !!}",
                 data : {DateCreated:criteria1,EndDate:criteria2},
                 success:function(data)
                 {
