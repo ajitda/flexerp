@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="price">Course Fee</label>
-                            {!! Form::number('course_fee', null, array('required', 'id'=>'price', 'class'=>'form-control', 'ng-value'=>'', 'ng-model'=>'course_fee')) !!}
+                            {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'[(ng-model)]', 'ng-model'=>'course_fee')) !!}
                         </div>
                         <div class="form-group col-md-4" >
                             <label for="discount">Discount</label>
@@ -88,7 +88,7 @@
 
                         //console.log(data);
 
-                        $('input[name=course_fee]').val(data[0].fees);
+                        $('input[name=price]').val(data[0].fees);
 
                     },
                     error:function () {

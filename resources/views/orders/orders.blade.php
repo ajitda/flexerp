@@ -5,6 +5,18 @@
             <div class="panel-heading">
                 <h1>Orders/Payments List<a href="orders/create" class="pull-right create-button"><span class="glyphicon-plus"></span></a></h1>
             </div>
+            <div class="col-md-4">
+                <div class="form-group form-inline">
+                    <label for="StartDate">From</label>
+                    <input type="text" name="StartDate" id="StartDate" class="form-control" required />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-inline">
+                    <label for="EndDate">To</label>
+                    <input type="text" name="EndDate" id="EndDate" class="form-control" required />
+                </div>
+            </div>
             <div class="panel-body">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
