@@ -26,6 +26,7 @@ class OrderCatController extends Controller
         return view('orders.ordercats', compact('order_cats'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,6 +61,14 @@ class OrderCatController extends Controller
         //
     }
 
+    public function salesList(Request $request)
+    {
+        if($request->ajax()) {
+            $sales = Sale::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
+            $user = Auth::user()->role;
+            return view('birds.sales.listsale')->with('sales', $sales)->with('user', $user);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -39,3 +39,4 @@ Route::resource('/loans', 'LoanController');
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
+
