@@ -99,12 +99,12 @@ class ExpenseController extends Controller
         //
     }
 
-    public function salesList(Request $request)
+    public function getExpenseList(Request $request)
     {
         if($request->ajax()) {
-            $sales = Sale::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
-            $user = Auth::user()->role;
-            return view('birds.sales.listsale')->with('sales', $sales)->with('user', $user);
+            $expenses = Expense::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
+          //  $user = Auth::user()->role;
+            return view('expenses.expenselist')->with('expenses', $expenses);
         }
     }
 

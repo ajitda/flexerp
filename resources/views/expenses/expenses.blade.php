@@ -17,7 +17,7 @@
                     <input type="text" name="EndDate" id="EndDate" class="form-control" required />
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="expense-list">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <th>ID</th>
@@ -91,9 +91,9 @@
                 data : {DateCreated:criteria1,EndDate:criteria2},
                 success:function(data)
                 {
-                    $('#list-sale-report').empty().html(data);
+                    $('#expense-list').empty().html(data);
                 }
-            })
+            });
         }
     </script>
 @endsection
