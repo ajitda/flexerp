@@ -77,6 +77,15 @@ class OrderController extends Controller
         //
     }
 
+    public function getOrderList(Request $request)
+    {
+        if($request->ajax()) {
+            $orders = Order::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
+            //  $user = Auth::user()->role;
+            return view('orders.orderlist')->with('orders', $orders);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

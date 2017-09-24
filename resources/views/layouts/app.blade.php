@@ -106,9 +106,6 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
-
-    <script src="{{ asset('js/jquery-1.12.4.min.js') }}" type="text/javascript"></script>
     {{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
     <script src="{{ asset('js/angular.min.js') }}"></script>
     <script src="{{asset('js/jquery-ui.js')}}"></script>
