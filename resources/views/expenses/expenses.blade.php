@@ -59,41 +59,41 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-        $("#StartDate").datepicker({
-            changeDate:true,
-            changeMonth:true,
-            changeYear:true,
-            yearRange:'1970:+0',
-            dateFormat:'yy-mm-dd',
-            onSelect:function(dateText){
-                var DateCreated = $('#StartDate').val();
-                var EndDate = $('#EndDate').val();
-                listSales(DateCreated,EndDate);
-            }
-        });
-        $("#EndDate").datepicker({
-            changeDate:true,
-            changeMonth:true,
-            changeYear:true,
-            yearRange:'1970:+0',
-            dateFormat:'yy-mm-dd',
-            onSelect:function(dateText){
-                var DateCreated = $('#StartDate').val();
-                var EndDate = $('#EndDate').val();
-                listSales(DateCreated, EndDate);
-            }
-        });
-        function listSales(criteria1, criteria2)
-        {
-            $.ajax({
-                type : 'get',
-                url : "{!! url('/getexpenselist') !!}",
-                data : {DateCreated:criteria1,EndDate:criteria2},
-                success:function(data)
-                {
-                    $('#expense-list').empty().html(data);
+        $(document).ready(function() {
+            $("#StartDate").datepicker({
+                changeDate: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1970:+0',
+                dateFormat: 'yy-mm-dd',
+                onSelect: function (dateText) {
+                    var DateCreated = $('#StartDate').val();
+                    var EndDate = $('#EndDate').val();
+                    listSales(DateCreated, EndDate);
                 }
             });
-        }
+            $("#EndDate").datepicker({
+                changeDate: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1970:+0',
+                dateFormat: 'yy-mm-dd',
+                onSelect: function (dateText) {
+                    var DateCreated = $('#StartDate').val();
+                    var EndDate = $('#EndDate').val();
+                    listSales(DateCreated, EndDate);
+                }
+            });
+            function listSales(criteria1, criteria2) {
+                $.ajax({
+                    type: 'get',
+                    url: "{!! url('/getexpenselist') !!}",
+                    data: {DateCreated: criteria1, EndDate: criteria2},
+                    success: function (data) {
+                        $('#expense-list').empty().html(data);
+                    }
+                });
+            }
+        });
     </script>
 @endsection

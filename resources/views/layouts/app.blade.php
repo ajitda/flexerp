@@ -14,6 +14,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
@@ -104,13 +105,16 @@
     </div>
 
     <!-- Scripts -->
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/jquery-1.12.4.min.js') }}" type="text/javascript"></script>
     {{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
     <script src="{{ asset('js/angular.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('scripts')
