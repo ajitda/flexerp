@@ -42,5 +42,20 @@
                     {!! Form::close() !!}</a>
         </tr>
     @endforeach
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{DB::table('orders')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('total')}}</td>
+        <td>{{DB::table('orders')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('payment')}}</td>
+        <td>{{DB::table('orders')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('dues')}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
     </tbody>
 </table>
