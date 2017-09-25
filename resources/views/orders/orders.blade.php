@@ -5,7 +5,7 @@
             <div class="panel-heading">
                 <h1>Orders/Payments List<a href="orders/create" class="pull-right create-button"><span class="glyphicon-plus"></span></a></h1>
             </div>
-            <div class="date-filter-section">
+            <div class="date-filter">
                 <div class="col-md-4">
                     <div class="form-group form-inline">
                         <label for="StartDate">From</label>
