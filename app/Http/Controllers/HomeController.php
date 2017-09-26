@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
 use App\Expense;
 use App\Loan;
 use App\Order;
@@ -32,5 +33,11 @@ class HomeController extends Controller
         $others= Order::where("order_cat_id", 3)->sum('payment');
         $total_income = Order::sum('payment') - $others;
         return view('home', compact('orders', 'total_expense', 'total_income', 'total_loan'));
+    }
+
+    public function search($searchkey)
+    {
+        $courses = Course::search($searchkey)->get();
+        return view('search', compact('courses'));
     }
 }
