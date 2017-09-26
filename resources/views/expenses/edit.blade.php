@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="payment_type">Payment Type : </label>
-                        {!! Form::select('payment_type', array('cheque'=>'Cheque', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                        {!! Form::select('payment_type', array('bank'=>'Bank', 'bkash'=>'Bkash', 'cash'=>'Cash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
                     </div>
                     <div class="form-group col-md-2">
                         <label for="total">Dues : </label>

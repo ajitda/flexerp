@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 
 class Expense extends Model
 {
-    use Searchable;
+    //use Searchable;
 
     protected $fillable=['qty', 'unit_price', 'total', 'payment', 'payment_type', 'dues', 'description', 'user_id', 'expense_category_id', 'employee_id'];
 
