@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-9 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading dashboard-heading">Dashboard</div>
+                <div class="panel-heading dashboard-heading">{{__('header.dashboard')}}</div>
                 <div class="panel-body dashboard-body">
                     <div class="row">
                         <div class="col-md-12 col-lg-6 col-xl-6">

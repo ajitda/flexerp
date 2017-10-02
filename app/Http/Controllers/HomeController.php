@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App;
 use App\Course;
 use App\Expense;
 use App\Loan;
@@ -25,8 +25,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang=null)
     {
+        App::setlocale($lang);
         $orders = Order::count();
         $total_expense = Expense::sum('payment');
         $total_loan = Loan::sum('total_amount');

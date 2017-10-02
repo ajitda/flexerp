@@ -15,4 +15,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
 
-mix.browserSync('http://flex.erp');
+mix.browserSync('http://localhost/flexerp');
