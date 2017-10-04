@@ -116,5 +116,7 @@ return [
         ],
 
     ],
-
+'dump' => [
+   'setDumpBinaryPath' => 'D:\\XAMPP\\MySQL\\bin\\',
+ ],
 ];

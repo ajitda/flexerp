@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Backup::class
+        Commands\Backup::class,
+        Commands\MySqlDump::class
     ];
 
     /**
