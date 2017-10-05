@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Mail;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,3 +45,7 @@ Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
 
+Route::get('sendmail', function(){
+	Mail::to('ajitdas2900@gmail.com')->send(new SendEmail());
+	return "Email is sent successfully";
+});
