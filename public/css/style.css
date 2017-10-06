@@ -5,10 +5,67 @@ body {
     color: #333;
     font-size: 14px;
     font-weight: 600;
+    font-family: 'Raleway', sans-serif;
 }
 a{
     color: #44c4c0;
 }
+/*----Landing Page style----*/
+.links{
+    font-size: 30px;
+}
+.content .links a img {
+    width: 150px;
+    filter: drop-shadow(0px 0px 25px #fff);
+    vertical-align: middle;
+}
+.content .links a:hover img{
+    filter:grayscale(0%);
+}
+.footer-social {
+    padding: 20px 0;
+}
+.footer-social a i {
+    font-size: 20px;
+    color: #333;
+    padding: 15px 16px;
+    background: #eee;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.title {
+    font-size: 84px;
+    font-weight: 600;
+}
+.footer-social a i.fa-facebook {
+    padding: 15px 20px;
+}
+.title span {
+    color: #44c4c0;
+}
+
+.title i.fa.fa-lock {
+    color: #44c4c0;
+}
+
+.footer-social a:hover i {
+    background: #44c4c0;
+}
+.footer-social a i.fa-linkedin{
+    padding:15px 17px;
+}
+.footer-social a i.fa-github{
+    padding:15px 17px;
+}
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    background: rgba(0,0,0,0.1);
+}
+
+
 /*----dashboard style----*/
 .bg-primary {
     background: #908c8c;

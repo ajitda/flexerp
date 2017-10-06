@@ -9,27 +9,19 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-
+        <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
                 height: 100vh;
-                margin: 0;
+                background: url(img/flexerp_back.jpg)repeat scroll 0 0;
+  
             }
             .full-height {
                 height: 100vh;
             }
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
+            
             .position-ref {
                 position: relative;
             }
@@ -48,9 +40,9 @@
                 font-size: 84px;
             }
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -77,16 +69,19 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                    <i class="fa fa-lock"></i>
+                    <i class="fa fa-lock"></i> FLEX<span>ERP</span>
+                    
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    Designed & Developed By <a href="https://flexibleit.net/"><img src="{{asset('img/logo-blue.png')}}" alt=""></a>
+                    <div class="footer-social">
+                        <a href="https://github.com/ajitda/"><i class="fa fa-github"></i></a>
+                        <a href="https://laracasts.com"><i class="fa fa-facebook"></i></a>
+                        <a href="https://laracasts.com"><i class="fa fa-twitter"></i></a>
+                        <a href="https://laracasts.com"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                    
                 </div>
             </div>
         </div>
