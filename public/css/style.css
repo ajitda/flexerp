@@ -1,5 +1,6 @@
 html, body{
     height: 100%;
+    margin:0;
 }
 body {
     color: #333;
@@ -66,6 +67,26 @@ a{
 }
 
 
+/*----Header style----*/
+a.navbar-brand {
+    font-size: 30px;
+}
+
+a.navbar-brand span {
+    color: #44c4c0;
+}
+
+
+/*----sidebar style----*/
+.col-md-2.sidebar-section {
+    margin-left: 0px;
+    background: #000;
+    min-height: 100%;
+}
+.navbar-nav > li {
+    float: none;
+}
+
 /*----dashboard style----*/
 .bg-primary {
     background: #908c8c;
@@ -90,7 +111,9 @@ textarea.address{
     height: 150px;
 }
 ul.expense-cat.list-inline {
-    margin-left: 5px !important;
+    margin-left: 0px !important;
+    background: rgba(255,255,255,0.7);
+    padding: 5px;
 }
 ul.order-cat.list-inline {
     margin-left: 0px;

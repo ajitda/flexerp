@@ -7,12 +7,11 @@
                     <div class="panel-heading">
                         <h2>Expense Categories</h2>
                     </div>
-
                     <ul class="expense-cat list-inline">
                         @foreach($expense_cats as $category)
                             <li class="list-group-item list-group-item-info"><a href="{{ route('expensecategories.show', $category->id) }}">{{$category->name}}</a></li>
                         @endforeach
-                        <li><a href="#modal-id" data-toggle="modal">Add New Expense Category</a></li>
+                        <li><a href="#modal-id" data-toggle="modal">Add New</a></li>
                     </ul>
                     <div class="modal fade" id="modal-id">
                         <div class="modal-dialog">
@@ -40,8 +39,9 @@
                             {!! Form::close() !!}
                         </div>
                     </div>
-                    <div class="category_wise_expenses">
+                   
                         @if(!empty($expensecategory))
+                         <div class="panel-body category_wise_expenses">
                             <table class="table table-bordered table-striped table-hover">
                                 
                                 <thead>
@@ -78,9 +78,10 @@
                                     <tr><td colspan="9" rowspan="" headers="">No Data</td> </tr>
                                     @endforelse
                                 </tbody>
-                            </table>    
+                            </table>
+                        </div>    
                         @endif
-                    </div>
+                    
                 </div>
             </div>
         </div>

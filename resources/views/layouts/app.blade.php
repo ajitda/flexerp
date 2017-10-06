@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -35,39 +35,13 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'FlexErp') }}
+                        FLEX<span>ERP</span>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;<li><a href="{{url('students')}}">Students</a></li>
-                        <li><a href="{{url('courses')}}">Courses</a></li>
-                        <li><a href="{{url('enrolements')}}">Course Enrolements</a></li>
-                        <li><a href="{{url('employees')}}">Employees</a></li>
-                        <li><a href="{{url('references')}}">References</a></li>
-                        <li><a href="{{url('customers')}}">Customers</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Expenses <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{url('loans')}}">Loans</a></li>
-                                <li><a href="{{url('expenses')}}">Expenses</a></li>
-                                <li><a href="{{url('expensecategories')}}">Expense Category</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Orders/Payment <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{url('orders')}}">Orders/Payments</a></li>
-                                <li><a href="{{url('ordercat')}}">Order Category</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -100,8 +74,52 @@
                 </div>
             </div>
         </nav>
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 sidebar-section">
+                        <div class="sidebar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{url('students')}}">Students</a></li>
+                                <li><a href="{{url('courses')}}">Courses</a></li>
+                                <li><a href="{{url('enrolements')}}">Course Enrolements</a></li>
+                                <li><a href="{{url('employees')}}">Employees</a></li>
+                                <li><a href="{{url('references')}}">References</a></li>
+                                <li><a href="{{url('customers')}}">Customers</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Expenses <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{url('loans')}}">Loans</a></li>
+                                        <li><a href="{{url('expenses')}}">Expenses</a></li>
+                                        <li><a href="{{url('expensecategories')}}">Expense Category</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Orders/Payment <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{url('orders')}}">Orders/Payments</a></li>
+                                        <li><a href="{{url('ordercat')}}">Order Category</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="content">
+                            @yield('content')
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            
+            
 
-        @yield('content')
+        </div>
+        
     </div>
 
     <!-- Scripts -->

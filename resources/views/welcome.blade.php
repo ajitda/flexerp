@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>FLEXERP- total accounting and management solution</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -16,7 +16,6 @@
             html, body {
                 height: 100vh;
                 background: url(img/flexerp_back.jpg)repeat scroll 0 0;
-  
             }
             .full-height {
                 height: 100vh;
