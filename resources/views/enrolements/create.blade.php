@@ -76,7 +76,7 @@
 //                console.log('hmm it change');
 
                 var cat_id = $(this).val();
-                console.log(cat_id);
+                //console.log(cat_id);
                // var div=$(this).parent().parent();
 
                 $.ajax({

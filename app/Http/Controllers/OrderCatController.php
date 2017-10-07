@@ -58,7 +58,9 @@ class OrderCatController extends Controller
      */
     public function show($id)
     {
-        //
+       $ordercategory = OrderCat::findOrFail($id)->order;
+        $order_cats = OrderCat::all();
+        return view('orders.ordercats', compact('order_cats', 'ordercategory'));
     }
 
     public function salesList(Request $request)

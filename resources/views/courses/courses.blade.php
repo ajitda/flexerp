@@ -14,7 +14,7 @@
                         <th>Duration</th>
                         <th>Code</th>
                         <th>Sessions</th>
-                        <th>Topics</th>
+                        <th width="300">Topics</th>
                         <th>Fees</th>
                         <th colspan="2">Actions</th>
                     </thead>
