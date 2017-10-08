@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-9 col-md-offset-2">
+        <div class="col-md-9 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading dashboard-heading">{{ trans('header.dashboard', ['name'=>'Flexerp'])}}</div>
                 <div class="panel-body dashboard-body">

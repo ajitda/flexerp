@@ -17,7 +17,6 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
 </head>
 <body>
     <div id="app">
@@ -42,7 +41,6 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -54,7 +52,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -77,6 +74,9 @@
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
+                     @if (Auth::guest())
+                     <div class="col-md-2"></div>
+                     @else
                     <div class="col-md-2 sidebar-section">
                         <div class="sidebar">
                             <ul class="nav navbar-nav">
@@ -108,6 +108,7 @@
                             </ul>
                         </div>
                     </div>
+                    @endif
                     <div class="col-md-10">
                         <div class="content">
                             @yield('content')

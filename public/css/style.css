@@ -87,7 +87,7 @@ a.navbar-brand span {
 }
 
 /*----sidebar style----*/
-.navbar-nav > li {
+.sidebar .navbar-nav > li {
     float: none;
 }
 .sidebar .nav > li > a {
