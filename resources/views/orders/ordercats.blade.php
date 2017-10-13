@@ -58,7 +58,7 @@
                                     <th colspan="2">Actions</th>
                                 </thead>
                                 <tbody>
-                                    @forelse($ordercategory as $order)
+                                    @forelse($ordercategory->order as $order)
                                     <tr>
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->created_at->format('d-m-Y')}}</td>
@@ -84,10 +84,26 @@
                                             {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id]]) !!}
                                             {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
                                             {!! Form::close() !!}</a>
-                                </tr>
+                                    </tr>
+                                
                                     @empty
-                                    <tr><td colspan="9" rowspan="" headers="">No Data</td> </tr>
+                                    <tr><td colspan="12" rowspan="" headers="">No Data</td> </tr>
                                     @endforelse
+                                    @if(count($ordercategory->order) != 0)
+                                    <tr>
+                                        <td colspan="2">Total</td>
+                                        <td>{{DB::table('orders')->where('order_cat_id', $ordercategory->id)->sum('qty')}}</td>
+                                        <td></td>
+                                        <td>{{DB::table('orders')->where('order_cat_id', $ordercategory->id)->sum('total')}}</td>
+                                        <td>{{DB::table('orders')->where('order_cat_id', $ordercategory->id)->sum('payment')}}</td>
+                                        <td>{{DB::table('orders')->where('order_cat_id', $ordercategory->id)->sum('dues')}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                            

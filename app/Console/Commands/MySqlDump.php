@@ -46,7 +46,7 @@ class MySqlDump extends Command
         $ts = time();
         $path = database_path() . $ds . 'backups' . $ds . date('Y', $ts) . $ds . date('m', $ts) . $ds . date('d', $ts) . $ds;
         $file = date('Y-m-d-His', $ts) . '-dump-' . $database . '.sql';
-        $command = sprintf('mysqldump -h %s -u %s -p %s %s > %s', $host, $username, $password, $database, $path . $file);
+        $command = sprintf('mysqldump database -h %s -u %s -p %s %s > %s', $host, $username, $password, $database, $path . $file);
         if (!is_dir($path)) {
             mkdir($path, 0755, true);
         }
