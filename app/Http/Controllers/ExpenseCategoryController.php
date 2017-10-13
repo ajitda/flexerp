@@ -52,7 +52,7 @@ class ExpenseCategoryController extends Controller
      */
     public function show($id)
     {
-        $expensecategory = ExpenseCategory::findOrFail($id)->expense;
+        $expensecategory = ExpenseCategory::findOrFail($id);
         $expense_cats = ExpenseCategory::all();
         return view('expenses.expensecategories', compact('expense_cats', 'expensecategory'));
     }

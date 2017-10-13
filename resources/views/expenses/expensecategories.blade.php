@@ -58,7 +58,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($expensecategory as $expense)
+                                    @forelse($expensecategory->expense as $expense)
                                     <tr>
                                        <td>{{$expense->id}}</td>
                                         <td>{{$expense->created_at->format('d-m-Y')}}</td>
@@ -77,6 +77,16 @@
                                     @empty
                                     <tr><td colspan="9" rowspan="" headers="">No Data</td> </tr>
                                     @endforelse
+                                    @if(!empty($expensecategory))
+                                    <tr>
+                                        <td colspan="2">Total</td>
+                                        <td>{{DB::table('expenses')->where('expense_category_id', $expensecategory->id)->sum('qty')}}</td>
+                                        <td></td>
+                                        <td>{{DB::table('expenses')->where('expense_category_id', $expensecategory->id)->sum('total')}}</td>
+                                        <td>{{DB::table('expenses')->where('expense_category_id', $expensecategory->id)->sum('payment')}}</td>
+                                        <td>{{DB::table('expenses')->where('expense_category_id', $expensecategory->id)->sum('dues')}}</td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>    
