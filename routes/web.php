@@ -11,11 +11,16 @@
 |
 */
 use App\Mail\SendEmail;
+use App\Events\Event;
 use Illuminate\Support\Facades\Mail;
 
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('event', function(){
+	event(new Event('Hey How are you'));
 });
 
 Auth::routes();
