@@ -93,7 +93,7 @@ a.navbar-brand span {
 .sidebar .nav > li > a {
     color: #333;
 }
-.col-md-2.sidebar-section {
+.sidebar-section {
     margin-left: 0px;
     background: rgba(255,255,255,0.9);
     min-height: 755px;

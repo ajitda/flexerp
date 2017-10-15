@@ -23,6 +23,10 @@ Route::get('event', function(){
 	event(new Event('Hey How are you'));
 });
 
+Route::get('listen', function(){
+	return view('listenBroadcast');
+});
+
 Auth::routes();
 
 Route::get('/search/{searchkey}', 'HomeController@search');
@@ -53,4 +57,4 @@ Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourse
 Route::get('sendmail', function(){
 	Mail::to('ajitdas2900@gmail.com')->send(new SendEmail());
 	return "Email is sent successfully";
-});
+});	

@@ -75,9 +75,9 @@
             <div class="container-fluid">
                 <div class="row">
                      @if (Auth::guest())
-                     <div class="col-md-2"></div>
+                     <div class="col-sm-2"></div>
                      @else
-                    <div class="col-md-2 sidebar-section">
+                    <div class="col-sm-2 sidebar-section">
                         <div class="sidebar">
                             <ul class="nav navbar-nav">
                                 <li><a href="{{url('students')}}">Students</a></li>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     @endif
-                    <div class="col-md-10">
+                    <div class="col-sm-10">
                         <div class="content">
                             @yield('content')
                         </div>
