@@ -58,3 +58,7 @@ Route::get('sendmail', function(){
 	Mail::to('ajitdas2900@gmail.com')->send(new SendEmail());
 	return "Email is sent successfully";
 });	
+
+Route::get('chat', function() {
+    return view('chat');
+});
