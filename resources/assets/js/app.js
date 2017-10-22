@@ -16,15 +16,43 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('chat-message', require('./components/ChatMessage.vue'));
+Vue.component('chat-log', require('./components/ChatLog.vue'));
+Vue.component('chat-composer', require('./components/ChatComposer.vue'));
+
+// const app = new Vue({
+//     el: '#app',
+//     created(){
+//     	Echo.private('testchannel') 
+
+//     		.listen('Event', (e)=>{
+//     			console.log(e);
+//     		});
+    	
+//     }
+// });
 
 const app = new Vue({
-    el: '#app',
-    created(){
-    	Echo.private('testchannel') 
+	el: "#app",
+	
+	data: {
+		messages: [
+				{
+					message: 'Hey!',
+					user: "John Doe"
+				},
+				{
+					message: 'Hello',
+					user: "Jane Doe"
+				}
+			]
+		},
 
-    		.listen('Event', (e)=>{
-    			console.log(e);
-    		});
-    	
-    }
+	methods:{
+		addMessage(message){
+			//Add to existing messages
+			//persists to the database etc
+				this.messages.push(message);
+		}
+	}
 });
