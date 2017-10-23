@@ -15,6 +15,7 @@ use App\Events\Event;
 use Illuminate\Support\Facades\Mail;
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -61,4 +62,8 @@ Route::get('sendmail', function(){
 
 Route::get('chat', function() {
     return view('chat');
-});
+})->middleware('auth');
+
+Route::get('/messages', function(){
+	return App\Message::with('user')->get();
+})->middleware('auth');
