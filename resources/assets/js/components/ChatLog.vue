@@ -20,5 +20,6 @@ export default{
 .empty{
 	padding:1rem;
 	text-align:center;
+	color:#fff;
 }
 </style>

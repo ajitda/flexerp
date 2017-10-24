@@ -16,6 +16,7 @@ export default{
 <style lang="css">
 	.chat-message{
 		padding: 1rem;
+		color:#fff;
 	}
 	.chat-message p{
 		margin-bottom: .5rem;

@@ -60,10 +60,20 @@ Route::get('sendmail', function(){
 	return "Email is sent successfully";
 });	
 
-Route::get('chat', function() {
+Route::get('/chat', function() {
     return view('chat');
 })->middleware('auth');
 
 Route::get('/messages', function(){
 	return App\Message::with('user')->get();
+})->middleware('auth');
+
+Route::post('/messages', function(){
+	//store the new messages
+	$user = Auth::user();
+	$user->messages()->create([
+		'message'=> request()->get('message')
+	]);
+	return ['status'=> 'OK'];
+	//return App\Message::with('user')->get();
 })->middleware('auth');

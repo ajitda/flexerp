@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>FlexErp Chat Room</title>
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
-	<div class="container">
+@extends('layouts.app')
+@section('content')
+
 		<div class="row" id="app">
 			<div class="col-md-6 col-md-offset-3">
 				<!-- <div class="list-group">
@@ -21,7 +14,5 @@
 				<chat-composer v-on:messagesent="addMessage"></chat-composer>
 			</div>
 		</div>
-	</div>
-	<script src="{{asset('js/app.js') }}"></script>
-</body>
-</html>
+		{!! Html::script('js/app.js', array('type' => 'text/javascript')) !!}
+	@endsection
