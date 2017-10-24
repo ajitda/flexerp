@@ -13,7 +13,7 @@
 use App\Mail\SendEmail;
 use App\Events\Event;
 use Illuminate\Support\Facades\Mail;
-
+use App\Events\MessagePosted;
 
 
 Route::get('/', function () {
@@ -71,9 +71,12 @@ Route::get('/messages', function(){
 Route::post('/messages', function(){
 	//store the new messages
 	$user = Auth::user();
-	$user->messages()->create([
+	$message = $user->messages()->create([
 		'message'=> request()->get('message')
 	]);
+
+	//announce that a new message has been posted
+	event(new MessagePosted($message, $user))
 	return ['status'=> 'OK'];
 	//return App\Message::with('user')->get();
 })->middleware('auth');

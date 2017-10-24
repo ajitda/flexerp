@@ -1338,13 +1338,13 @@ var app = new Vue({
 			//Add to existing messages
 			//persists to the database etc
 			this.messages.push(message);
-			axios.post('http://localhost/flexerp/public/messages', message).then(function (response) {});
+			axios.post('messages', message).then(function (response) {});
 		}
 	},
 	created: function created() {
 		var _this = this;
 
-		axios.get('http://localhost/flexerp/public/messages').then(function (response) {
+		axios.get('messages').then(function (response) {
 			//console.log(response);
 			_this.messages = response.data;
 		});

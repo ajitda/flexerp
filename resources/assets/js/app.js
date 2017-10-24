@@ -44,13 +44,13 @@ const app = new Vue({
 			//Add to existing messages
 			//persists to the database etc
 				this.messages.push(message);
-				axios.post('http://localhost/flexerp/public/messages', message).then(response=>{
+				axios.post('messages', message).then(response=>{
 					
 				})
 		}
 	},
 	created() {
-		axios.get('http://localhost/flexerp/public/messages').then(response => {
+		axios.get('messages').then(response => {
 			//console.log(response);
 			this.messages = response.data
 		});
