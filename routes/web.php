@@ -76,7 +76,7 @@ Route::post('/messages', function(){
 	]);
 
 	//announce that a new message has been posted
-	event(new MessagePosted($message, $user))
+	broadcast(new MessagePosted($message, $user))->toOthers();
 	return ['status'=> 'OK'];
 	//return App\Message::with('user')->get();
 })->middleware('auth');

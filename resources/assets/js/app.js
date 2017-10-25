@@ -54,5 +54,17 @@ const app = new Vue({
 			//console.log(response);
 			this.messages = response.data
 		});
+
+		Echo.join('chatroom')
+			//.here()
+			//.joining()
+			//.leaving()
+			.listen('MessagePosted', (e)=>{
+				//console.log(e);
+				this.message.push({
+					message: e.message.message,
+					user: e.user.name
+				});
+			});
 	}
 });

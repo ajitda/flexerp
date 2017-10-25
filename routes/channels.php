@@ -16,6 +16,11 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 });
 
 
-Broadcast::channel('testchannel', function () {
+Broadcast::channel('testchannel', function ($user) {
     return true;
+});
+
+
+Broadcast::channel('chatroom', function ($user) {
+    return $user;
 });

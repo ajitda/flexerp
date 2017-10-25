@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 		<div class="row" id="app">
 			<div class="col-md-6 col-md-offset-3">
 				<!-- <div class="list-group">
