@@ -24,9 +24,11 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $expenses = Expense::orderBy('id', 'desc')->paginate(10);
+        $s = $request->input('s')
+        $expenses = Expense::orderBy('id', 'desc')
+        ->paginate(10);
         return view('expenses.expenses', compact('expenses'));
     }
 
@@ -168,9 +170,5 @@ class ExpenseController extends Controller
     *
     *
     */
-    public function search()
-    {
-        return $query->where('name', 'like', '%'.$s.'%')
-        ->orWhere('description', 'like', '%'.$s.'%');
-    }
+
 }

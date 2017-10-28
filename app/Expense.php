@@ -23,4 +23,9 @@ class Expense extends Model
     {
         return $this->belongsTo('App\Loan');
     }
+    public function scopeSearch($query, $s)
+    {
+        return $query->where('name', 'like', '%'.$s.'%')
+        ->orWhere('description', 'like', '%'.$s.'%');
+    }
 }

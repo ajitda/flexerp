@@ -19,9 +19,12 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <form action="{{route('category.index')}}" method="get">
+                    <form action="{{route('ExpenseController.index')}}" method="get" class="form-inline">
                         <div class="form-group">
-                            input
+                            <input type="text" class="form-control" name="s" placeholder="Keyword">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </form>
                 </div>
