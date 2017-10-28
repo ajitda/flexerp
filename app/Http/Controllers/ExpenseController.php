@@ -162,4 +162,15 @@ class ExpenseController extends Controller
         Expense::findOrFail($id)->delete();
         return redirect()->back();
     }
+
+    /**
+    *for search
+    *
+    *
+    */
+    public function search()
+    {
+        return $query->where('name', 'like', '%'.$s.'%')
+        ->orWhere('description', 'like', '%'.$s.'%');
+    }
 }

@@ -18,6 +18,13 @@
                         <input type="text" name="EndDate" id="EndDate" class="form-control" required />
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <form action="{{route('category.index')}}" method="get">
+                        <div class="form-group">
+                            input
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="panel-body" id="expense-list">
                 <table class="table table-bordered table-striped table-hover">

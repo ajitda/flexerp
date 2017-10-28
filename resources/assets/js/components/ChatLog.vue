@@ -22,4 +22,8 @@ export default{
 	text-align:center;
 	color:#fff;
 }
+.chat-log {
+    height: 500px;
+    overflow: auto;
+}
 </style>

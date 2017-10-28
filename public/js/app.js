@@ -4770,7 +4770,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
-exports.push([module.i, "\n.empty{\r\n\tpadding:1rem;\r\n\ttext-align:center;\r\n\tcolor:#fff;\n}\r\n", ""]);
+exports.push([module.i, "\n.empty{\r\n\tpadding:1rem;\r\n\ttext-align:center;\r\n\tcolor:#fff;\n}\n.chat-log {\r\n    height: 500px;\r\n    overflow: auto;\n}\r\n", ""]);
 
 /***/ }),
 /* 39 */
