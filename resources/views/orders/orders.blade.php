@@ -18,6 +18,16 @@
                         <input type="text" name="EndDate" id="EndDate" class="form-control" required />
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <form action="{{route('orders.index')}}" method="get" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="s" class="form-control" placeholder="keyword" value="{{isset($s) ? $s : ''}}">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="panel-body" id="order-list">
@@ -68,7 +78,7 @@
                     </tbody>
                 </table>
                 <div class="paginations col-md-12 hidden-print">
-                    {{$orders->render()}}
+                    {{$orders->append(['s'=>$s])->render()}}
                 </div>
             </div>
         </div>

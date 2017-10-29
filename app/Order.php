@@ -24,4 +24,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\OrderCat');
     }
+
+    public function scopeSearch($query, $s)
+    {
+        return $query->where('description', 'like', '%'.$s.'%');
+    }
 }
