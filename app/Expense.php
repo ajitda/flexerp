@@ -25,7 +25,7 @@ class Expense extends Model
     }
     public function scopeSearch($query, $s)
     {
-        return $query->where('name', 'like', '%'.$s.'%')
-        ->orWhere('description', 'like', '%'.$s.'%');
+        return $query->where('description', 'like', '%'.$s.'%');
+        //->orWhere('description', 'like', '%'.$s.'%');
     }
 }

@@ -19,9 +19,9 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <form action="{{route('ExpenseController.index')}}" method="get" class="form-inline">
+                    <form action="{{route('expenses.index')}}" method="get" class="form-inline">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="s" placeholder="Keyword">
+                            <input type="text" class="form-control" name="s" placeholder="Keyword" value="{{isset($s) ? $s : ''}}">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Search</button>
@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
                 <div class="paginations col-md-12 hidden-print">
-                    {!! $expenses->render() !!}
+                    {!! $expenses->appends(['s'=>$s])->render() !!}
                 </div>
             </div>
         </div>

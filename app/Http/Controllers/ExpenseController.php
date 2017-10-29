@@ -26,10 +26,11 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        $s = $request->input('s')
+        $s = $request->input('s');
         $expenses = Expense::orderBy('id', 'desc')
+        ->search($s)
         ->paginate(10);
-        return view('expenses.expenses', compact('expenses'));
+        return view('expenses.expenses', compact('expenses', 's'));
     }
 
     /**
