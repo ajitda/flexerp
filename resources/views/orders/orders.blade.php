@@ -78,7 +78,7 @@
                     </tbody>
                 </table>
                 <div class="paginations col-md-12 hidden-print">
-                    {{$orders->append(['s'=>$s])->render()}}
+                    {{$orders->appends(['s'=>$s])->render()}}
                 </div>
             </div>
         </div>

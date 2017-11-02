@@ -19,10 +19,10 @@
                                         </div>
                                         <div class="widget-summary-col">
                                             <div class="summary">
-                                                <h4 class="title">{{trans_choice('header.total_expense', 0)}}</h4>
+                                                <h4 class="title">{{trans_choice('header.total_expense', $expense_qty)}}</h4>
                                                 <div class="info">
                                                     <strong class="amount">Tk. {{ $total_expense }}</strong>
-                                                    <span class="text-primary">(14 unread)</span>
+                                                    {{-- <span class="text-primary">(14 unread)</span> --}}
                                                 </div>
                                             </div>
                                             <div class="summary-footer">

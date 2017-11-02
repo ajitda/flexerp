@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $s = $request->input('s');
-        $orders = Order::orderBy('id', 'desc')->search($s)->paginate(10);;
+        $orders = Order::orderBy('id', 'desc')->search($s)->paginate(10);
         return view('orders.orders', compact('orders', 's'));
     }
 

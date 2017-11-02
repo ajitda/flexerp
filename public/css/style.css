@@ -144,10 +144,15 @@ ul.expense-cat.list-inline {
     background: rgba(255,255,255,0.7);
     padding: 5px;
 }
+
 ul.order-cat.list-inline {
     margin-left: 0px !important;
     background: rgba(255,255,255,0.7);
     padding: 5px;
+}
+ul.expense-cat li.list-group-item, ul.order-cat li.list-group-item{
+    padding: 5px 15px;
+    margin-bottom: 5px;
 }
 .dashboard-body{
     background:transparent;
