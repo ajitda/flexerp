@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ExpenseCategory;
-use App\Loan;
 use Illuminate\Http\Request;
 
-class ExpenseCategoryController extends Controller
+class TaskController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,11 +22,8 @@ class ExpenseCategoryController extends Controller
      */
     public function index()
     {
-        $expense_cats = ExpenseCategory::all();
-        return view('expenses.expensecategories', compact('expense_cats'));
+        return view('tasks.tasks');
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -48,9 +43,7 @@ class ExpenseCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        ExpenseCategory::create($input);
-        return redirect()->back();
+        //
     }
 
     /**
@@ -61,9 +54,7 @@ class ExpenseCategoryController extends Controller
      */
     public function show($id)
     {
-        $expensecategory = ExpenseCategory::findOrFail($id);
-        $expense_cats = ExpenseCategory::all();
-        return view('expenses.expensecategories', compact('expense_cats', 'expensecategory'));
+        //
     }
 
     /**
