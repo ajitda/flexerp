@@ -21,7 +21,7 @@
                             {!! Form::email('email', null, array('required', 'class'=>'form-control', 'placeholder'=>'Write Email')) !!}
                         </div>
                         <div class="form-group col-md-4" >
-                            {!! Form::date('date_of_birth', null, array('required', 'class'=>'form-control', 'placeholder'=>'yyyy-mm-dd')) !!}
+                            {!! Form::date('date_of_birth', \Carbon\Carbon::now(), array('required', 'class'=>'form-control')) !!}
                         </div>
                         <div class="form-group col-md-4">
                             {!! Form::text('occupation', null, array('required', 'class'=>'form-control', 'placeholder'=>'Occupation')) !!}

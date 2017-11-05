@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="payment_date">Select a Payment Date</label>
-                            {!! Form::date('payment_date', null, array('required', 'id'=>'payment_date', 'class'=>'form-control', 'placeholder'=>'mm/dd/yyyy')) !!}
+                            {!! Form::date('payment_date', \Carbon\Carbon::now(), array('required', 'id'=>'payment_date', 'class'=>'form-control')) !!}
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">
