@@ -85,6 +85,7 @@
                                 <li><a href="{{url('employees')}}">Employees</a></li>
                                 <li><a href="{{url('references')}}">References</a></li>
                                 <li><a href="{{url('customers')}}">Customers</a></li>
+                                <li><a href="{{url('tasks')}}">Tasks</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Expenses <span class="caret"></span>

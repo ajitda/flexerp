@@ -13,6 +13,17 @@
 					<th>Assigned To</th>
 					<th>Status</th>
 				</thead>
+				<tbody>
+					@foreach(@tasks as task)
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					@endforeach
+				</tbody>
 			</table>
 		</div>
 	</div>
