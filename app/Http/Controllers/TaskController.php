@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Task;
+use App\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -22,7 +24,19 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::all()->where('status', 'pending');
+        return view('tasks.tasks', compact('tasks'));
+    }
+
+    public function mytasks()
+    {
+        $tasks = Task::all()->where('status', 'pending')->where('employee_id', Auth::user()->id);
+        return view('tasks.tasks', compact('tasks'));
+    }
+
+    public function completed()
+    {
+        $tasks = Task::all()->where('status', 'completed');
         return view('tasks.tasks', compact('tasks'));
     }
 
@@ -33,7 +47,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create');
+        $employees = Employee::pluck('name', 'id');
+        return view('tasks.create', compact('employees'));
     }
 
     /**
@@ -68,7 +83,9 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task=Task::findOrFail($id);
+        $employees = Employee::pluck('name', 'id');
+        return view('tasks.edit', compact('employees', 'task'));
     }
 
     /**
@@ -80,7 +97,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task=Task::findOrFail($id);
+        $input= $request->all();
+        $task->update($input);
+        return redirect()->back();
     }
 
     /**

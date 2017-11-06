@@ -11,17 +11,26 @@
 					<th>Sl.</th>
 					<th>Task Name</th>
 					<th>Description</th>
+					<th>Due Date</th>
 					<th>Assigned To</th>
 					<th>Status</th>
+					<th colspan="3">Action</th>
 				</thead>
 				<tbody>
 					@foreach($tasks as $task)
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>{{$task->id}}</td>
+						<td>{{$task->name}}</td>
+						<td>{{$task->description}}</td>
+						<td>{{$task->due_date}}</td>
+						<td>{{$task->employee->name}}</td>
+						<td>{{$task->status}}</td>
+						<td><a href="tasks/{{$task->id}}/show"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+						<td><a href="tasks/{{$task->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+                            <td><a href="#" onclick="return confirm('are you sure?')">
+                                {!! Form::open(['method'=> 'DELETE', 'route'=>['tasks.destroy', $task->id]]) !!}
+                                {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
+                                {!! Form::close() !!}</a></td>
 					</tr>
 					@endforeach
 				</tbody>

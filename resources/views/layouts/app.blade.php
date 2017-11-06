@@ -88,6 +88,16 @@
                                 <li><a href="{{url('tasks')}}">Tasks</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        Tasks <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{url('tasks')}}">Tasks</a></li>
+                                        <li><a href="{{url('mytasks')}}">My Tasks</a></li>
+                                        <li><a href="{{url('completedtasks')}}">Completed Tasks</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Expenses <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" role="menu">

@@ -7,7 +7,7 @@
 	</div>
 	<div class="panel-body">
 		<div class="row">
-			{!! Form::open(['route'=>'tasks.store', 'files'=> true]) !!}
+			{!! Form::model($task, ['method'=>'patch', 'action'=>['TaskController@update', $task], 'files'=> true]) !!}
 				<div class="form-group col-sm-6">
 					{!! Form::label('name', ' Task Name', ['class'=>'label']) !!}
 					{!! Form::text('name', null, ['required', 'class'=>'form-control', 'placeholder'=> 'Enter Task Name', 'id'=> 'name']) !!}

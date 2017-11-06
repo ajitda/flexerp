@@ -18,6 +18,14 @@ body .btn-primary {
     color: #FFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
+.label{
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+.task-submit{
+    margin-top: 20px;
+}
 /*----Landing Page style----*/
 .links{
     font-size: 30px;

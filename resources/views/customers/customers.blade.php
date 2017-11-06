@@ -33,7 +33,7 @@
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['customers.destroy', $customer->id]]) !!}
                                 {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
-                                {!! Form::close() !!}</a>
+                                {!! Form::close() !!}</a></td>
                     </tr>
                         @endforeach
                     </tbody>

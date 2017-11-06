@@ -51,7 +51,12 @@ Route::resource('/expensecategories', 'ExpenseCategoryController');
 Route::resource('/expenses', 'ExpenseController');
 Route::get('/getexpenselist', 'ExpenseController@getExpenseList');
 Route::resource('/loans', 'LoanController');
+
 Route::resource('/tasks', 'TaskController');
+Route::get('/mytasks', 'TaskController@mytasks');
+Route::get('/completedtasks', 'TaskController@completed');
+
+
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
