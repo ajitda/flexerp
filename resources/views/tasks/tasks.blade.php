@@ -14,18 +14,17 @@
 					<th>Due Date</th>
 					<th>Assigned To</th>
 					<th>Status</th>
-					<th colspan="3">Action</th>
+					<th colspan="2">Action</th>
 				</thead>
 				<tbody>
 					@foreach($tasks as $task)
 					<tr>
 						<td>{{$task->id}}</td>
-						<td>{{$task->name}}</td>
+						<td><a href="tasks/{{$task->id}}/show">{{$task->name}}</a></td>
 						<td>{{$task->description}}</td>
 						<td>{{$task->due_date}}</td>
 						<td>{{$task->employee->name}}</td>
 						<td>{{$task->status}}</td>
-						<td><a href="tasks/{{$task->id}}/show"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 						<td><a href="tasks/{{$task->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['tasks.destroy', $task->id]]) !!}

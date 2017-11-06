@@ -2,7 +2,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h1>Create a task</h1>
+			<h1>Edit task</h1>
 		</div>
 	</div>
 	<div class="panel-body">
@@ -28,7 +28,7 @@
 					{!! Form::select('employee_id', $employees, null, ['required', 'class'=>'form-control']) !!}
 				</div>
 				<div class="form-group col-md-2">
-					{!! Form::submit('Create Task', ['class'=> 'btn btn-primary task-submit']) !!}
+					{!! Form::submit('Update Task', ['class'=> 'btn btn-primary task-submit']) !!}
 				</div>
 			{!! Form::close() !!}
 		</div>
