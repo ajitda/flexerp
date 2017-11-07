@@ -10,7 +10,7 @@
 				<thead>
 					<th>Sl.</th>
 					<th>Task Name</th>
-					<th width="350" class="task_desc">Description</th>
+					<th width="350" >Description</th>
 					<th>Due Date</th>
 					<th>Assigned To</th>
 					<th>Status</th>
@@ -21,7 +21,7 @@
 					<tr>
 						<td>{{$task->id}}</td>
 						<td><a href="tasks/{{$task->id}}">{{$task->name}}</a></td>
-						<td>{{$task->description}}</td>
+						<td class="task-desc">{{$task->description}}</td>
 						<td>{{$task->due_date}}</td>
 						<td>{{$task->employee->name}}</td>
 						<td>{{$task->status}}</td>
