@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group col-sm-3">
 					{!! Form::label('status', 'Select a status', ['class'=>'label']) !!}
-					{!! Form::select('status', ['pending'=> 'Pending', 'completed'=> 'Completed', 'later'=>'Do Later'], 'pending', ['required', 'class'=>'form-control']) !!}
+					{!! Form::select('status', ['pending'=> 'Pending', 'completed'=> 'Completed', 'later'=>'Do Later'], null, ['required', 'class'=>'form-control']) !!}
 				</div>
 				<div class="form-group col-sm-12">
 					{!! Form::textarea('description', null, ['required', 'class'=>'form-control address', 'placeholder'=> 'Enter Task Description']) !!}

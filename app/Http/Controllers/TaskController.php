@@ -39,7 +39,7 @@ class TaskController extends Controller
         $tasks = Task::all()->where('status', 'completed');
         return view('tasks.tasks', compact('tasks'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -73,6 +73,8 @@ class TaskController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
+        //return view('tasks.task', compact('task'));
+        //dd($task);
         return view('tasks.task', compact('task'));
     }
 

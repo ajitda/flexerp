@@ -135,7 +135,7 @@ a.navbar-brand span {
     border-radius: 0px;
 }
 .create-button span{
-    font-size:50px;
+    font-size:35px;
 }
 .img-responsive.list-img{
     width:50px;
@@ -215,4 +215,7 @@ div#app1 {
 .chat-log {
     height: 500px;
     overflow: auto;
+}
+.completed-btn{
+    margin-top: 20px;
 }
