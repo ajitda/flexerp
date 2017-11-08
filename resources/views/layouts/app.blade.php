@@ -30,7 +30,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
                         FLEX<span>ERP</span>
@@ -114,6 +113,7 @@
                                         <li><a href="{{url('ordercat')}}">Order Category</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="{{url('chat')}}">Chatroom</a></li>
                             </ul>
                         </div>
                     </div>

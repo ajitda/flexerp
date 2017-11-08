@@ -9,6 +9,9 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 a{
+    color: #333;
+}
+a:hover, a:focus{
     color: #44c4c0;
 }
 pre {
@@ -225,4 +228,9 @@ div#app1 {
 }
 .completed-btn{
     margin-top: 20px;
+}
+/*----task lists style--*/
+.task-lists b{
+    font-size: 15px;
+    font-weight: 700;
 }

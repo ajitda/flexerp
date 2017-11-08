@@ -6,11 +6,10 @@
 
 		</div>
 		<div class="panel-body">
-			<table class="table table-bordered table-striped table-hover">
+			<table class="table table-bordered table-striped table-hover task-lists">
 				<thead>
 					<th>Sl.</th>
 					<th>Task Name</th>
-					<th width="350" >Description</th>
 					<th>Due Date</th>
 					<th>Assigned To</th>
 					<th>Status</th>
@@ -20,8 +19,7 @@
 					@foreach($tasks as $task)
 					<tr>
 						<td>{{$task->id}}</td>
-						<td><a href="tasks/{{$task->id}}">{{$task->name}}</a></td>
-						<td class="task-desc">{{$task->description}}</td>
+						<td><b><a href="tasks/{{$task->id}}">{{$task->name}}</a></b></td>
 						<td>{{$task->due_date}}</td>
 						<td>{{$task->employee->name}}</td>
 						<td>{{$task->status}}</td>
