@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	<div class="panel-body">
-		<p>{{$task->description}}</p>
+		<pre>{{$task->description}}</pre>
 	</div>
 </div>
 @endsection

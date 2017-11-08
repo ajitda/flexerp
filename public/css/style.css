@@ -11,6 +11,13 @@ body {
 a{
     color: #44c4c0;
 }
+pre {
+    font-size: 15px;
+    line-height: 1.6;
+    background-color: transparent;
+    border: 0px solid #ccc;
+    font-family: inherit;
+}
 body .btn-primary {
     border-color: #44c4c0;
     background-color: #44c4c0;
