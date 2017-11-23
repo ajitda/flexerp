@@ -6,6 +6,7 @@ use App\Course;
 use App\Expense;
 use App\Loan;
 use App\Order;
+use App\Enrolement;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,7 +34,7 @@ class HomeController extends Controller
         $expense_qty = Expense::count('payment');
         $total_loan = Loan::sum('total_amount');
         $others= Order::where("order_cat_id", 3)->sum('payment');
-        $total_income = Order::sum('payment') - $others;
+        $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
         return view('home', compact('orders', 'total_expense', 'total_income', 'total_loan', 'expense_qty'));
     }
 
