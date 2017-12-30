@@ -34,8 +34,9 @@ class HomeController extends Controller
         $expense_qty = Expense::count('payment');
         $total_loan = Loan::sum('total_amount');
         $others= Order::where("order_cat_id", 3)->sum('payment');
+        $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
         $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
-        return view('home', compact('orders', 'total_expense', 'total_income', 'total_loan', 'expense_qty'));
+        return view('home', compact('orders', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income'));
     }
 
     public function search($searchkey)

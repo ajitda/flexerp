@@ -139,7 +139,7 @@ class OrderController extends Controller
         $order->reference_id = $request->reference_id;
         $order->user_id = Auth::user()->id;
         $order->update();
-        return redirect('orders');
+        return redirect()->back();
     }
     /**
      * Remove the specified resource from storage.

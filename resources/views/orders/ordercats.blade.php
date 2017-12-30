@@ -79,7 +79,7 @@
                                                 {{$order->reference->name}}</a>
                                             @endif
                                         </td>
-                                        <td><a href="orders/{{$order->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                        <td><a href="{{route('orders.edit', $order->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
                                         <td><a href="#" onclick="return confirm('are you sure?')">
                                             {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id]]) !!}
                                             {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}

@@ -110,11 +110,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-lg-6 col-xl-6">
-                            <section class="panel panel-featured-left panel-featured-tertiary">
+                            <section class="panel panel-featured-left panel-featured-quaternary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
                                         <div class="widget-summary-col widget-summary-col-icon">
-                                            <div class="summary-icon bg-tertiary">
+                                            <div class="summary-icon bg-quaternary">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </div>
                                         </div>
@@ -123,6 +123,56 @@
                                                 <h4 class="title">Total Orders/Payments</h4>
                                                 <div class="info">
                                                     <strong class="amount">{{ $orders }}</strong>
+                                                </div>
+                                            </div>
+                                            <div class="summary-footer">
+                                                <a class="text-muted text-uppercase">(statement)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-md-12 col-lg-6 col-xl-6">
+                            <section class="panel panel-featured-left panel-featured-tertiary">
+                                <div class="panel-body">
+                                    <div class="widget-summary">
+                                        <div class="widget-summary-col widget-summary-col-icon">
+                                            <div class="summary-icon bg-tertiary">
+                                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="widget-summary-col">
+                                            <div class="summary">
+                                                <h4 class="title">Total Earning</h4>
+                                                <div class="info">
+                                                    <strong class="amount">Tk. {{ $total_income }}</strong>
+                                                </div>
+                                            </div>
+                                            <div class="summary-footer">
+                                                <a class="text-muted text-uppercase">(report)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 col-xl-6">
+                            <section class="panel panel-featured-left panel-featured-tertiary">
+                                <div class="panel-body">
+                                    <div class="widget-summary">
+                                        <div class="widget-summary-col widget-summary-col-icon">
+                                            <div class="summary-icon bg-tertiary">
+                                                <i class="fa fa-university" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="widget-summary-col">
+                                            <div class="summary">
+                                                <h4 class="title">Earning of FlexibleIt</h4>
+                                                <div class="info">
+                                                    <strong class="amount">{{ $total_income - $individual_income }}</strong>
                                                 </div>
                                             </div>
                                             <div class="summary-footer">
@@ -144,9 +194,9 @@
                                         </div>
                                         <div class="widget-summary-col">
                                             <div class="summary">
-                                                <h4 class="title">Total Earning</h4>
+                                                <h4 class="title">Others Earning</h4>
                                                 <div class="info">
-                                                    <strong class="amount">Tk. {{ $total_income }}</strong>
+                                                    <strong class="amount">Tk. {{ $individual_income }}</strong>
                                                 </div>
                                             </div>
                                             <div class="summary-footer">
