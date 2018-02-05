@@ -40,6 +40,10 @@
                         </div>
                     </div>
                     <div class="form-group col-md-3">
+                        <label for="payment">Payment</label>
+                        {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'Payment', 'ng-model'=>'payment')) !!}
+                    </div>
+                    <div class="form-group col-md-3">
                         <label for="payment_date">Select a Payment Date</label>
                         {!! Form::date('payment_date', null, array('required', 'id'=>'payment_date', 'class'=>'form-control', 'placeholder'=>'mm/dd/yyyy')) !!}
                     </div>

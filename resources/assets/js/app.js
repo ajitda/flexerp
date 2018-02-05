@@ -55,7 +55,7 @@ const app = new Vue({
 			this.messages = response.data
 		});
 
-		Echo.join('chatroom')
+		/*Echo.join('chatroom')
 			//.here()
 			//.joining()
 			//.leaving()
@@ -65,6 +65,6 @@ const app = new Vue({
 					message: e.message.message,
 					user: e.user.name
 				});
-			});
+			});*/
 	}
 });

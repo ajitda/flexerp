@@ -55,6 +55,7 @@ class LoanController extends Controller
         $installment = ($amount + ($amount * $interest)/100) / $installment_qty;
         $loan->installment = $installment;
         $loan->payment_date = $request->payment_date;
+        $loan->payment = $request->payment;
         $loan->total_amount = $installment * $installment_qty;
         $loan->expense_category_id = 6;
         $loan->user_id = Auth::user()->id;
@@ -103,6 +104,7 @@ class LoanController extends Controller
         $loan->installment = $installment;
         $loan->payment_date = $request->payment_date;
         $loan->total_amount = $installment * $installment_qty;
+        $loan->payment = $request->payment;
         $loan->user_id = Auth::user()->id;
         $loan->expense_category_id = 6;
         $loan->update();

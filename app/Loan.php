@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
 {
-    protected $fillable=['name', 'amount', 'interest', 'installment_qty', 'installment', 'payment_date', 'user_id', 'expense_category_id'];
+    protected $fillable=['name', 'amount', 'interest', 'installment_qty', 'installment', 'payment_date', 'payment', 'user_id', 'expense_category_id'];
 
     public function user()
     {

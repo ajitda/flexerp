@@ -120,9 +120,9 @@
                                         </div>
                                         <div class="widget-summary-col">
                                             <div class="summary">
-                                                <h4 class="title">Total Orders/Payments</h4>
+                                                <h4 class="title">Total Expenses</h4>
                                                 <div class="info">
-                                                    <strong class="amount">{{ $orders }}</strong>
+                                                    <strong class="amount">{{ $expenses }}</strong>
                                                 </div>
                                             </div>
                                             <div class="summary-footer">

@@ -30,13 +30,14 @@ class HomeController extends Controller
     {
         App::setlocale($lang);
         $orders = Order::count();
+        $expenses = Expense::count();
         $total_expense = Expense::sum('payment');
         $expense_qty = Expense::count('payment');
-        $total_loan = Loan::sum('total_amount');
+        $total_loan = Loan::sum('total_amount') - Loan::sum('payment');
         $others= Order::where("order_cat_id", 3)->sum('payment');
         $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
         $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
-        return view('home', compact('orders', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income'));
+        return view('home', compact('orders', 'expenses', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income'));
     }
 
     public function search($searchkey)

@@ -12,10 +12,11 @@
                         <th>Created At</th>
                         <th>Lender Name</th>
                         <th>Amount</th>
-                        <th>Interest Rate</th>
-                        <th>installment Qty</th>
+                        <th>Interest</th>
+                        <th>inst. Qty</th>
                         <th>installment</th>
-                        <th>Total Amount</th>
+                        <th>Total</th>
+                        <th>Payment</th>
                         <th>Payment Date</th>
                         <th>User</th>
                         <th colspan="2">Actions</th>
@@ -32,6 +33,7 @@
                             <td>{{$loan->installment_qty}}</td>
                             <td>{{$loan->installment}}</td>
                             <td>{{$loan->total_amount}}</td>
+                            <td>{{$loan->payment}}</td>
                             <td>{{$loan->payment_date}}</td>
                             <td><a href="loans/{{$loan->id}}/show">{{$loan->user->name}}</a></td>
                             <td><a href="loans/{{$loan->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>

@@ -64,6 +64,7 @@ class ExpenseController extends Controller
         $order->dues = $dues;
         $order->payment_type = $request->payment_type;
         $order->description = $request->description;
+        
         if(!empty($request->loan_id)){
             $loan_id = $order->loan_id = $request->loan_id;
 
@@ -71,6 +72,7 @@ class ExpenseController extends Controller
             $loan = Loan::findOrFail($loan_id);
             $loan->installment_qty = $loan->installment_qty - $qty;
             $loan->total_amount = $loan->total_amount - $payment;
+            $loan->payment = $loan->payment + $payment;
             $loan->update();
         }
 

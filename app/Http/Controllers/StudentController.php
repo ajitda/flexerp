@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Welcome;
 
 class StudentController extends Controller
 {
@@ -54,6 +55,9 @@ class StudentController extends Controller
         }
         $input['user_id'] = Auth::user()->id;
         Student::create($input);
+
+        \Mail::to($student)->send(new Welcome);
+
         return redirect('students');
     }
 
