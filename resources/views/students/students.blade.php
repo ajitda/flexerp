@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{$student->id}}</td>
                             <td>{{$student->created_at->format('d-m-Y')}}</td>
-                            <td><a href="students/{{$student->id}}/show">{{$student->name}}</a></td>
+                            <td><a href="{{route('students.show', $student->id)}}">{{$student->name}}</a></td>
                             <td>{{$student->fathers_name}}</td>
                             <td>{{$student->email}}</td>
                             <td>{{$student->mobile}}</td>

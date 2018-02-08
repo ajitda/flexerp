@@ -56,7 +56,7 @@ class StudentController extends Controller
         $input['user_id'] = Auth::user()->id;
         Student::create($input);
 
-        \Mail::to($student)->send(new Welcome);
+        /*\Mail::to($student)->send(new Welcome);*/
 
         return redirect('students');
     }
@@ -78,7 +78,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::findOrFail($id);
+        return view('students.show', compact('student'));
     }
 
     /**
