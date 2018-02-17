@@ -16,6 +16,7 @@
                         <th>Price</th>
                         <th>Discount</th>
                         <th>Total</th>
+                        <th>Payment</th>
                         <th colspan="2">Actions</th>
                     </thead>
                     <tbody>
@@ -29,6 +30,7 @@
                             <td>{{$enrolement->price}}</td>
                             <td>{{$enrolement->discount}}</td>
                             <td>{{$enrolement->total}}</td>
+                            <td>{{$enrolement->payment}}</td>
                             <td><a href="enrolements/{{$enrolement->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
                             <td><a href="#" onclick="return confirm('are you sure?')">
                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['enrolements.destroy', $enrolement->id]]) !!}

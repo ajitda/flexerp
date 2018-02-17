@@ -16,8 +16,6 @@
 				<p><b>Address:</b> {{$student->address}}</p>
 				<p><b>Mobile:</b> {{$student->mobile}}</p>
 			</div>
-
-
         </div>
     </div>
 @endsection
