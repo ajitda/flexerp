@@ -68,7 +68,7 @@
                                         <td>{{$expense->payment}}</td>
                                         <td>{{$expense->dues}}</td>
                                         <td><a href="expenses/{{$expense->id}}/show">{{$expense->employee->name}}</a></td>
-                                        <td><a href="expenses/{{$expense->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                        <td><a href="{{url('expenses/{$expense->id}/edit')}}"><span class="glyphicon glyphicon-edit"></span></a></td>
                                         <td><a href="#" onclick="return confirm('are you sure?')">
                                                 {!! Form::open(['method'=> 'DELETE', 'route'=>['expenses.destroy', $expense->id]]) !!}
                                                 {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}

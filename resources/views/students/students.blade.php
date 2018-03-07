@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Students List<a href="students/create" class="pull-right create-button"><span class="glyphicon glyphicon-plus"></span></a></h1>
+                <h1>Students List<a href="students/create" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</a></h1>
             </div>
             <div class="panel-body">
                 <table class="table table-bordered table-striped table-hover">
