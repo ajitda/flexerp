@@ -29,11 +29,21 @@
                             <td>{{$student->mobile}}</td>
                             <td><img class="img-responsive list-img" src="{{$student->image}}" alt="" /></td>
                             <td>{{$student->user->name}}</td>
-                            <td><a href="students/{{$student->id}}/edit"><span class="glyphicon glyphicon-edit"></span></a></td>
-                            <td><a href="#" onclick="return confirm('are you sure?')">
-                                {!! Form::open(['method'=> 'DELETE', 'route'=>['students.destroy', $student->id]]) !!}
-                                {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
-                                {!! Form::close() !!}</a>
+                            <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-list"></i> <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="students/{{$student->id}}/edit"><i class="fa fa-pencil"></i> Edit</a></li>
+                                    <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
+                                        <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['students.destroy', $student->id], 'class'=>'form-inline']) !!}
+                                        {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
+                                        {!! Form::close() !!}</a></li>
+                                </ul>
+                                    </div>
+                            </td>
                     </tr>
                         @endforeach
                     </tbody>

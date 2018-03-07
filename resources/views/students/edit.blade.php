@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Edit Student</h1>
+                <h1>Edit Student<a href="{{route('students.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
             <div class="panel-body">
                 <div class="row">

@@ -234,3 +234,14 @@ div#app1 {
     font-size: 15px;
     font-weight: 700;
 }
+
+.delete-form i.fa.fa-trash-o {
+    float: left;
+    display: inline;
+    padding-top: 5px;
+}
+.delete-form input.delete-btn {
+    display: inline;
+    border: none;
+    background: transparent;
+}

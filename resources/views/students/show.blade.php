@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Student Info</h1>
+                <h1>Student Info<a href="{{route('students.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
 			<div class="panel-body">
 				<h3>Name : {{$student->name}}</h3>
