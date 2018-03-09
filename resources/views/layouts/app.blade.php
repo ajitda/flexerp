@@ -15,6 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+    @yield('css-plugins');
+    
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>

@@ -1,14 +1,34 @@
 @extends('layouts.app')
-
+@section('css-plugins')
+<link href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" rel="stylesheet" type="text/css"/>
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-9 col-md-offset-1">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading dashboard-heading">{{ trans('header.dashboard', ['name'=>'Flexerp'])}}</div>
                 <div class="panel-body dashboard-body">
                     <div class="row">
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-6">
+                            <section class="panel panel-featured-left panel-featured-primary">
+                                <div class="panel-body">
+                                    <label class="label label-success">Total Earning And Costing of this week</label>
+                                    <div id="area-chart" ></div>
+                                    </div>
+                            </section>
+                        </div>
+                        <div class="col-md-6">
+                            <section class="panel panel-featured-left panel-featured-primary">
+                                <div class="panel-body">
+                                    <label class="label label-success">Total Earning And Costing of this week</label>
+                                    <div id="pie-chart" ></div>
+                                    </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -33,7 +53,7 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-secondary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -57,9 +77,7 @@
                                 </div>
                             </section>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-tertiary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -83,7 +101,9 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-quaternary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -107,9 +127,7 @@
                                 </div>
                             </section>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-quaternary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -133,7 +151,7 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-tertiary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -159,7 +177,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-tertiary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -183,7 +203,7 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-quaternary">
                                 <div class="panel-body">
                                     <div class="widget-summary">
@@ -216,4 +236,54 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+<script>
+    var data = [
+      { y: '2014', a: 50, b: 90},
+      { y: '2015', a: 65,  b: 75},
+      { y: '2016', a: 50,  b: 50},
+      { y: '2017', a: 75,  b: 60},
+      { y: '2018', a: 80,  b: 65},
+      { y: '2019', a: 90,  b: 70},
+      { y: '2020', a: 100, b: 75},
+      { y: '2021', a: 115, b: 75},
+      { y: '2022', a: 120, b: 85},
+      { y: '2023', a: 145, b: 85},
+      { y: '2024', a: 160, b: 95}
+    ],
+    config = {
+      data: data,
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['Total Income', 'Total Outcome'],
+      fillOpacity: 0.6,
+      hideHover: 'auto',
+      behaveLikeLine: true,
+      resize: true,
+      pointFillColors:['#ffffff'],
+      pointStrokeColors: ['black'],
+      lineColors:['gray','red']
+  };
+config.element = 'area-chart';
+Morris.Area(config);
+// config.element = 'line-chart';
+// Morris.Line(config);
+// config.element = 'bar-chart';
+// Morris.Bar(config);
+// config.element = 'stacked';
+// config.stacked = true;
+// Morris.Bar(config);
+Morris.Donut({
+  element: 'pie-chart',
+  data: [
+    {label: "Friends", value: 30},
+    {label: "Allies", value: 15},
+    {label: "Enemies", value: 45},
+    {label: "Neutral", value: 10}
+  ]
+});
+</script>
 @endsection

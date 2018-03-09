@@ -81,7 +81,10 @@
                                         <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id], 'class'=>'form-inline']) !!}
                                         {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
                                         {!! Form::close() !!}</a></li>
-                                </ul>
+
+                                        </ul>
+                                    </div>
+                                </td>
                                     </div>                   </tr>
                         @endforeach
                     </tbody>
