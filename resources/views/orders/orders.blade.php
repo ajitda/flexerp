@@ -69,7 +69,8 @@
                                 @endif</a>
                             </td>
                             
-                            <td><div class="btn-group">
+                            <td>
+                                <div class="btn-group">
                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-list"></i> <span class="caret"></span>
                                     <span class="sr-only">Toggle Dropdown</span>
