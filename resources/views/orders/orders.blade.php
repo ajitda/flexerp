@@ -31,7 +31,7 @@
             </div>
 
             <div class="panel-body" id="order-list">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
                         <th>ID</th>
                         <th>Created At</th>
@@ -85,8 +85,8 @@
 
                                         </ul>
                                     </div>
-                                </td>
-                                    </div>                   </tr>
+                                </td>                  
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

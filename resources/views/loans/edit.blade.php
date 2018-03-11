@@ -5,7 +5,7 @@
     <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Edit Loan</h1>
+                <h1>Edit Loan<a href="{{route('loans.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
                 <div class="row">

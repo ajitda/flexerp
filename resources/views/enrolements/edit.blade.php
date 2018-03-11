@@ -5,10 +5,10 @@
     <div class="container" ng-app="automateApp">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Edit Course Enrolement Form</h1>
+                <h1>Edit Course Enrolement Form<a href="{{route('enrolements.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
-                <div class="row">
+                <div class="row"><a href="{{route('loans.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a>
                     {!! Form::model($enrolement, ['method'=>'PATCH', 'action'=>['EnrolementController@update', $enrolement], 'files'=>true]) !!}
                     <div class="form-group col-md-4">
                         <label for="student">Select Student Name</label>
