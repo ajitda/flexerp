@@ -21,104 +21,14 @@
 </head>
 <body>
     <div id="app1">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        FLEX<span>ERP</span>
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('partials.navbar')
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
                      @if (Auth::guest())
                      <div class="col-sm-2"></div>
                      @else
-                    <div class="col-sm-2 sidebar-section">
-                        <div class="sidebar">
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{url('students')}}">Students</a></li>
-                                <li><a href="{{url('courses')}}">Courses</a></li>
-                                <li><a href="{{url('enrolements')}}">Course Enrolements</a></li>
-                                <li><a href="{{url('employees')}}">Employees</a></li>
-                                <li><a href="{{url('references')}}">References</a></li>
-                                <li><a href="{{url('customers')}}">Customers</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Tasks <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{url('tasks')}}">Tasks</a></li>
-                                        <li><a href="{{url('mytasks')}}">My Tasks</a></li>
-                                        <li><a href="{{url('completedtasks')}}">Completed Tasks</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Expenses <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{url('loans')}}">Loans</a></li>
-                                        <li><a href="{{url('expenses')}}">Expenses</a></li>
-                                        <li><a href="{{url('expensecategories')}}">Expense Category</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Orders/Payment <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{url('orders')}}">Orders/Payments</a></li>
-                                        <li><a href="{{url('ordercat')}}">Order Category</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{url('chat')}}">Chatroom</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @include('partials.sidebar')
                     @endif
                     <div class="col-sm-10">
                         <div class="content">
