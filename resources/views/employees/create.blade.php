@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Employee Registration Form</h1>
+                <h1>Employee Registration Form<a href="{{route('employees.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
             <div class="panel-body">
                 <div class="row">
