@@ -32,7 +32,13 @@ Auth::routes();
 
 Route::get('/search/{searchkey}', 'HomeController@search');
 
+//for testing
 Route::get('/home/{lang?}', 'HomeController@index')->name('home');
+//Route::get('/incomeexpense', 'HomeController@incomeExpenseChart')->name('home.incomeexpense');
+
+
+
+
 Route::resource('/students', 'StudentController');
 Route::resource('/courses', 'CourseController');
 Route::resource('/enrolements', 'EnrolementController');
@@ -86,3 +92,5 @@ Route::post('/messages', function(){
 	return ['status'=> 'OK'];
 	//return App\Message::with('user')->get();
 })->middleware('auth');
+
+
