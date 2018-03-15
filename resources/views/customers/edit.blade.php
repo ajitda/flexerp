@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Edit Customer Registration Form</h1>
+                <h1>Edit Customer Registration Form<a href="{{route('customers.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>List</a></h1>
             </div>
             <div class="panel-body">
                 <div class="row">
