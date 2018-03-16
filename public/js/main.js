@@ -19,4 +19,5 @@ automateApp.controller('automateController', ['$scope', '$http', function($scope
                 return  ($scope.amount * $scope.interest)/100;
         };
 
-}])
+}]);
+

@@ -111,6 +111,11 @@ a.navbar-brand span {
 .sidebar .nav > li > a {
     color: #333;
 }
+.sidebar .nav li a:hover, .sidebar .nav li a.active, .sidebar .nav li a:focus, .sidebar .nav .open{
+    text-decoration: none;
+    background-color: #44c4c0;
+    color:#fff;
+}
 .sidebar-section {
     margin-left: 0px;
     background: rgba(255,255,255,0.9);
