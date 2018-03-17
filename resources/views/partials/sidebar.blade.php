@@ -47,7 +47,7 @@
                 </ul>
             </li>
             <li><a href="{{url('chat')}}"  class="{{(Request::is('chat')) ? 
-                         'active' : ''}}><i class="fa fa-comments"></i>&nbsp; Chatroom</a></li>
+                         'active' : ''}}"><i class="fa fa-comments"></i>&nbsp; Chatroom</a></li>
         </ul>
     </div>
 </div>
