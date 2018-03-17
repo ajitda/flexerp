@@ -14,14 +14,15 @@
                          'active' : ''}}"><i class="fa fa-link"></i>&nbsp; References</a></li>
             <li><a href="{{url('customers')}}"  class="{{(Request::is('customers')) ? 
                          'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Customers</a></li>
-            <li class="dropdown">
+            <li class="dropdown {{(Request::is('tasks' || 'task')) ? 
+                         'open' : ''}}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i>&nbsp; Tasks &nbsp;<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{url('tasks')}}"  class="{{(Request::is('tasks')) ? 
                          'active' : ''}}"><i class="fa fa-angle-double-right"></i>&nbsp; Tasks</a></li>
-                    <li><a href="{{url('mytasks')}}"  class="{{(Request::is('mytasks')) ? 
+                    <li><a href="{{url('/task/mytasks')}}"  class="{{(Request::is('task/mytasks')) ? 
                          'active' : ''}}"><i class="fa fa-angle-double-right"></i>&nbsp; My Tasks</a></li>
-                    <li><a href="{{url('completedtasks')}}"  class="{{(Request::is('completedtasks')) ? 
+                    <li><a href="{{url('/task/completedtasks')}}"  class="{{(Request::is('task/completedtasks')) ? 
                          'active' : ''}}"><i class="fa fa-angle-double-right"></i>&nbsp; Completed Tasks</a></li>
                 </ul>
             </li>
