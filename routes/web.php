@@ -59,8 +59,8 @@ Route::get('/getexpenselist', 'ExpenseController@getExpenseList');
 Route::resource('/loans', 'LoanController');
 
 Route::resource('/tasks', 'TaskController');
-Route::get('/mytasks', 'TaskController@mytasks');
-Route::get('/completedtasks', 'TaskController@completed');
+Route::get('/task/mytasks', 'TaskController@mytasks');
+Route::get('/task/completedtasks', 'TaskController@completed');
 
 
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
