@@ -2,7 +2,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h1>Create a task</h1>
+			<h1>Create a task<a href="{{route('tasks.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
 		</div>
 	</div>
 	<div class="panel-body">
