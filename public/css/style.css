@@ -111,7 +111,7 @@ a.navbar-brand span {
 .sidebar .nav > li > a {
     color: #333;
 }
-.sidebar .nav li a:hover, .sidebar .nav li a.active, .sidebar .nav li a:focus, .sidebar .nav .open{
+.sidebar .nav li a:hover, .sidebar .nav li a.active, .sidebar .nav li a:focus, .sidebar .nav li.open.active a.dropdown-toggle{
     text-decoration: none;
     background-color: #44c4c0;
     color:#fff;

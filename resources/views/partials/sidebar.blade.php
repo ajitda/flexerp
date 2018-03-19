@@ -15,7 +15,7 @@
             <li><a href="{{url('customers')}}"  class="{{(Request::is('customers')) ? 
                          'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Customers</a></li>
             <li class="dropdown {{(Request::is('tasks' || 'task')) ? 
-                         'open' : ''}}">
+                         'open active' : ''}}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i>&nbsp; Tasks &nbsp;<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{url('tasks')}}"  class="{{(Request::is('tasks')) ? 
