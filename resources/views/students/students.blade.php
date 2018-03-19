@@ -40,9 +40,10 @@
                                     <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
                                         <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['students.destroy', $student->id], 'class'=>'form-inline']) !!}
                                         {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
-                                        {!! Form::close() !!}</a></li>
+                                        {!! Form::close() !!}</a>
+                                    </li>
                                 </ul>
-                                    </div>
+                            </div>
                             </td>
                     </tr>
                         @endforeach
