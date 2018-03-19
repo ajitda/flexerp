@@ -71,18 +71,20 @@ class HomeController extends Controller
         foreach ($daysOfWeek as $day) {
             $weeklyincome = "0";
             $weeklyexpense = "0";
-            foreach ($incomes as $income){
-                    $income_date = $income->created_at->format('Y-m-d');
-                  if($income_date == $day){  
-                    $weeklyincome = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment'); 
-                  } 
-            }
-            foreach ($expenses as $expense){
-                $expense_date = $expense->created_at->format('Y-m-d');
-                  if($expense_date == $day){  
+            //foreach ($incomes as $income){
+                    //$income_date = $income->created_at->format('Y-m-d');
+                  //if($income_date == $day){  
+                    $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+                    $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+                    $weeklyincome = $enrolement + $order; 
+                  //} 
+            //}
+            // foreach ($expenses as $expense){
+            //     $expense_date = $expense->created_at->format('Y-m-d');
+            //       if($expense_date == $day){  
                     $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-                  } 
-            }
+            //       } 
+            // }
             $chart = [
                 'y' => $day,
                 'a' => $weeklyexpense,
@@ -90,7 +92,7 @@ class HomeController extends Controller
             ];
             $chartArray[] =  $chart;
         }
-        
+        //dd($chartArray);
        return $chartArray;   
                 
     }
