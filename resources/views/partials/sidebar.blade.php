@@ -26,7 +26,8 @@
                          'active' : ''}}"><i class="fa fa-angle-double-right"></i>&nbsp; Completed Tasks</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{(Request::is('loans' || 'expenes' || 'expensecategories')) ? 
+                         'open active' : ''}}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-credit-card"></i>&nbsp; Expenses <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{url('loans')}}"  class="{{(Request::is('loans')) ? 
