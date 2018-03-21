@@ -38,7 +38,6 @@ class HomeController extends Controller
         $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
         $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
         $incomeexpensechart = $this->incomeExpenseChart();
-        
         return view('home', compact('orders', 'expenses', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income', 'incomeexpensechart'));
     }
 
@@ -50,13 +49,21 @@ class HomeController extends Controller
 
     private function getDatesOfWeek(){
         $days = array();
-        $days[] = date("Y-m-d",strtotime('this week monday'));
-        $days[] = date("Y-m-d",strtotime('this week tuesday'));
-        $days[] = date("Y-m-d",strtotime('this week wednesday'));
-        $days[] = date("Y-m-d",strtotime('this week thursday'));
-        $days[] = date("Y-m-d",strtotime('this week friday'));
-        $days[] = date("Y-m-d",strtotime('this week saturday'));
-        $days[] = date("Y-m-d",strtotime('this week sunday'));
+        $days[] = date("Y-m-d",strtotime('-14 days'));
+        $days[] = date("Y-m-d",strtotime('-13 days'));
+        $days[] = date("Y-m-d",strtotime('-12 days'));
+        $days[] = date("Y-m-d",strtotime('-11 days'));
+        $days[] = date("Y-m-d",strtotime('-10 days'));
+        $days[] = date("Y-m-d",strtotime('-9 days'));
+        $days[] = date("Y-m-d",strtotime('-8 days'));
+        $days[] = date("Y-m-d",strtotime('-7 days'));
+        $days[] = date("Y-m-d",strtotime('-6 days'));
+        $days[] = date("Y-m-d",strtotime('-5 days'));
+        $days[] = date("Y-m-d",strtotime('-4 days'));
+        $days[] = date("Y-m-d",strtotime('-3 days'));
+        $days[] = date("Y-m-d",strtotime('-2 days'));
+        $days[] = date("Y-m-d",strtotime('-1 days'));
+        $days[] = date("Y-m-d",strtotime('0 days'));
 
         return $days;
     }
@@ -66,25 +73,17 @@ class HomeController extends Controller
         $daysOfWeek = $this->getDatesOfWeek();
         $incomes = Order::whereBetween('created_at', [ $daysOfWeek[0].' 00:00:00', $daysOfWeek[6].' 23:59:59'])->get();
         $expenses = Expense::whereBetween('created_at', [ $daysOfWeek[0].' 00:00:00', $daysOfWeek[6].' 23:59:59'])->get();
-        //dd($expenses);
         $chartArray = array();
         foreach ($daysOfWeek as $day) {
             $weeklyincome = "0";
             $weeklyexpense = "0";
-            //foreach ($incomes as $income){
-                    //$income_date = $income->created_at->format('Y-m-d');
-                  //if($income_date == $day){  
-                    $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-                    $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-                    $weeklyincome = $enrolement + $order; 
-                  //} 
-            //}
-            // foreach ($expenses as $expense){
-            //     $expense_date = $expense->created_at->format('Y-m-d');
-            //       if($expense_date == $day){  
-                    $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-            //       } 
-            // }
+              
+            $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+            $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+            $weeklyincome = $enrolement + $order; 
+        
+            $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+           
             $chart = [
                 'y' => $day,
                 'a' => $weeklyexpense,
@@ -92,7 +91,6 @@ class HomeController extends Controller
             ];
             $chartArray[] =  $chart;
         }
-        //dd($chartArray);
        return $chartArray;   
                 
     }

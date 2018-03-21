@@ -10,7 +10,7 @@
                 <div class="panel-heading dashboard-heading">{{ trans('header.dashboard', ['name'=>'Flexerp'])}}</div>
                 <div class="panel-body dashboard-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
                                     <label class="label label-success">Total Earning And Expense of this week</label>
@@ -18,7 +18,7 @@
                                     </div>
                             </section>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
                                     <label class="label label-success">Total Earning And Costing of this week</label>
