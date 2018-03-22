@@ -265,13 +265,15 @@ Morris.Area(config);
 // config.element = 'stacked';
 // config.stacked = true;
 // Morris.Bar(config);
+var expense = '<?php echo $pieChart['expense']; ?>';
+var income = '<?php echo $pieChart['income']; ?>';
 Morris.Donut({
   element: 'pie-chart',
   data: [
-    {label: "Friends", value: 30},
-    {label: "Allies", value: 15},
-    {label: "Enemies", value: 45},
-    {label: "Neutral", value: 10}
+    {label: "Income", value: income},
+    {label: "Expense", value: expense},
+    // {label: "Enemies", value: 45},
+    // {label: "Neutral", value: 10}
   ]
 });
 </script>

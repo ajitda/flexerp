@@ -38,7 +38,9 @@ class HomeController extends Controller
         $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
         $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
         $incomeexpensechart = $this->incomeExpenseChart();
-        return view('home', compact('orders', 'expenses', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income', 'incomeexpensechart'));
+        $pieChart = $this->pieChart();
+        //dd($pieChart);
+        return view('home', compact('orders', 'expenses', 'total_expense', 'total_income', 'total_loan', 'expense_qty', 'individual_income', 'incomeexpensechart', 'pieChart'));
     }
 
     public function search($searchkey)
@@ -93,5 +95,19 @@ class HomeController extends Controller
         }
        return $chartArray;   
                 
+    }
+
+    public function pieChart()
+    {
+        $last_day = date("Y-m-d",strtotime('-29 days'));
+        $current_day = date("Y-m-d");
+        
+        $enrolement = Enrolement::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
+        $order = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
+        $monthlyincome = $enrolement + $order;
+        $monthlyexpense = Expense::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
+        $monthly =['income'=>$monthlyincome,'expense'=>$monthlyexpense];
+        return $monthly;
+        
     }
 }
