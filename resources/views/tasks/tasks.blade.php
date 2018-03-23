@@ -6,14 +6,16 @@
 
 		</div>
 		<div class="panel-body">
-			<table class="table table-bordered table-striped table-hover task-lists">
+			<table class="table table-striped table-hover task-lists">
 				<thead>
+					<tr>
 					<th>Sl.</th>
 					<th>Task Name</th>
 					<th>Due Date</th>
 					<th>Assigned To</th>
 					<th>Status</th>
 					<th colspan="2">Action</th>
+					</tr>
 				</thead>
 				<tbody>
 					@foreach($tasks as $task)
