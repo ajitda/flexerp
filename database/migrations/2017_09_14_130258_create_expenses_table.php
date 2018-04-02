@@ -17,7 +17,7 @@ class CreateExpensesTable extends Migration
             $table->increments('id');
             $table->integer('qty');
             $table->text('description');
-            $table->integer('unit_value');
+            $table->integer('unit_price');
             $table->integer('total');
             $table->integer('payment');
             $table->string('payment_type');

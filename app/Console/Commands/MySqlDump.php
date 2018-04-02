@@ -38,10 +38,10 @@ class MySqlDump extends Command
     public function handle()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $host = env('DB_HOST');
-        $username = env('DB_USERNAME');
-        $password = env('DB_PASSWORD');
-        $database = env('DB_DATABASE');
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "flex";
         
         $ts = time();
         $path = database_path() . $ds . 'backups' . $ds . date('Y', $ts) . $ds . date('m', $ts) . $ds . date('d', $ts) . $ds;

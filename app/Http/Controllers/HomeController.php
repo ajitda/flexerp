@@ -82,7 +82,8 @@ class HomeController extends Controller
               
             $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
             $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-            $weeklyincome = $enrolement + $order; 
+            $others = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
+            $weeklyincome = $enrolement + $order - $others; 
         
             $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
            
@@ -94,7 +95,6 @@ class HomeController extends Controller
             $chartArray[] =  $chart;
         }
        return $chartArray;   
-                
     }
 
     public function pieChart()
@@ -104,7 +104,9 @@ class HomeController extends Controller
         
         $enrolement = Enrolement::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
         $order = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
-        $monthlyincome = $enrolement + $order;
+        $others = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
+        
+        $monthlyincome = $enrolement + $order - $others;
         $monthlyexpense = Expense::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
         $monthly =['income'=>$monthlyincome,'expense'=>$monthlyexpense];
         return $monthly;

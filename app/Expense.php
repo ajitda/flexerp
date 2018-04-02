@@ -23,6 +23,10 @@ class Expense extends Model
     {
         return $this->belongsTo('App\Loan');
     }
+    public function expense_category()
+    {
+        return $this->belongsTo('App\ExpenseCategory');
+    }
     public function scopeSearch($query, $s)
     {
         return $query->where('description', 'like', '%'.$s.'%');

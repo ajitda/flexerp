@@ -48,7 +48,7 @@
                             <td>{{$expense->id}}</td>
                             <td>{{$expense->created_at->format('d-m-Y')}}</td>
                             <td>{{$expense->qty}}</td>
-                            <td>{{$expense->description}}</td>
+                            <td>{{$expense->expense_category->name.': '.$expense->description}}</td>
                             <td>{{$expense->total}}</td>
                             <td>{{$expense->payment}}</td>
                             <td>{{$expense->dues}}</td>
