@@ -42,7 +42,7 @@
                     </div>
                     @if(!empty($ordercategory))
                         <div class="panel-body" id="order-list">
-                            <table class="table table-bordered table-striped table-hover">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <th>ID</th>
                                     <th>Created At</th>
@@ -55,7 +55,7 @@
                                     <th>Employee</th>
                                     <th>Customer</th>
                                     <th>Reference</th>
-                                    <th colspan="2">Actions</th>
+                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
                                     @forelse($ordercategory->order as $order)
@@ -79,11 +79,23 @@
                                                 {{$order->reference->name}}</a>
                                             @endif
                                         </td>
-                                        <td><a href="{{route('orders.edit', $order->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                        <td><a href="#" onclick="return confirm('are you sure?')">
-                                            {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id]]) !!}
-                                            {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
-                                            {!! Form::close() !!}</a>
+                                        
+                                        <td><div class="btn-group">
+                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="fa fa-list"></i> <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="orders/{{$order->id}}/edit"><i class="fa fa-pencil"></i> Edit</a></li>
+                                                    
+                                                    <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
+                                                        <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id], 'class'=>'form-inline']) !!}
+                                                        {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
+                                                        {!! Form::close() !!}</a></li>
+
+                                                        </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                 
                                     @empty
