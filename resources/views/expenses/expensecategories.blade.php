@@ -42,7 +42,7 @@
                    
                         @if(!empty($expensecategory))
                          <div class="panel-body category_wise_expenses">
-                            <table class="table table-bordered table-striped table-hover">
+                            <table class="table table-striped table-hover">
                                 
                                 <thead>
                                     <tr>
@@ -54,7 +54,7 @@
                                         <th>payment</th>
                                         <th>dues</th>
                                         <th>Employee</th>
-                                        <th colspan="2">Actions</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,11 +68,23 @@
                                         <td>{{$expense->payment}}</td>
                                         <td>{{$expense->dues}}</td>
                                         <td><a href="expenses/{{$expense->id}}/show">{{$expense->employee->name}}</a></td>
-                                        <td><a href="{{url('expenses/{$expense->id}/edit')}}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                                        <td><a href="#" onclick="return confirm('are you sure?')">
-                                                {!! Form::open(['method'=> 'DELETE', 'route'=>['expenses.destroy', $expense->id]]) !!}
-                                                {!! Form::submit('X', ['class'=> 'btn btn-danger btn-small']) !!}
-                                                {!! Form::close() !!}</a></td>
+                                        
+                                        <td><div class="btn-group">
+                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                <i class="fa fa-list"></i> <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="{{route('expenses.edit', $expense->id)}}"><i class="fa fa-pencil"></i> Edit</a></li>
+                                                
+                                                <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
+                                                    <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['expenses.destroy', $expense->id], 'class'=>'form-inline']) !!}
+                                                    {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
+                                                    {!! Form::close() !!}</a></li>
+
+                                                    </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                     @empty
                                     <tr><td colspan="9" rowspan="" headers="">No Data</td> </tr>
