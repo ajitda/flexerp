@@ -6,7 +6,7 @@
                 <h1>Employees List<a href="employees/create" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</a></h1>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-striped table-hover">
                     <thead>
                         <th>ID</th>
                         <th>Created At</th>
