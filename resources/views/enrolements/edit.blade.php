@@ -8,7 +8,7 @@
                 <h1>Edit Course Enrolement Form<a href="{{route('enrolements.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
             <div class="panel-body" ng-controller="automateController">
-                <div class="row"><a href="{{route('loans.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a>
+                <div class="row">
                     {!! Form::model($enrolement, ['method'=>'PATCH', 'action'=>['EnrolementController@update', $enrolement], 'files'=>true]) !!}
                     <div class="form-group col-md-4">
                         <label for="student">Select Student Name</label>
@@ -27,7 +27,7 @@
                         <label for="price">Course Fee</label>
                         {!! Form::number('price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'course_fee', 'ng-init'=>"course_fee='$enrolement->price'")) !!}
                     </div>
-                    <div class="form-group col-md-4" >
+                    <div class="form-group col-md-2" >
                         <label for="discount">Discount</label>
                         {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount', 'ng-init'=>"discount='$enrolement->discount'")) !!}
                     </div>
