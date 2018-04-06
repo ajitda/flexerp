@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{$course->id}}</td>
                             <td>{{$course->created_at->format('d-m-Y')}}</td>
-                            <td><a href="courses/{{$course->id}}/show">{{$course->name}}</a></td>
+                            <td><a href="{{route('courses.show', $course->id)}}">{{$course->name}}</a></td>
                             <td>{{$course->duration}}</td>
                             <td>{{$course->code}}</td>
                             <td>{{$course->sessions}}</td>
