@@ -20,8 +20,8 @@ class CreateInvoicesTable extends Migration
             $table->decimal('dues',12,2);
             $table->date('payment_date');
             $table->date('sent_date');
-            $table->date('discount');
-            $table->date('terms');
+            $table->decimal('discount', 12,2);
+            $table->text('terms');
             $table->date('issue_date');
             $table->date('due_date');
             $table->integer('customer_id')->unsigned()->nullable();
