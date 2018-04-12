@@ -42,6 +42,7 @@ Route::get('/home/{lang?}', 'HomeController@index')->name('home');
 Route::resource('/students', 'StudentController');
 Route::resource('/courses', 'CourseController');
 Route::resource('/enrolements', 'EnrolementController');
+Route::resource('/invoices', 'InvoiceController');
 Route::get('/getcourse', 'EnrolementController@getCourse');
 
 
