@@ -14,6 +14,8 @@
                          'active' : ''}}"><i class="fa fa-link"></i>&nbsp; References</a></li>
             <li><a href="{{url('customers')}}"  class="{{(Request::is('customers')) ? 
                          'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Customers</a></li>
+            <li><a href="{{url('invoices')}}"  class="{{(Request::is('invoices')) ? 
+                         'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Invoices</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i>&nbsp; Tasks &nbsp;<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
