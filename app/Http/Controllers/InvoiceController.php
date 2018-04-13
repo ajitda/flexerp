@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Invoice;
 
 class InvoiceController extends Controller
 {
@@ -16,10 +17,14 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $invoices = Invoice::all();
-        return view('invoices.index', compact('invoices'));
+        $s = $request->input('s');
+        $invoices = Invoice::orderBy('id', 'desc')
+        ->search($s)
+        ->paginate(10);
+        return view('invoices.index', compact('invoices', 's'));
+        
     }
 
     /**
