@@ -51,6 +51,7 @@ class CourseController extends Controller
         }else{
             $input['image'] = 'img/default.jpg';
         }
+        
         $input['user_id'] = Auth::user()->id;
         Course::create($input);
         return redirect('courses');
@@ -103,6 +104,7 @@ class CourseController extends Controller
         if(isset($input['image'])){
             $input['image'] = $this->upload($input['image']);
         }
+       
         Course::findOrFail($id)->update($input);
         return redirect('courses');
     }

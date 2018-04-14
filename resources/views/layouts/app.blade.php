@@ -16,7 +16,6 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     @yield('css-plugins')
-    
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -37,13 +36,8 @@
                     </div>    
                 </div>
             </div>
-            
-            
-
         </div>
-        
     </div>
-
     <!-- Scripts -->
    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
@@ -52,7 +46,7 @@
     <script src="{{asset('js/jquery-ui.js')}}"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('scripts')

@@ -23,7 +23,8 @@
                         <h4>{{$course->code}} </h4>
                         <h4>Tk. {{$course->fees}} </h4>
                         <h4>{{$course->topics}} </h4>
-                        <pre>{{$course->description}} </pre>
+                        {!!$course->description!!}
+                        
                     </div>
                 </div>
                 
