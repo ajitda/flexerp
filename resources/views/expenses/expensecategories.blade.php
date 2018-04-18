@@ -39,7 +39,6 @@
                             {!! Form::close() !!}
                         </div>
                     </div>
-                   
                         @if(!empty($expensecategory))
                          <div class="panel-body category_wise_expenses">
                             <table class="table table-striped table-hover">
