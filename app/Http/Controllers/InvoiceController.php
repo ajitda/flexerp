@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Reference;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Invoice;
@@ -23,6 +25,7 @@ class InvoiceController extends Controller
         $invoices = Invoice::orderBy('id', 'desc')
         ->search($s)
         ->paginate(10);
+
         return view('invoices.index', compact('invoices', 's'));
         
     }
@@ -34,7 +37,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::pluck('name', 'id');
+        $references = Reference::pluck('name', 'id');
+        return view('invoices.create',compact('customers','references'));
     }
 
     /**
