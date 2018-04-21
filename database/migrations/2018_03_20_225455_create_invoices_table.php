@@ -19,7 +19,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('payment',12,2);
             $table->decimal('dues',12,2);
             $table->date('payment_date');
-            $table->date('sent_date');
+            $table->date('sent_date')->nullable();
             $table->decimal('discount', 12,2);
             $table->text('terms');
             $table->date('issue_date');
