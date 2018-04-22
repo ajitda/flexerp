@@ -36,7 +36,7 @@
                             {!! Form::number('unit_price', null, array('required', 'id'=>'price', 'class'=>'form-control', 'value'=>'', 'ng-model'=>'unit_price')) !!}
                         </div>
                         <div class="form-group col-md-3" >
-                            <label for="discount">Discount</label>
+                            <label for="discount">Discount/Costing</label>
                             {!! Form::number('discount', null, array('required', 'id'=>'discount', 'class'=>'form-control', 'placeholder'=>'', 'ng-model'=>'discount')) !!}
                         </div>
                         <div class="form-group col-md-3">
