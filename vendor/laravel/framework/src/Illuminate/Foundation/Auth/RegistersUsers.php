@@ -17,7 +17,12 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        if(Auth::user()){
+            return view('auth.register');
+        }
+        else{
+            return redirect('/home');
+        }
     }
 
     /**

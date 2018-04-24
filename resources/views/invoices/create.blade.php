@@ -12,11 +12,11 @@
                     {!! Form::open(['route'=>'enrolements.store', 'files'=>true]) !!}
                     <div class="form-group col-md-4">
                         <label for="student">Select Customer Name</label>
-                        {!! Form::select('customer_id', $customers, null, ['required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Student Name']) !!}
+                        {!! Form::select('customer_id', $customers, null, ['required', 'id'=>'student', 'class'=>'form-control', 'placeholder'=>'Select Customer Name']) !!}
                     </div>
                     <div class="form-group col-md-4">
                         <label for="course">Select References Name</label>
-                        {!! Form::select('reference_id', $references, null, [ 'id'=>'course',  'class'=>'form-control','placeholder'=>'Select Course Name']) !!}
+                        {!! Form::select('reference_id', $references, null, [ 'id'=>'course',  'class'=>'form-control','placeholder'=>'Select Reference Name']) !!}
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-md-4">
