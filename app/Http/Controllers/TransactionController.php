@@ -14,7 +14,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::latest()->get();
+        return view('admin.transactions.index', compact('transactions'));
     }
 
     /**
