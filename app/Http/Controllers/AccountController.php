@@ -42,7 +42,6 @@ class AccountController extends Controller
         $input['user_id']= Auth::user()->id;
         $account = Account::create($input);
 
-        //return redirect()->back();
         return redirect()->route('accounts.index');
     }
 
@@ -65,7 +64,8 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        $account = Account::findOrFail($id);
+        return view('admin.account.edit',compact('account'));
     }
 
     /**
@@ -77,7 +77,12 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $input['user_id']= Auth::user()->id;
+        $account = Account::findOrFail($id);
+        $account->update($input);
+
+        return redirect()->route('accounts.index');
     }
 
     /**

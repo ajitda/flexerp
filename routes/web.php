@@ -107,7 +107,6 @@ Route::post('/messages', function(){
 	//announce that a new message has been posted
 	broadcast(new MessagePosted($message, $user))->toOthers();
 	return ['status'=> 'OK'];
-	//return App\Message::with('user')->get();
 })->middleware('auth');
 
 Route::prefix(A_SEC)->middleware('auth')->group(function () {

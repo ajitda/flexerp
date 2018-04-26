@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Course;
 use App\Enrolement;
 use App\Student;
@@ -45,7 +46,8 @@ class EnrolementController extends Controller
     {
         $students = Student::pluck('name', 'id');
         $courses = Course::pluck('name', 'id', 'price');
-        return view('enrolements.create', compact('students', 'courses'));
+        $types = Account::pluck('company','id');
+        return view('enrolements.create', compact('students', 'courses', 'types'));
     }
 
     /*
@@ -107,7 +109,8 @@ class EnrolementController extends Controller
         $enrolement = Enrolement::findOrFail($id);
         $students = Student::pluck('name', 'id');
         $courses = Course::pluck('name', 'id');
-        return view('enrolements.edit', compact('enrolement', 'students', 'courses'));
+        $types = Account::pluck('company','id');
+        return view('enrolements.edit', compact('enrolement', 'students', 'courses','types'));
     }
 
     /**
