@@ -111,6 +111,7 @@ Route::post('/messages', function(){
 })->middleware('auth');
 
 Route::prefix(A_SEC)->middleware('auth')->group(function () {
+    Route::resource('/transactions', 'TransactionController');
     Route::get('/accounts', [
         'uses'=>'AccountController@index',
         'as'=> 'accounts.index',
@@ -132,6 +133,18 @@ Route::prefix(A_SEC)->middleware('auth')->group(function () {
     Route::get('/accounts/{account}', [
         'uses'=>'AccountController@show',
         'as'=> 'accounts.show',
+        'middleware'=>'roles',
+        'roles'=>['SuperAdmin']
+    ]);
+    Route::get('/accounts/{account}/edit', [
+        'uses'=>'AccountController@edit',
+        'as'=> 'accounts.edit',
+        'middleware'=>'roles',
+        'roles'=>['SuperAdmin']
+    ]);
+    Route::patch('/accounts/{account}/update', [
+        'uses'=>'AccountController@update',
+        'as'=> 'accounts.update',
         'middleware'=>'roles',
         'roles'=>['SuperAdmin']
     ]);

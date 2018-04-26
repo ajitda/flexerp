@@ -7,7 +7,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    {!! Form::model($transaction,['method'=>'PATCH','action'=>['TransactionController@update', $transaction], 'files'=>true]) !!}
+                    {!! Form::model($account,['method'=>'PATCH','action'=>['AccountController@update', $account], 'files'=>true]) !!}
                     <div class="form-group col-md-4">
                         {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Account Name')) !!}
                     </div>
