@@ -53,6 +53,21 @@ class HomeController extends Controller
 
     private function getDatesOfWeek(){
         $days = array();
+        $days[] = date("Y-m-d",strtotime('-29 days'));
+        $days[] = date("Y-m-d",strtotime('-28 days'));
+        $days[] = date("Y-m-d",strtotime('-27 days'));
+        $days[] = date("Y-m-d",strtotime('-26 days'));
+        $days[] = date("Y-m-d",strtotime('-25 days'));
+        $days[] = date("Y-m-d",strtotime('-24 days'));
+        $days[] = date("Y-m-d",strtotime('-23 days'));
+        $days[] = date("Y-m-d",strtotime('-22 days'));
+        $days[] = date("Y-m-d",strtotime('-21 days'));
+        $days[] = date("Y-m-d",strtotime('-20 days'));
+        $days[] = date("Y-m-d",strtotime('-19 days'));
+        $days[] = date("Y-m-d",strtotime('-18 days'));
+        $days[] = date("Y-m-d",strtotime('-17 days'));
+        $days[] = date("Y-m-d",strtotime('-16 days'));
+        $days[] = date("Y-m-d",strtotime('-15 days'));
         $days[] = date("Y-m-d",strtotime('-14 days'));
         $days[] = date("Y-m-d",strtotime('-13 days'));
         $days[] = date("Y-m-d",strtotime('-12 days'));

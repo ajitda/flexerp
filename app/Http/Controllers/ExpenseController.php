@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Employee;
 use App\Expense;
 use App\ExpenseCategory;
 use App\Loan;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,7 +45,8 @@ class ExpenseController extends Controller
         $employees = Employee::pluck('name', 'id');
         $expense_categories = ExpenseCategory::pluck('name', 'id');
         $loans = Loan::pluck('name', 'id');
-        return view('expenses.create', compact('employees', 'expense_categories', 'loans', 'request'));
+        $types = Account::pluck('company','id');
+        return view('expenses.create', compact('employees', 'expense_categories', 'loans', 'request', 'types'));
     }
 
     /**
@@ -63,6 +66,21 @@ class ExpenseController extends Controller
         $dues = $total - $payment;
         $order->dues = $dues;
         $order->payment_type = $request->payment_type;
+
+        //update account
+        $account = Account::findOrFail($request->payment_type);
+        $account->balance = $account->balance - $payment;
+        $account->update();
+
+        // make a transaction
+        $transaction = new Transaction();
+        $transaction->transaction_type = 1;
+        $transaction->user_id = Auth::user()->id;
+        $transaction->amount = $payment;
+        $transaction->account_id = $request->payment_type;
+        $transaction->save();
+
+
         $order->description = $request->description;
         
         if(!empty($request->loan_id)){
