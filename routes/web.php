@@ -108,9 +108,9 @@ Route::post('/messages', function(){
 	broadcast(new MessagePosted($message, $user))->toOthers();
 	return ['status'=> 'OK'];
 })->middleware('auth');
-
+Route::resource('/transactions', 'TransactionController');
 Route::prefix(A_SEC)->middleware('auth')->group(function () {
-    Route::resource('/transactions', 'TransactionController');
+
     Route::get('/accounts', [
         'uses'=>'AccountController@index',
         'as'=> 'accounts.index',
