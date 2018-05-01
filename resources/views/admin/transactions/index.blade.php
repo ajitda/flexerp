@@ -10,6 +10,7 @@
                     <thead>
                     <th>ID</th>
                     <th>Created At</th>
+                    <th>Account</th>
                     <th>Transaction Type</th>
                     <th>Amount</th>
                     <th>Created By</th>
@@ -19,10 +20,17 @@
                     @foreach($transactions as $transaction)
                         <tr>
                             <td>{{$transaction->id}}</td>
-                            <td>{{$transaction->transaction_type}}</td>
-                            <td><a href="{{route('transactions.show', $transaction->id)}}">{{$transaction->account_id}}</a></td>
+                            <td>{{$transaction->created_at->format('d-m-Y')}}</td>
+                            <td><a href="{{route('transactions.show', $transaction->id)}}">{{$transaction->account->company}}</a></td>
+                            @if($transaction->transaction_type == 1)
+                            <td>Payment</td>
+                            @elseif($transaction->transaction_type == 2)
+                            <td>Received</td>
+                            @else
+                                <td>Charge</td>
+                            @endif
                             <td>{{$transaction->amount}}</td>
-                            <td>{{$transaction->user_id}}</td>
+                            <td>{{$transaction->user->name}}</td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">

@@ -24,7 +24,7 @@
                         {!! form::select('status', ['1'=>'Active', '2'=>'Inactive', '3'=>'Closed'], null,['required','class'=>'form-control', 'placeholder'=>'Select Status']) !!}
                     </div>
                     <div class="form-group col-md-3">
-                        {!! Form::submit('Add Account', array('class'=>'btn btn-primary')) !!}
+                        {!! Form::submit('Update Account', array('class'=>'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
