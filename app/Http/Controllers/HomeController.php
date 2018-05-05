@@ -35,7 +35,7 @@ class HomeController extends Controller
         $expenses = Expense::count();
         $total_expense = Expense::sum('payment');
         $expense_qty = Expense::count('payment');
-        $total_loan = Loan::sum('total_amount') - Loan::sum('payment');
+        $total_loan = Loan::where(['loan_type'=> 0])->sum('total_amount') - Loan::sum('payment');
         $others= Order::where("order_cat_id", 3)->sum('payment');
         $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
         $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;

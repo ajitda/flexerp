@@ -40,6 +40,15 @@
                             </div>
                         </div>
                         <div class="form-group col-md-3">
+                            <label for="loan_type">Loan Type</label>
+                            {!! Form::select('loan_type', ['1'=>'Given', '0'=>'Taken', '2'=>'Others'], null, ['required', 'id'=>'loan_type', 'placeholder'=>'Select a loan type', 'class'=>'form-control']) !!}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group col-md-3">
+                            <label for="payment_type">Payment Type</label>
+                            {!! Form::select('payment_type', $accounts, null, ['required', 'id'=>'payment_type', 'placeholder'=>'Select a payment type', 'class'=>'form-control']) !!}
+                        </div>
+                        <div class="form-group col-md-3">
                             <label for="payment">Payment</label>
                             {!! Form::number('payment', null, array('required', 'id'=>'payment', 'class'=>'form-control', 'placeholder'=>'Payment', 'ng-model'=>'payment')) !!}
                         </div>
@@ -49,7 +58,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group col-md-3">
-                            {!! Form::submit('Make Expense', array('class'=>'btn btn-primary')) !!}
+                            {!! Form::submit('Create Loan', array('class'=>'btn btn-primary')) !!}
                         </div>
                     {!! Form::close() !!}
                 </div>

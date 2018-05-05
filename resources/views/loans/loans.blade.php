@@ -8,7 +8,7 @@
             <div class="panel-body">
                 <table class="table table-striped table-hover">
                     <thead>
-                        <th>ID</th>
+                        <th>Type</th>
                         <th>Created At</th>
                         <th>Lender Name</th>
                         <th>Amount</th>
@@ -25,7 +25,7 @@
                         @foreach($loans as $loan)
                             @if($loan->total_amount >0)
                         <tr>
-                            <td>{{$loan->id}}</td>
+                            <td>{{$loan->loan_type}}</td>
                             <td>{{$loan->created_at->format('d-m-Y')}}</td>
                             <td>{{$loan->name}}</td>
                             <td>{{$loan->amount}}</td>

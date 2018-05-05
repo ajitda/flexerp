@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class LoanController extends Controller
      */
     public function create()
     {
-        return view('loans.create');
+        $accounts = Account::pluck('company', 'id');
+        return view('loans.create', compact('accounts'));
     }
 
     /**
@@ -56,10 +58,23 @@ class LoanController extends Controller
         $loan->installment = $installment;
         $loan->payment_date = $request->payment_date;
         $loan->payment = $request->payment;
+        $loan->loan_type = $request->loan_type;
+        $loan->payment_type = $request->payment_type;
         $loan->total_amount = $installment * $installment_qty;
         $loan->expense_category_id = 6;
         $loan->user_id = Auth::user()->id;
         $loan->save();
+
+        if($loan->loan_type == 0){
+            $account = Account::findOrFail($loan->payment_type);
+            $account->balance = $account->balance + $loan->payment;
+            $account->update();
+        }else{
+            $account = Account::findOrFail($loan->payment_type);
+            $account->balance = $account->balance - $loan->payment;
+            $account->update();
+        }
+
         return redirect('loans');
     }
 

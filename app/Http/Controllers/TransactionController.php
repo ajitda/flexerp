@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -31,7 +33,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $accounts= Account::pluck('company', 'id');
+        return view('admin/transactions.create', compact('accounts'));
     }
 
     /**
@@ -42,7 +45,19 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        Transaction::create($input);
+        if($input['transaction_type'] == 2){
+            $account = Account::findOrFail($input['account_id']);
+            $account->balance = $account->balance + $input['amount'];
+            $account->update();
+        }else{
+            $account = Account::findOrFail($input['account_id']);
+            $account->balance = $account->balance - $input['amount'];
+            $account->update();
+        }
+        return redirect('/transactions');
     }
 
     /**
