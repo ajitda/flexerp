@@ -16,4 +16,9 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function scopeSearch($query, $s)
+    {
+        return $query->where('description', 'like', '%'.$s.'%');
+        //->orWhere('description', 'like', '%'.$s.'%');
+    }
 }

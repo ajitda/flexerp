@@ -52,6 +52,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="paginations col-md-12 hidden-print">
+                    {!! $transactions->appends(['s'=>$s])->render() !!}
+                </div>
             </div>
         </div>
     </div>

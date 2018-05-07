@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->tinyInteger('transaction_type'); //1- payment, 2-receipt, 3-charge
             $table->decimal('amount');
+            $table->text('description');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('account_id')->unsigned();
