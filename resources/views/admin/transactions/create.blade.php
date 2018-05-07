@@ -17,6 +17,9 @@
                     <div class="form-group col-md-4">
                         {!! Form::number('amount', null, array('required', 'class'=>'form-control', 'placeholder'=>'Balance')) !!}
                     </div>
+                    <div class="form-group col-md-12">
+                        {!! Form::textarea('description', null, array('required', 'class'=>'form-control', 'placeholder'=>'Description')) !!}
+                    </div>
                     <div class="form-group col-md-3">
                         {!! Form::submit('Add Transaction', array('class'=>'btn btn-primary')) !!}
                     </div>

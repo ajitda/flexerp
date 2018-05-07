@@ -47,6 +47,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'image'=>'mimes:jpeg,png,bmp'
+        ]);
         $input = $request->all();
         if(isset($input['image'])){
             $input['image'] = $this->upload($input['image']);
@@ -102,7 +105,9 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   $this->validate($request, [
+            'image'=>'mimes:jpeg,png,bmp'
+        ]);
         $input = $request->all();
         if(isset($input['image'])){
             $input['image'] = $this->upload($input['image']);

@@ -2,6 +2,15 @@
 @section('content')
     <div class="container">
         <div class="panel panel-default">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="panel-heading">
                 <h1>Student Registration Form<a href="{{route('students.index')}}" class="btn btn-primary pull-right"><i class="fa fa-list"></i>&nbsp; List </a></h1>
             </div>
