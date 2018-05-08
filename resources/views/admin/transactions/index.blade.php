@@ -8,18 +8,19 @@
             <div class="panel-body">
                 <table class="table table-striped table-hover">
                     <thead>
-                    <th>ID</th>
-                    <th>Created At</th>
-                    <th>Account</th>
-                    <th>Transaction Type</th>
-                    <th>Amount</th>
-                    <th>Created By</th>
-                    <th colspan="2">Actions</th>
+                        <tr>
+                            <th>Created At</th>
+                            <th>Account</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Created By</th>
+                            <th colspan="2">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach($transactions as $transaction)
                         <tr>
-                            <td>{{$transaction->id}}</td>
                             <td>{{$transaction->created_at->format('d-m-Y')}}</td>
                             <td><a href="{{route('transactions.show', $transaction->id)}}">{{$transaction->account->company}}</a></td>
                             @if($transaction->transaction_type == 1)
@@ -30,6 +31,7 @@
                                 <td>Charge</td>
                             @endif
                             <td>{{$transaction->amount}}</td>
+                            <td>{{$transaction->description}}</td>
                             <td>{{$transaction->user->name}}</td>
                             <td>
                                 <div class="btn-group">
@@ -38,13 +40,12 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="transactions/{{$transaction->id}}/edit"><i class="fa fa-pencil"></i> Edit</a></li>
-
-                                        <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
+                                        <li>
+                                            <a href="#" class="delete-form" onclick="return confirm('are you sure?')">
                                                 <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['transactions.destroy', $transaction->id], 'class'=>'form-inline']) !!}
                                                 {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
-                                                {!! Form::close() !!}</a></li>
-
+                                                {!! Form::close() !!}</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>
