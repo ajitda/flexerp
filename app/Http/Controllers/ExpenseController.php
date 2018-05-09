@@ -77,6 +77,7 @@ class ExpenseController extends Controller
         $transaction->transaction_type = 1;
         $transaction->user_id = Auth::user()->id;
         $transaction->amount = $payment;
+        $transaction->description = $request->description;
         $transaction->account_id = $request->payment_type;
         $transaction->save();
 
