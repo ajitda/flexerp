@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Customer;
 use App\Employee;
 use App\Order;
 use App\OrderCat;
 use App\Reference;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +47,8 @@ class OrderController extends Controller
         $employees = Employee::pluck('name', 'id');
         $references = Reference::pluck('name', 'id');
         $customers = Customer::pluck('name', 'id');
-        return view('orders.create', compact('order_cats', 'employees', 'references', 'customers'));
+        $accounts = Account::pluck('company', 'id');
+        return view('orders.create', compact('order_cats', 'employees', 'accounts', 'references', 'customers'));
     }
 
     /**
@@ -66,6 +69,21 @@ class OrderController extends Controller
         $dues = $total - $payment;
         $order->dues = $dues;
         $order->type = $request->type;
+
+        //update account
+        $account = Account::findOrFail($request->type);
+        $account->balance = $account->balance + $payment;
+        $account->update();
+
+        // make a transaction
+        $transaction = new Transaction();
+        $transaction->transaction_type = 2;
+        $transaction->user_id = Auth::user()->id;
+        $transaction->amount = $payment;
+        $transaction->description = $request->description;
+        $transaction->account_id = $request->payment_type;
+        $transaction->save();
+
         $order->description = $request->description;
         $order->order_cat_id = $request->order_cat_id;
         $order->customer_id = $request->customer_id;

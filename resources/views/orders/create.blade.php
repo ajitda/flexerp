@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="type">Payment Type : </label>
-                            {!! Form::select('type', array('bank'=>'Bank', 'cash'=>'Cash', 'bkash'=>'Bkash', 'online'=> 'Online', 'pending'=>'Pending'), null, array('required', 'class'=> 'form-control', 'id'=> 'type', 'placeholder'=>'Payment Type')) !!}
+                            {!! Form::select('type', $accounts, null, array('required', 'class'=> 'form-control', 'id'=> 'type', 'placeholder'=>'Payment Type')) !!}
                         </div>
                         <div class="form-group col-md-3">
                             <label for="comment">Make a comment</label>

@@ -33,7 +33,6 @@
             <div class="panel-body" id="order-list">
                 <table class="table table-striped table-hover">
                     <thead>
-                        <th>ID</th>
                         <th>Created At</th>
                         <th>qty</th>
                         <th>description</th>
@@ -43,13 +42,12 @@
                         <th>type</th>
                         <th>Employee</th>
                         <th>Customer</th>
-                        <th>Reference</th>
+                        <th width="100">Reference</th>
                         <th colspan="2">Actions</th>
                     </thead>
                     <tbody>
                         @foreach($orders as $order)
                         <tr>
-                            <td>{{$order->id}}</td>
                             <td>{{$order->created_at->format('d-m-Y')}}</td>
                             <td>{{$order->qty}}</td>
                             <td>{{$order->description}}</td>
@@ -63,7 +61,7 @@
                                     {{$order->customer->name}}
                                     @endif
                                 </a></td>
-                            <td><a href="orders/{{$order->id}}/show">
+                            <td width="100"><a href="orders/{{$order->id}}/show">
                                     @if(isset($order->reference_id))
                                     {{$order->reference->name}}
                                 @endif</a>
