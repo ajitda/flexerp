@@ -81,7 +81,7 @@ class OrderController extends Controller
         $transaction->user_id = Auth::user()->id;
         $transaction->amount = $payment;
         $transaction->description = $request->description;
-        $transaction->account_id = $request->payment_type;
+        $transaction->account_id = $request->type;
         $transaction->save();
 
         $order->description = $request->description;

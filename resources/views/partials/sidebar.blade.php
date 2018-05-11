@@ -2,9 +2,11 @@
     <div class="sidebar">
         <ul class="nav navbar-nav">
              
-            <li><a href="{{url('students')}}" class="{{(Request::is('students')) ? 
+            <li><a href="{{url('home')}}" class="{{(Request::is('home')) ?
+                         'active' : ''}}"><i class="fa fa-user"></i>&nbsp; Dashboard</a></li>
+            <li><a href="{{url('students')}}" class="{{(Request::is('students')) ?
                          'active' : ''}}"><i class="fa fa-user"></i>&nbsp; Students</a></li>
-            <li><a href="{{url('courses')}}" class="{{(Request::is('courses')) ? 
+            <li><a href="{{url('courses')}}" class="{{(Request::is('courses')) ?
                          'active' : ''}}"><i class="fa fa-graduation-cap"></i>&nbsp; Courses</a></li>
             <li><a href="{{url('enrolements')}}" class="{{(Request::is('enrolements')) ? 
                          'active' : ''}}"><i class="fa fa-cart-plus"></i>&nbsp; Course Enrolements</a></li>
