@@ -83,6 +83,7 @@ Route::get('/task/completedtasks', 'TaskController@completed');
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
+Route::resource('/enrolement/paymenet', 'EnrolementPaymentController');
 
 Route::get('sendmail', function(){
 	Mail::to('ajitdas2900@gmail.com')->send(new SendEmail());

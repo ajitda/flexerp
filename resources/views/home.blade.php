@@ -13,7 +13,7 @@
                         <div class="col-md-8">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
-                                    <label class="label label-success">Total Earning And Expense of last 15 days</label>
+                                    <label class="label label-success">Total Earning And Expense of last 30 days</label>
                                     <div id="area-chart" ></div>
                                     </div>
                             </section>
