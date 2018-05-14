@@ -33,8 +33,9 @@ class EnrolementController extends Controller
     public function index()
     {
         $enrolements = Enrolement::all();
+        $accounts = Account::pluck('company','id');
 
-        return view("enrolements.enrolements", compact('enrolements'));
+        return view("enrolements.enrolements", compact('enrolements','accounts'));
     }
 
     /**
