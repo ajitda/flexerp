@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
+use App\Enrolement;
+use App\EnrolementPayment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class EnrolementPaymentController extends Controller
 {
@@ -35,7 +39,19 @@ class EnrolementPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        EnrolementPayment::create($input);
+
+        $enrolement = Enrolement::findOrFail($request->enrolement_id);
+        $enrolement->payment = $enrolement->payment + $request->amount;
+        $enrolement->update();
+
+        $account = Account::findOrFail($request->account_id);
+        $account->balance = $account->balance + $request->amount;
+        $account->update();
+
+        return back();
     }
 
     /**
