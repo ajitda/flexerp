@@ -16,6 +16,7 @@ class CreateOrderCatsTable extends Migration
         Schema::create('order_cats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->string('description');
             $table->timestamps();
         });

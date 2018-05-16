@@ -46,6 +46,7 @@ class OrderCatController extends Controller
     public function store(Request $request)
     {
         $input= $request->all();
+        $input['slug'] = str_slug($request->name);
         OrderCat::create($input);
         return redirect()->back();
     }

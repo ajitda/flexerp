@@ -7,6 +7,7 @@ use App\Expense;
 use App\Loan;
 use App\Order;
 use App\Enrolement;
+use App\EnrolementPayment;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -98,10 +99,11 @@ class HomeController extends Controller
             $weeklyexpense = "0";
               
             $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+            $enrolementpayment = EnrolementPayment::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('amount');
             $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
             $personal_salary = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->where('order_cat_id', 11)->sum('payment');
             $others = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
-            $weeklyincome = $enrolement + $order - $others - $personal_salary; 
+            $weeklyincome = $enrolement + $order + $enrolementpayment - $others - $personal_salary;
         
             $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
            
