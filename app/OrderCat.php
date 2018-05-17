@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderCat extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'slug', 'description'];
 
     public function order()
     {

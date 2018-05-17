@@ -49,6 +49,7 @@ class ExpenseCategoryController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['slug'] = str_slug($request->name);
         ExpenseCategory::create($input);
         return redirect()->back();
     }
