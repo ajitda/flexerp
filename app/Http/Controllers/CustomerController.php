@@ -23,10 +23,11 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::all();
-        return view('customers.customers', compact('customers'));
+        $s = $request->input('s');
+        $customers = Customer::latest()->search($s)->paginate(10);
+        return view('customers.customers', compact('customers','s'));
     }
 
     /**

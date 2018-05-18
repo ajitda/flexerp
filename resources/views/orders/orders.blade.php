@@ -39,7 +39,6 @@
                         <th>total</th>
                         <th>payment</th>
                         <th>dues</th>
-                        <th>type</th>
                         <th>Employee</th>
                         <th>Customer</th>
                         <th width="100">Reference</th>
@@ -54,7 +53,6 @@
                             <td>{{$order->total}}</td>
                             <td>{{$order->payment}}</td>
                             <td>{{$order->dues}}</td>
-                            <td>{{$order->type}}</td>
                             <td><a href="orders/{{$order->id}}/show">{{$order->employee->name}}</a></td>
                             <td><a href="orders/{{$order->id}}/show">
                                     @if(isset($order->customer_id))
