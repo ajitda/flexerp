@@ -5,6 +5,30 @@
             <div class="panel-heading">
                 <h1>Customers List<a href="customers/create" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</a></a></h1>
             </div>
+            <div class="date-filter">
+                <div class="col-md-4">
+                    <div class="form-group form-inline">
+                        <label for="StartDate">From</label>
+                        <input type="text" name="StartDate" id="StartDate" class="form-control" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-inline">
+                        <label for="EndDate">To</label>
+                        <input type="text" name="EndDate" id="EndDate" class="form-control" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <form action="{{route('customers.index')}}" method="get" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="s" class="form-control" placeholder="keyword" value="{{isset($s) ? $s : ''}}">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="panel-body">
                 <table class="table table-striped table-hover">
                     <thead>
