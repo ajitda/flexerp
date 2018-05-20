@@ -22,10 +22,11 @@ class ReferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $references = Reference::all();
-        return view('references.references', compact('references'));
+        $s = $request->input('s');
+        $references = Reference::latest()->search($s)->paginate(10);
+        return view('references.references', compact('references','s'));
     }
 
     /**

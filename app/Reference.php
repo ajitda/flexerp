@@ -12,4 +12,8 @@ class Reference extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function scopeSearch($query, $s)
+    {
+        return $query->where('name', 'like', '%'.$s.'%')->orWhere('email', 'like', '%'.$s.'%');
+    }
 }

@@ -46,6 +46,9 @@
                     </tr>
                         @endforeach
                     </tbody>
+                    <div class="paginations col-md-12 hidden-print">
+                        {{$references->appends(['s'=>$s])->render()}}
+                    </div>
                 </table>
             </div>
         </div>

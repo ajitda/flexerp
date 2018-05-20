@@ -3,7 +3,7 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Customers List<a href="customers/create" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</a></a></h1>
+                <h1>Customers List<a href="customers/create" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</a></h1>
             </div>
             <div class="date-filter">
                 <div class="col-md-4">
