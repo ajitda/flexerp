@@ -33,6 +33,10 @@
                         <ul class="dropdown-menu" role="menu">
                             @if(Auth::user()->hasRole('SuperAdmin'))
                             <li><a href="{{route('role.users')}}">User Role Setting</a></li>
+                            <li><a href="{{route('accounts.index')}}">Accounts</a></li>
+                                @endif
+                            @if(Auth::user()->hasRole('SuperAdmin')|| Auth::user()->hasRole('Admin'))
+                            <li><a href="{{route('transactions.index')}}">Transactions</a></li>
                             @endif
                             <li>
                                 <a href="{{ route('logout') }}"
@@ -40,7 +44,6 @@
                                              document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
