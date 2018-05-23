@@ -38,9 +38,13 @@ Route::get('/home/{lang?}', 'HomeController@index')->name('home');
 
 
 Route::resource('/students', 'StudentController');
+
 Route::resource('/courses', 'CourseController');
+
 Route::resource('/enrolements', 'EnrolementController');
+
 Route::resource('/invoices', 'InvoiceController');
+
 Route::get('/getcourse', 'EnrolementController@getCourse');
 
 Route::post('/assignroles', [
@@ -56,7 +60,6 @@ Route::get('/roleusers',[
     'roles'=>['Superadmin'],
 ]);
 
-
 //Route::get()
 
 Route::get('/error',function (){
@@ -64,25 +67,37 @@ Route::get('/error',function (){
 });
 
 Route::resource('/employees', 'EmployeeController');
+
 Route::resource('/references', 'ReferenceController');
+
 Route::resource('/customers', 'CustomerController');
+
+Route::get('/getcustomerlist', 'CustomerController@getCustomerList');
+
 Route::resource('/ordercat', 'OrderCatController');
+
 Route::resource('/orders', 'OrderController');
+
 Route::get('/getorderlist', 'OrderController@getOrderList');
 
 Route::resource('/expensecategories', 'ExpenseCategoryController');
+
 Route::resource('/expenses', 'ExpenseController');
+
 Route::get('/getexpenselist', 'ExpenseController@getExpenseList');
+
 Route::resource('/loans', 'LoanController');
 
 Route::resource('/tasks', 'TaskController');
-Route::get('/task/mytasks', 'TaskController@mytasks');
-Route::get('/task/completedtasks', 'TaskController@completed');
 
+Route::get('/task/mytasks', 'TaskController@mytasks');
+
+Route::get('/task/completedtasks', 'TaskController@completed');
 
 Route::get('/getexpense', 'ExpenseController@getExpenseCategory');
 
 Route::get('/enrolements/create/getcourse/{id}', 'EnrolementController@getCourseFee');
+
 Route::resource('/enrolement/paymenet', 'EnrolementPaymentController');
 
 Route::get('sendmail', function(){
@@ -109,7 +124,9 @@ Route::post('/messages', function(){
 	broadcast(new MessagePosted($message, $user))->toOthers();
 	return ['status'=> 'OK'];
 })->middleware('auth');
+
 Route::resource('/transactions', 'TransactionController');
+
 Route::prefix(A_SEC)->middleware('auth')->group(function () {
 
     Route::get('/accounts', [
