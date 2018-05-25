@@ -81,6 +81,13 @@ class CustomerController extends Controller
         //
     }
 
+    public function getCustomerList(Request $request)
+    {
+        if($request->json){
+            $customers = Customer::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
+            return view('customers.customerlist')->with('customers', $customers)->with('request', $request);
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
