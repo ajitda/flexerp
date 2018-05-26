@@ -23,7 +23,12 @@ class TransactionController extends Controller
     public function index(Request $request)
     {
         $s = $request->input('s');
-        $transactions = Transaction::latest()->search($s)->paginate(10);
+        if(Auth::user()->hasRole('Superadmin')){
+            $transactions = Transaction::latest()->search($s)->paginate(10);
+        }else{
+            $transactions = Transaction::latest()->where('user_id', Auth::user()->id)->search($s)->paginate(10);
+        }
+
         return view('admin.transactions.index', compact('transactions', 's'));
     }
 
