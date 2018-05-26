@@ -10,7 +10,7 @@
                 <div class="panel-heading dashboard-heading">{{ trans('header.dashboard', ['name'=>'Flexerp'])}}</div>
                 <div class="panel-body dashboard-body">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="@if(Auth::user()->hasRole('Superadmin')) col-md-8 @else col-md-12 @endif">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
                                     <label class="label label-success">Total Earning And Expense of last 30 days</label>
@@ -18,6 +18,7 @@
                                     </div>
                             </section>
                         </div>
+                        @if(Auth::user()->hasRole('Superadmin'))
                         <div class="col-md-4">
                             <section class="panel panel-featured-left panel-featured-primary">
                                 <div class="panel-body">
@@ -26,6 +27,7 @@
                                     </div>
                             </section>
                         </div>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-lg-4 col-xl-4">
@@ -151,6 +153,7 @@
                                 </div>
                             </section>
                         </div>
+                        @if(Auth::user()->hasRole('Superadmin'))
                         <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-tertiary">
                                 <div class="panel-body">
@@ -179,6 +182,7 @@
                     <div class="row">
                     </div>
                     <div class="row">
+                        @endif
                         <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-tertiary">
                                 <div class="panel-body">
@@ -203,6 +207,7 @@
                                 </div>
                             </section>
                         </div>
+                        @if(Auth::user()->hasRole('Superadmin'))
                         <div class="col-md-8 col-lg-4 col-xl-4">
                             <section class="panel panel-featured-left panel-featured-quaternary">
                                 <div class="panel-body">
@@ -227,6 +232,7 @@
                                 </div>
                             </section>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="created">
