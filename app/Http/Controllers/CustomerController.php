@@ -80,7 +80,9 @@ class CustomerController extends Controller
     {
         //
     }
-
+    /**
+     * Shorting Customer Datewise
+     **/
     public function getCustomerList(Request $request)
     {
         if($request->json){
