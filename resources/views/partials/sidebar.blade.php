@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav">
              
             <li><a href="{{url('home')}}" class="{{(Request::is('home')) ?
-                         'active' : ''}}"><i class="fa fa-user"></i>&nbsp; Dashboard</a></li>
+                         'active' : ''}}"><i class="fa fa-dashboard"></i>&nbsp; Dashboard</a></li>
             <li><a href="{{url('students')}}" class="{{(Request::is('students')) ?
                          'active' : ''}}"><i class="fa fa-user"></i>&nbsp; Students</a></li>
             <li><a href="{{url('courses')}}" class="{{(Request::is('courses')) ?
@@ -15,7 +15,7 @@
             <li><a href="{{url('references')}}" class="{{(Request::is('references')) ? 
                          'active' : ''}}"><i class="fa fa-link"></i>&nbsp; References</a></li>
             <li><a href="{{url('customers')}}"  class="{{(Request::is('customers')) ? 
-                         'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Customers</a></li>
+                         'active' : ''}}"><i class="fa fa-users"></i>&nbsp; Customers</a></li>
             <li><a href="{{url('invoices')}}"  class="{{(Request::is('invoices')) ? 
                          'active' : ''}}"><i class="fa fa-address-book"></i>&nbsp; Invoices</a></li>
             <li class="dropdown">
