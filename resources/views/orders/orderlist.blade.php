@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped table-hover">
+<table class="table table-striped table-hover">
     <thead>
     <th>ID</th>
     <th>Created At</th>
@@ -8,7 +8,6 @@
     <th>payment</th>
     <th>dues</th>
     <th>type</th>
-    <th>Employee</th>
     <th>Customer</th>
     <th>Reference</th>
     <th colspan="2">Actions</th>
@@ -19,12 +18,11 @@
             <td>{{$order->id}}</td>
             <td>{{$order->created_at->format('d-m-Y')}}</td>
             <td>{{$order->qty}}</td>
-            <td>{{$order->description}}</td>
+            <td>{{$order->Order_cat->name.': '.$order->description}}</td>
             <td>{{$order->total}}</td>
             <td>{{$order->payment}}</td>
             <td>{{$order->dues}}</td>
             <td>{{$order->type}}</td>
-            <td><a href="orders/{{$order->id}}/show">{{$order->employee->name}}</a></td>
             <td><a href="orders/{{$order->id}}/show">
                     @if(isset($order->customer_id))
                         {{$order->customer->name}}
