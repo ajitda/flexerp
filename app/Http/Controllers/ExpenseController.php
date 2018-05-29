@@ -128,7 +128,7 @@ class ExpenseController extends Controller
         if($request->ajax()) {
             $expenses = Expense::whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->get();
           //  $user = Auth::user()->role;
-            return view('expenses.expenselist')->with('expenses', $expenses);
+            return view('expenses.expenselist')->with('expenses', $expenses)->with('request', $request);
         }
     }
 

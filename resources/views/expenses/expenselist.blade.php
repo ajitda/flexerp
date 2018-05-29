@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped table-hover" id="">
+<table class="table table-striped table-hover" id="">
     <thead>
     <th>ID</th>
     <th>Created At</th>
@@ -28,5 +28,16 @@
                     {!! Form::close() !!}</a></td>
         </tr>
     @endforeach
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{DB::table('expenses')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('total')}}</td>
+            <td>{{DB::table('expenses')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('payment')}}</td>
+            <td>{{DB::table('expenses')->whereBetween('created_at', [ $request->DateCreated.' 00:00:00', $request->EndDate.' 23:59:59'])->sum('dues')}}</td>
+            <td></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
