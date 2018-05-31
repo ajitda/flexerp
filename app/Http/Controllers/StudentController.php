@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Activity;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,8 @@ class StudentController extends Controller
         Student::create($input);
 
         /*\Mail::to($student)->send(new Welcome);*/
+
+        auth()->user()->notify(new Activity());
 
         return redirect('students');
     }
