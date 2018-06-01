@@ -28,26 +28,13 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Notifications <span class="caret"></span>
+                            <span class="glyphicon glyphicon-globe"> Notifications</span> <span class="badge">{{count(auth::user()->notifications)}}</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            @if(Auth::user()->hasRole('SuperAdmin'))
-                            <li><a href="{{route('role.users')}}">User Role Setting</a></li>
-                            <li><a href="{{route('accounts.index')}}">Accounts</a></li>
-                                @endif
-                            @if(Auth::user()->hasRole('SuperAdmin')|| Auth::user()->hasRole('Admin'))
-                            <li><a href="{{route('transactions.index')}}">Transactions</a></li>
-                            @endif
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
+
+                            <li>Some notification</li>
+                            <li>Some notification</li>
+                            <li>Some notification</li>
                         </ul>
                     </li>
                     <li class="dropdown">
