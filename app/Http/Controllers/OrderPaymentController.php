@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderPayment;
+use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -38,6 +39,7 @@ class OrderPaymentController extends Controller
     public function store(Request $request)
     {
         OrderPayment::create($request->all());
+        Transaction::createTransaction(TRANSACTION_TYPE_RECEIPT, $request->amount, $request->account_id, $request->description);
         return redirect()->back();
     }
 
