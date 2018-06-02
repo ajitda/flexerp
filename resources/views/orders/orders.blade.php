@@ -95,9 +95,10 @@
                                                         </div>
                                                         <div class="form-group">
                                                             {!! Form::hidden('order_id', $order->id, ['class'=>'form-control']) !!}
-                                                            {!! Form::number('payment', null, ['class'=>'form-control','placeholder'=>'amount']) !!}
-                                                            <br>
-                                                            {!! Form::text('description', null, ['class'=>'form-control','placeholder'=>'description']) !!}
+                                                            {!! Form::number('amount', null, ['class'=>'form-control','placeholder'=>'amount']) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            {!! Form::text('comments', null, ['class'=>'form-control','placeholder'=>'comments']) !!}
                                                         </div>
                                                         <div class="form-group">
                                                             {!! Form::submit('Add Payment', ['class'=>'btn btn-primary']) !!}

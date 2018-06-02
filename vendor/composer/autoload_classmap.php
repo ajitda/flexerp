@@ -57,6 +57,7 @@ return array(
     'App\\Http\\Controllers\\LoanController' => $baseDir . '/app/Http/Controllers/LoanController.php',
     'App\\Http\\Controllers\\OrderCatController' => $baseDir . '/app/Http/Controllers/OrderCatController.php',
     'App\\Http\\Controllers\\OrderController' => $baseDir . '/app/Http/Controllers/OrderController.php',
+    'App\\Http\\Controllers\\OrderPaymentController' => $baseDir . '/app/Http/Controllers/OrderPaymentController.php',
     'App\\Http\\Controllers\\ReferenceController' => $baseDir . '/app/Http/Controllers/ReferenceController.php',
     'App\\Http\\Controllers\\StudentController' => $baseDir . '/app/Http/Controllers/StudentController.php',
     'App\\Http\\Controllers\\TaskController' => $baseDir . '/app/Http/Controllers/TaskController.php',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Http\Traits\DeleteTrait;
 use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
+
     public function __construct()
     {
         return $this->middleware('auth');
@@ -108,6 +110,7 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Transaction::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

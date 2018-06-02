@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Order;
 use App\OrderPayment;
 use App\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use \Config;
 
 class OrderPaymentController extends Controller
 {
@@ -39,7 +41,16 @@ class OrderPaymentController extends Controller
     public function store(Request $request)
     {
         OrderPayment::create($request->all());
-        Transaction::createTransaction(TRANSACTION_TYPE_RECEIPT, $request->amount, $request->account_id, $request->description);
+
+        //update account
+        Account::updateAccount($request->account_id,null, $request->amount);
+
+        //making a transaction
+        Transaction::createTransaction(Config::get('constants.transaction.receipt'), $request->amount, $request->account_id, $request->comments);
+
+        //update order
+        Order::updateOrder($request->order_id, $request->amount);
+
         return redirect()->back();
     }
 

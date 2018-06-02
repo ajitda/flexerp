@@ -29,4 +29,12 @@ class Order extends Model
     {
         return $query->where('description', 'like', '%'.$s.'%');
     }
+
+    public static function updateOrder($order_id, $payment)
+    {
+        $order = Order::findOrFail($order_id);
+        $order->payment = $order->payment + $payment;
+        $order->dues = $order->dues - $payment;
+        $order->update();
+    }
 }
