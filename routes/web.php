@@ -78,6 +78,8 @@ Route::resource('/ordercat', 'OrderCatController');
 
 Route::resource('/orders', 'OrderController');
 
+Route::resource('/orderpayment', 'OrderPaymentController');
+
 Route::get('/getorderlist', 'OrderController@getOrderList');
 
 Route::resource('/expensecategories', 'ExpenseCategoryController');

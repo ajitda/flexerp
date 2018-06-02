@@ -73,13 +73,43 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="orders/{{$order->id}}/edit"><i class="fa fa-pencil"></i> Edit</a></li>
-                                    
+                                    <li><a href="#" data-toggle="modal" data-target="#myModal{{$order->id}}"><i class="fa fa-dollar"></i> Payment</a></li>
+
                                     <li><a href="#" class="delete-form" onclick="return confirm('are you sure?')">
                                         <i class="fa fa-trash-o"></i> {!! Form::open(['method'=> 'DELETE', 'route'=>['orders.destroy', $order->id], 'class'=>'form-inline']) !!}
                                         {!! Form::submit('Delete', ['class'=> 'delete-btn']) !!}
                                         {!! Form::close() !!}</a></li>
 
                                         </ul>
+                                        <div class="modal fade" id="myModal{{$order->id}}" role="dialog">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Add Payment</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {!! Form::open(['route'=>'orderpayment.store']) !!}
+                                                        <div class="form-group">
+                                                            {!! Form::select('account_id', $accounts, null, array('class' => 'form-control','placeholder'=>'Select a payment type','required')) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            {!! Form::hidden('order_id', $order->id, ['class'=>'form-control']) !!}
+                                                            {!! Form::number('payment', null, ['class'=>'form-control','placeholder'=>'amount']) !!}
+                                                            <br>
+                                                            {!! Form::text('description', null, ['class'=>'form-control','placeholder'=>'description']) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            {!! Form::submit('Add Payment', ['class'=>'btn btn-primary']) !!}
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>                  
                             </tr>

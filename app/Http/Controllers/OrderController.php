@@ -7,6 +7,7 @@ use App\Customer;
 use App\Employee;
 use App\Order;
 use App\OrderCat;
+use App\OrderPayment;
 use App\Reference;
 use App\Transaction;
 use Illuminate\Http\Request;
@@ -33,7 +34,8 @@ class OrderController extends Controller
     {
         $s = $request->input('s');
         $orders = Order::orderBy('id', 'desc')->search($s)->paginate(10);
-        return view('orders.orders', compact('orders', 's'));
+        $accounts = Account::pluck('company','id');
+        return view('orders.orders', compact('orders', 's', 'accounts'));
     }
 
     /**
@@ -91,8 +93,18 @@ class OrderController extends Controller
         $order->reference_id = $request->reference_id;
         $order->user_id = Auth::user()->id;
         $order->save();
-        return redirect('orders');
 
+        if($request->payment > 0){
+            //make a payment
+            $order_payment = new OrderPayment();
+            $order_payment->amount = $request->payment;
+            $order_payment->comments = $request->description;
+            $order_payment->order_id = $order->id;
+            $order_payment->account_id = $request->type;
+            $order_payment->save();
+        }
+
+        return redirect('orders');
     }
 
     /**
