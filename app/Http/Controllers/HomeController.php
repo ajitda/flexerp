@@ -10,6 +10,7 @@ use App\Enrolement;
 use App\EnrolementPayment;
 use App\User;
 use App\Role;
+use App\OrderPayment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -39,7 +40,7 @@ class HomeController extends Controller
         $others= Order::where("order_cat_id", 3)->sum('payment');
         $total_loan = Loan::where(['loan_type'=> 0])->sum('total_amount');
         $individual_income = Order::where("order_cat_id", 11)->sum('payment') + Order::where("order_cat_id", 10)->sum('payment');
-        $total_income = Order::sum('payment') + Enrolement::sum('payment') - $others;
+        $total_income = Order::where('created_at', '<=', ''.'2018-06-01 00:00:00')->sum('payment') + Enrolement::sum('payment') - $others + OrderPayment::sum('amount') - 10000;
         $incomeexpensechart = $this->incomeExpenseChart();
         $pieChart = $this->pieChart();
         //dd($pieChart);
@@ -100,10 +101,11 @@ class HomeController extends Controller
               
             $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
             $enrolementpayment = EnrolementPayment::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('amount');
-            $order = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
+            $orderpayment = OrderPayment::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('amount');
             $personal_salary = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->where('order_cat_id', 11)->sum('payment');
             $others = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
-            $weeklyincome = $enrolement + $order + $enrolementpayment - $others - $personal_salary;
+
+            $weeklyincome = $enrolement + $orderpayment + $enrolementpayment - $others - $personal_salary;
         
             $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
            
@@ -122,10 +124,10 @@ class HomeController extends Controller
         $last_day = date("Y-m-d",strtotime('-29 days'));
         $current_day = date("Y-m-d");
         $enrolement = Enrolement::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
-        $order = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
+        $orderpayment = OrderPayment::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('amount');
         $others = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
         $personal_salary = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->where('order_cat_id', 11)->sum('payment');
-        $monthlyincome = $enrolement + $order - $others - $personal_salary;
+        $monthlyincome = $enrolement + $orderpayment - $others - $personal_salary;
         $monthlyexpense = Expense::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
         $monthly =['income'=>$monthlyincome,'expense'=>$monthlyexpense];
         return $monthly;

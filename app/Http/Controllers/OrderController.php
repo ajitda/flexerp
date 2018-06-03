@@ -86,6 +86,12 @@ class OrderController extends Controller
         $transaction->account_id = $request->type;
         $transaction->save();
 
+        //update account
+        Account::updateAccount($request->account_id,null, $request->amount);
+
+        //making a transaction
+        Transaction::createTransaction(Config::get('constants.transaction.receipt'), $request->amount, $request->account_id, $request->comments);
+
         $order->description = $request->description;
         $order->order_cat_id = $request->order_cat_id;
         $order->customer_id = $request->customer_id;
