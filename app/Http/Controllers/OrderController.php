@@ -12,6 +12,7 @@ use App\Reference;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class OrderController extends Controller
 {
@@ -73,24 +74,10 @@ class OrderController extends Controller
         $order->type = $request->type;
 
         //update account
-        $account = Account::findOrFail($request->type);
-        $account->balance = $account->balance + $payment;
-        $account->update();
-
-        // make a transaction
-        $transaction = new Transaction();
-        $transaction->transaction_type = 2;
-        $transaction->user_id = Auth::user()->id;
-        $transaction->amount = $payment;
-        $transaction->description = $request->description;
-        $transaction->account_id = $request->type;
-        $transaction->save();
-
-        //update account
-        Account::updateAccount($request->account_id,null, $request->amount);
+        Account::updateAccount($request->type,null, $payment);
 
         //making a transaction
-        Transaction::createTransaction(Config::get('constants.transaction.receipt'), $request->amount, $request->account_id, $request->comments);
+        Transaction::createTransaction(Config::get('constants.transaction.receipt'), $payment, $request->type, $request->description);
 
         $order->description = $request->description;
         $order->order_cat_id = $request->order_cat_id;
@@ -110,7 +97,7 @@ class OrderController extends Controller
             $order_payment->save();
         }
 
-        return redirect('orders');
+        return redirect(route('orders.index'));
     }
 
     /**
