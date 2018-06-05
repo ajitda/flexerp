@@ -67,7 +67,6 @@ class ExpenseController extends Controller
         $dues = $total - $payment;
         $order->dues = $dues;
         $order->payment_type = $request->payment_type;
-
         //update account
         Account::updateAccount($request->payment_type, $payment, null);
         // make a transaction

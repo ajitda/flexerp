@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Notifications\Activity;
 use App\Task;
 use App\Employee;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class TaskController extends Controller
     {
         $input = $request->all();
         Task::create($input);
+        auth()->user()->notify(new Activity());
         return redirect('tasks');
     }
 

@@ -7,7 +7,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    {!! Form::open(['route'=>'courses.store', 'files'=>true]) !!}
+                    {!! Form::open(['route'=>'courses.store', 'files'=>true, 'novalidate']) !!}
                         <div class="form-group col-md-4">
                             {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Course Name')) !!}
                         </div>

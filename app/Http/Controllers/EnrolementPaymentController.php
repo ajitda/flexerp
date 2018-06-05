@@ -47,9 +47,7 @@ class EnrolementPaymentController extends Controller
         $enrolement->payment = $enrolement->payment + $request->amount;
         $enrolement->update();
 
-        $account = Account::findOrFail($request->account_id);
-        $account->balance = $account->balance + $request->amount;
-        $account->update();
+        Account::updateAccount($request->account_id, null, $request->amount);
 
         return back();
     }

@@ -7,7 +7,7 @@
 	</div>
 	<div class="panel-body">
 		<div class="row">
-			{!! Form::open(['route'=>'tasks.store', 'files'=> true]) !!}
+			{!! Form::open(['route'=>'tasks.store', 'files'=> true, 'novalidate']) !!}
 				<div class="form-group col-sm-6">
 					{!! Form::label('name', ' Task Name', ['class'=>'label']) !!}
 					{!! Form::text('name', null, ['required', 'class'=>'form-control', 'placeholder'=> 'Enter Task Name', 'id'=> 'name']) !!}
@@ -28,7 +28,8 @@
 					{!! Form::select('employee_id', $employees, null, ['required', 'class'=>'form-control']) !!}
 				</div>
 				<div class="form-group col-md-2">
-					{!! Form::submit('Create Task', ['class'=> 'btn btn-primary task-submit']) !!}
+					{{--{!! Form::submit('Create Task', ['class'=> 'btn btn-primary task-submit']) !!}--}}
+					<button type="submit" class="btn btn-primary task-submit">Create Task</button>
 				</div>
 			{!! Form::close() !!}
 		</div>
