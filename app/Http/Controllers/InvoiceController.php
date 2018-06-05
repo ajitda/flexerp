@@ -25,7 +25,6 @@ class InvoiceController extends Controller
         $invoices = Invoice::orderBy('id', 'desc')
         ->search($s)
         ->paginate(10);
-
         return view('invoices.index', compact('invoices', 's'));
         
     }

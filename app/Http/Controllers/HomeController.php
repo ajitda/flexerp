@@ -98,17 +98,13 @@ class HomeController extends Controller
         foreach ($daysOfWeek as $day) {
             $weeklyincome = "0";
             $weeklyexpense = "0";
-              
             $enrolement = Enrolement::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
             $enrolementpayment = EnrolementPayment::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('amount');
             $orderpayment = OrderPayment::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('amount');
             $personal_salary = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->where('order_cat_id', 11)->sum('payment');
             $others = Order::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
-
             $weeklyincome = $enrolement + $orderpayment + $enrolementpayment - $others - $personal_salary;
-        
             $weeklyexpense = Expense::whereBetween('created_at', [ $day.' 00:00:00', $day.' 23:59:59'])->sum('payment');
-           
             $chart = [
                 'y' => $day,
                 'a' => $weeklyexpense,
@@ -131,7 +127,6 @@ class HomeController extends Controller
         $monthlyexpense = Expense::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
         $monthly =['income'=>$monthlyincome,'expense'=>$monthlyexpense];
         return $monthly;
-        
     }
 
     public function roleUsers(){

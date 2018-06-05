@@ -66,15 +66,10 @@ class LoanController extends Controller
         $loan->save();
 
         if($loan->loan_type == 0){
-            $account = Account::findOrFail($loan->payment_type);
-            $account->balance = $account->balance + $loan->payment;
-            $account->update();
+            Account::updateAccount($loan->payment_type,null, $loan->payment);
         }else{
-            $account = Account::findOrFail($loan->payment_type);
-            $account->balance = $account->balance - $loan->payment;
-            $account->update();
+            Account::updateAccount($loan->payment_type, $loan->payment, null);
         }
-
         return redirect('loans');
     }
 

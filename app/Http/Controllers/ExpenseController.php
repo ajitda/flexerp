@@ -10,6 +10,7 @@ use App\Loan;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class ExpenseController extends Controller
 {
@@ -68,25 +69,14 @@ class ExpenseController extends Controller
         $order->payment_type = $request->payment_type;
 
         //update account
-        $account = Account::findOrFail($request->payment_type);
-        $account->balance = $account->balance - $payment;
-        $account->update();
-
+        Account::updateAccount($request->payment_type, $payment, null);
         // make a transaction
-        $transaction = new Transaction();
-        $transaction->transaction_type = 1;
-        $transaction->user_id = Auth::user()->id;
-        $transaction->amount = $payment;
-        $transaction->description = $request->description;
-        $transaction->account_id = $request->payment_type;
-        $transaction->save();
-
+        Transaction::createTransaction(Config::get('constants.transaction.payment'), $payment, $request->payment_type, $request->description);
 
         $order->description = $request->description;
         
         if(!empty($request->loan_id)){
             $loan_id = $order->loan_id = $request->loan_id;
-
             //processing loan
             $loan = Loan::findOrFail($loan_id);
             $loan->installment_qty = $loan->installment_qty - $qty;
@@ -94,8 +84,6 @@ class ExpenseController extends Controller
             $loan->payment = $loan->payment + $payment;
             $loan->update();
         }
-
-
         $order->expense_category_id = $request->expense_category_id;
         $order->employee_id = $request->employee_id;
         $order->user_id = Auth::user()->id;
