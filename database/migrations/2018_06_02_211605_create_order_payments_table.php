@@ -16,7 +16,7 @@ class CreateOrderPaymentsTable extends Migration
         Schema::create('order_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('amount');
-            $table->string('comments');
+            $table->text('comments');
             $table->integer('account_id')->unsigned();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('order_id')->unsigned();

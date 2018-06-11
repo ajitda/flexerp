@@ -35,7 +35,6 @@
                     <thead>
                         <th>Created At</th>
                         <th>qty</th>
-                        <th>description</th>
                         <th>total</th>
                         <th>payment</th>
                         <th>dues</th>
@@ -49,7 +48,6 @@
                         <tr>
                             <td>{{$order->created_at->format('d-m-Y')}}</td>
                             <td>{{$order->qty}}</td>
-                            <td>{{$order->description}}</td>
                             <td>{{$order->total}}</td>
                             <td>{{$order->payment}}</td>
                             <td>{{$order->dues}}</td>
