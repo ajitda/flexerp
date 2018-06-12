@@ -28,13 +28,14 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <span class="glyphicon glyphicon-globe"> Notifications</span> <span class="badge">{{count(auth::user()->notifications)}}</span>
+                            <span class="glyphicon glyphicon-globe"> Notifications</span> <span class="badge">{{count(auth::user()->unreadnotifications)}}</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+                        @foreach(auth::user()->unreadnotifications as $notification)
+                            {{--<li><a href="#">{{$notification->type}}</a></li>--}}
+                            @include('partials.notification.'.snake_case(class_basename($notification->type)))
 
-                            <li>Some notification</li>
-                            <li>Some notification</li>
-                            <li>Some notification</li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="dropdown">
