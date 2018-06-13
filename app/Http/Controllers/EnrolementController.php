@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Course;
 use App\Enrolement;
+use App\EnrolementPayment;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 //use Illuminate\Auth\Access\Response;
@@ -84,8 +86,16 @@ class EnrolementController extends Controller
         $enrolement->course_id = $request->course_id;
         $enrolement->student_id = $request->student_id;
         $enrolement->save();
-        return redirect('enrolements');
 
+        if($request->payment > 0){
+            EnrolementPayment::create([
+                'amount' => $request->payment,
+                'account_id' => $request->payment_type,
+                'enrolement_id' => $enrolement->id,
+                'user_id' => Auth::user()->id
+                ]);
+        }
+        return redirect('enrolements');
     }
 
     /**

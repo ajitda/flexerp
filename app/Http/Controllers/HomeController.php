@@ -119,7 +119,7 @@ class HomeController extends Controller
     {
         $last_day = date("Y-m-d",strtotime('-29 days'));
         $current_day = date("Y-m-d");
-        $enrolement = Enrolement::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('payment');
+        $enrolement = EnrolementPayment::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('amount');
         $orderpayment = OrderPayment::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->sum('amount');
         $others = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->Where("order_cat_id", 3)->sum('payment');
         $personal_salary = Order::whereBetween('created_at', [ $last_day.' 00:00:00', $current_day.' 23:59:59'])->where('order_cat_id', 11)->sum('payment');
