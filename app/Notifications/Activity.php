@@ -11,15 +11,15 @@ use Illuminate\Notifications\Messages\MailMessage;
 class Activity extends Notification
 {
     use Queueable;
-
+    protected $student;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($student)
     {
-        //
+        $this->student = $student;
     }
 
     /**
@@ -42,7 +42,8 @@ class Activity extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'repliedTime'=> Carbon::now()
+            'student'=> $this->student,
+            'user'=>$notifiable
         ];
     }
 

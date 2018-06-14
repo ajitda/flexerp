@@ -58,11 +58,9 @@ class StudentController extends Controller
             $input['image'] = 'img/default.jpg';
         }
         $input['user_id'] = Auth::user()->id;
-        Student::create($input);
-
+        $student = Student::create($input);
         /*\Mail::to($student)->send(new Welcome);*/
-
-        auth()->user()->notify(new Activity());
+        auth()->user()->notify(new Activity($student));
 
         return redirect('students');
     }

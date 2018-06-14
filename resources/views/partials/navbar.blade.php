@@ -31,9 +31,11 @@
                             <span class="glyphicon glyphicon-globe"> Notifications</span> <span class="badge">{{count(auth::user()->unreadnotifications)}}</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                        @foreach(auth::user()->unreadnotifications as $notification)
+                            @foreach(auth::user()->unreadnotifications as $notification)
                             {{--<li><a href="#">{{$notification->type}}</a></li>--}}
-                            @include('partials.notification.'.snake_case(class_basename($notification->type)))
+                            <li>
+                                @include('partials.notification.'.snake_case(class_basename($notification->type)))
+                            </li>
                             @endforeach
                         </ul>
                     </li>

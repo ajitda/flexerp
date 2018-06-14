@@ -1,1 +1,3 @@
-<a href="#">Some Notification</a>
+<a href="#">
+    {{$notification->data['user']['name']}} create a student
+</a>
