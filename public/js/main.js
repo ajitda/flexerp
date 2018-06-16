@@ -21,3 +21,8 @@ automateApp.controller('automateController', ['$scope', '$http', function($scope
 
 }]);
 
+function markNotificationRead() {
+        //alert('clicked');
+    $.get('/markasread');
+}
+

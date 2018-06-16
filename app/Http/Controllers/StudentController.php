@@ -60,8 +60,7 @@ class StudentController extends Controller
         $input['user_id'] = Auth::user()->id;
         $student = Student::create($input);
         /*\Mail::to($student)->send(new Welcome);*/
-        auth()->user()->notify(new Activity($student));
-
+        $student->user->notify(new Activity($student));
         return redirect('students');
     }
 

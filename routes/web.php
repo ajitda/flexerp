@@ -174,3 +174,7 @@ Route::prefix(A_SEC)->middleware('auth')->group(function () {
         'roles'=>['SuperAdmin']
     ]);
 });
+
+Route::get('/markasread', function(){
+    auth()->user()->unreadnotifications->markasread();
+});
