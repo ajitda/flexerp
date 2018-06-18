@@ -49,6 +49,8 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'mobile'=>'required',
+            'name'=>'required',
             'image'=>'mimes:jpeg,png,bmp|max:1024'
         ]);
         $input = $request->all();
