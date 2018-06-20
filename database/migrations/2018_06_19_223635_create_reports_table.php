@@ -15,6 +15,12 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
+            $table->decimal("previous", 12,2);
+            $table->decimal("student_enrolements",12,2);
+            $table->decimal("oders",12,2);
+            $table->decimal("expenses",12,2);
+            $table->decimal("surplus",12, 2);
+            $table->decimal('total', 12,2);
             $table->timestamps();
         });
     }
