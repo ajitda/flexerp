@@ -129,51 +129,11 @@ Route::post('/messages', function(){
 
 Route::resource('/transactions', 'TransactionController');
 
-Route::prefix(A_SEC)->middleware('auth')->group(function () {
+Route::group(['prefix' => A_SEC, 'middleware' => ['auth','roles'], 'roles'=>'SuperAdmin'],
+    function() {
+        Route::resource('/accounts','AccountController');
+    });
 
-    Route::get('/accounts', [
-        'uses'=>'AccountController@index',
-        'as'=> 'accounts.index',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::get('/accounts/create', [
-        'uses'=>'AccountController@create',
-        'as'=> 'accounts.create',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::post('/accounts/store', [
-        'uses'=>'AccountController@store',
-        'as'=> 'accounts.store',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::get('/accounts/{account}', [
-        'uses'=>'AccountController@show',
-        'as'=> 'accounts.show',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::get('/accounts/{account}/edit', [
-        'uses'=>'AccountController@edit',
-        'as'=> 'accounts.edit',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::patch('/accounts/{account}/update', [
-        'uses'=>'AccountController@update',
-        'as'=> 'accounts.update',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-    Route::get('/accounts/{account}/destroy', [
-        'uses'=>'AccountController@destroy',
-        'as'=> 'accounts.destroy',
-        'middleware'=>'roles',
-        'roles'=>['SuperAdmin']
-    ]);
-});
 
 Route::get('/markasread', function(){
     auth()->user()->unreadnotifications->markasread();
