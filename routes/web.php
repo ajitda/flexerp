@@ -133,7 +133,7 @@ Route::group(['prefix' => A_SEC, 'middleware' => ['auth','roles'], 'roles'=>'Sup
     function() {
         Route::resource('/accounts','AccountController');
     });
-
+Route::resource('/reports', 'ReportController');
 
 Route::get('/markasread', function(){
     auth()->user()->unreadnotifications->markasread();
