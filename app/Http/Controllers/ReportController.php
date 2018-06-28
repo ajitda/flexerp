@@ -13,10 +13,11 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reports = Report::all();
-        return view('reports.index', compact('reports'));
+        $s = $request->input('s');
+        $reports = Report::latest()->search($s)->paginate(10);
+        return view('reports.index', compact('reports', 's'));
     }
 
     /**
