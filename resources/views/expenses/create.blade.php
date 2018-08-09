@@ -72,6 +72,8 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
+            var price = $("#price").val();
+            $("#payment").val(price);
             $(document).on('change', '#expense_category', function(){
 //                console.log('hmm it change');
 
