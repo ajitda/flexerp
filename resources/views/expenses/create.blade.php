@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="payment_type">Payment Type : </label>
-                            {!! Form::select('payment_type', $types, null, array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
+                            {!! Form::select('payment_type', $types, $types['4'], array('required', 'class'=> 'form-control', 'id'=> 'payment_type', 'placeholder'=>'Payment Type')) !!}
                         </div>
                         <div class="form-group col-md-2">
                             <label for="total">Dues : </label>
@@ -72,10 +72,14 @@
 @section('scripts')
     <script>
         $(document).ready(function(){
-            var price = $("#price").val();
-            $("#payment").val(price);
+            var price = $("input[name=unit_price]").val();
+            $("#price").on('keyup', function () {
+                console.log(price);
+                $("#payment").val(price);
+            });
+
             $(document).on('change', '#expense_category', function(){
-//                console.log('hmm it change');
+
 
                var cat_id = $(this).val();
                 //console.log(expense_category_id);
@@ -86,10 +90,6 @@
                     url: '{!! URL::to('getexpense') !!}',
                     data: {'id':cat_id},
                     success:function (data) {
-                        //console.log('success');
-
-                        //console.log(data);
-
                          op+='<option value="0" selected disabled>Choose Lender</option>';
                         for(var i=0; i<data.length; i++) {
                             op += '<option value="' + data[i].id + '">' + data[i].name + '</option>';

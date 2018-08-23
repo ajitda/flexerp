@@ -1,3 +1,5 @@
 *.sqlite
 /.idea
 /database/backups
+.idea/workspace.xml
+.idea/workspace.xml
