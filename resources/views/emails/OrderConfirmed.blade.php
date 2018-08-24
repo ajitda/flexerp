@@ -21,7 +21,7 @@
 <table>
     <thead>
     <tr>
-        <th>Order No</th>
+        <th width="80">Order No</th>
         <th width="300">Description</th>
         <th>Price</th>
         <th>Qty</th>
@@ -34,7 +34,7 @@
         <td>{{$order->description}}</td>
         <td>{{$order->unit_price}}</td>
         <td>{{$order->qty}}</td>
-        <td>{{$order->total}}</td>
+        <td>BDT. {{$order->total}}</td>
     </tr>
     <tr>
         <td colspan="4" align="right">Total : </td>
