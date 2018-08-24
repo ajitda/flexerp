@@ -14,7 +14,6 @@ use App\Mail\SendEmail;
 use App\Events\Event;
 use Illuminate\Support\Facades\Mail;
 use App\Events\MessagePosted;
-define('A_SEC', 6547891397);
 
 Route::get('/', function () {
     return view('welcome');
@@ -129,7 +128,7 @@ Route::post('/messages', function(){
 
 Route::resource('/transactions', 'TransactionController');
 
-Route::group(['prefix' => A_SEC, 'middleware' => ['auth','roles'], 'roles'=>'SuperAdmin'],
+Route::group(['prefix' => 6547891397, 'middleware' => ['auth','roles'], 'roles'=>'SuperAdmin'],
     function() {
         Route::resource('/accounts','AccountController');
     });

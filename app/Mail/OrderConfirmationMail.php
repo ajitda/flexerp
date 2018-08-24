@@ -30,6 +30,6 @@ class OrderConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.OrderConfirmed');
+        return $this->view('emails.OrderConfirmed', compact('customer', 'order'));
     }
 }

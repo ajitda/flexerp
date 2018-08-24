@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Customer;
 use App\Employee;
+use App\Mail\OrderConfirmationMail;
 use App\Order;
 use App\OrderCat;
 use App\OrderPayment;
@@ -13,6 +14,8 @@ use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -133,6 +136,7 @@ class OrderController extends Controller
         $employees = Employee::pluck('name', 'id');
         $references = Reference::pluck('name', 'id');
         $customers = Customer::pluck('name', 'id');
+
         return view('orders.edit', compact('order_cats', 'employees', 'references', 'customers', 'order'));
     }
 
@@ -162,6 +166,10 @@ class OrderController extends Controller
         $order->reference_id = $request->reference_id;
         $order->user_id = Auth::user()->id;
         $order->update();
+        $customer = Customer::findOrFail($request->customer_id);
+
+        $mail = Mail::to($customer->email)->send(new OrderConfirmationMail($customer, $order));
+        Session::flash('message', 'Mail Send successfully');
         return redirect()->back();
     }
     /**
