@@ -98,8 +98,12 @@ class OrderController extends Controller
             $order_payment->order_id = $order->id;
             $order_payment->account_id = $request->type;
             $order_payment->save();
-        }
 
+        }
+        if(isset($request->customer_id) && !empty($request->customer_id)) {
+            $customer = Customer::findOrFail($request->customer_id);
+            Mail::to($customer->email)->send(new OrderConfirmationMail($customer, $order));
+        }
         return redirect(route('orders.index'));
     }
 
@@ -167,8 +171,6 @@ class OrderController extends Controller
         $order->user_id = Auth::user()->id;
         $order->update();
         $customer = Customer::findOrFail($request->customer_id);
-
-        $mail = Mail::to($customer->email)->send(new OrderConfirmationMail($customer, $order));
         Session::flash('message', 'Mail Send successfully');
         return redirect()->back();
     }
