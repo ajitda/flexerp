@@ -38,15 +38,15 @@
     </tr>
     <tr>
         <td colspan="4" align="right">Total : </td>
-        <td>{{$order->total}}</td>
+        <td>BDT. {{$order->total}}</td>
     </tr>
     <tr>
         <td colspan="4" align="right">Payment : </td>
-        <td>{{$order->payment}}</td>
+        <td>BDT. {{$order->payment}}</td>
     </tr>
     <tr>
         <td colspan="4" align="right">Dues : </td>
-        <td>{{$order->dues}}</td>
+        <td>BDT. {{$order->dues}}</td>
     </tr>
     </tbody>
 </table>
