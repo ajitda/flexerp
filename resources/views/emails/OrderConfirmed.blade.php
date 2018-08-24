@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Confirmation Email</title>
+    <style>
+        table tr{
+            border-bottom: 1px dotted #0a0a0a;
+        }
+    </style>
 </head>
 <body>
 <h1>Your Order Confirmed</h1>
 <p>
     Dear {{$customer->name}} <br>
-    Your Order <strong>id# {{$order->id}}</strong> for <br>
+    Your Order <strong>id# {{$order->id}}</strong> for
     <mark>{{$order->description}}</mark>
     has been confirmed.
 </p>
@@ -17,7 +22,7 @@
     <thead>
     <tr>
         <th>Order No</th>
-        <th>Description</th>
+        <th width="300">Description</th>
         <th>Price</th>
         <th>Qty</th>
         <th>Total</th>
