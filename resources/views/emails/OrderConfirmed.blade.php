@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Order Confirmation Email</title>
     <style>
-        table tr{
+        table thead tr,table tbody tr{
             border-bottom: 1px dotted #0a0a0a;
         }
     </style>
