@@ -170,7 +170,10 @@ class OrderController extends Controller
         $order->reference_id = $request->reference_id;
         $order->user_id = Auth::user()->id;
         $order->update();
-        $customer = Customer::findOrFail($request->customer_id);
+        if(isset($request->customer_id) && !empty($request->customer_id)) {
+            $customer = Customer::findOrFail($request->customer_id);
+            Mail::to($customer->email)->send(new OrderConfirmationMail($customer, $order));
+        }
         Session::flash('message', 'Mail Send successfully');
         return redirect()->back();
     }
